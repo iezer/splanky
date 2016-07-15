@@ -1,0 +1,11 @@
+// Route Templates
+@import './index.scss';
+
+// Components
+@import './components/event-info.scss';
+@import './components/force-graph.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Playfair Display', serif;
+}

@@ -1,0 +1,15 @@
+<div class='index-container'>
+  <div class='index-container__column'>
+    <div class='index-container__events'>
+      {{#each sortedEvents as |event|}}
+        {{event-info event=event
+          selectArtist=(action (mut selectedArtist))}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class='index-container__column'>
+    {{force-graph graph=graph
+    selectedArtist=selectedArtist}}
+  </div>
+</div>

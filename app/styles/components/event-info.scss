@@ -1,0 +1,41 @@
+// TODO
+// fix wrapping of long lines
+// hover for artist to show clickable
+// highlighted color
+// color for date and instruments
+// disappearing message to tell user to click on artist
+// select all artists in graph
+// artist search tab (by name and instrument, only artists in actual events)
+// see if I can use data from recording paper
+
+.event-info {
+  flex: auto;
+  width: 230px;
+  max-width: 230px;
+  min-height: 160px;
+  padding: 10px;
+
+  .event-info__name {
+    font-weight: bold;
+  }
+
+  .event-info__date {
+    text-align: right;
+  }
+
+  .event-info__artists {
+    margin-top: 10px;
+  }
+
+  .event-info__artist {
+    width: 100%;
+  }
+
+  .event-info__artist_name {
+    max-width: 150px;
+  }
+
+  .event-info__instrument {
+    float: right;
+  }
+}

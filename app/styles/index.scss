@@ -1,0 +1,16 @@
+.index-container {
+  height: 100vh;
+  display: flex;
+
+  .index-container__column {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .index-container__events {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+  }
+}
