@@ -3,7 +3,8 @@
     <div class='index-container__events'>
       {{#each sortedEvents as |event|}}
         {{event-info event=event
-          selectArtist=(action (mut selectedArtist))}}
+          selectArtist=(action (mut selectedArtist))
+          selectedArtist=selectedArtist}}
       {{/each}}
     </div>
   </div>

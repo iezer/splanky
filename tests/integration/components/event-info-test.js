@@ -31,14 +31,12 @@ test('it renders an event', function(assert) {
 });
 
 test('it renders artists for event and handles action', function(assert) {
-  assert.expect(2);
-  let done = assert.async();
+  assert.expect(3);
   let artist = { name: 'Monk' };
   let event = { startTime: new Date(), artists: [ artist ] };
 
   this.on('selectArtist', function(param) {
     assert.deepEqual(artist, param, 'artist sent to action on click');
-    done();
   });
 
   this.set('event', event);
@@ -46,4 +44,5 @@ test('it renders artists for event and handles action', function(assert) {
 
   assert.is$('.event-info__artist:contains(Monk)', 'shows artist name');
   this.$('.event-info__artist').click();
+  assert.is$('.event-info__artist.selected:contains(Monk)', 'artist name is selected');
 });
