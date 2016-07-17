@@ -20,6 +20,7 @@
   }
 
   .event-info__date {
+    color: $red-color;
     text-align: right;
   }
 
@@ -28,6 +29,7 @@
   }
 
   .event-info__artist {
+    overflow: hidden;
     width: 100%;
   }
 
@@ -36,6 +38,7 @@
   }
 
   .event-info__instrument {
+    color: $red-color;
     float: right;
   }
 }
