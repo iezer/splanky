@@ -43,6 +43,9 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
+
+    ENV.baseURL = '/jazz-cats/';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
