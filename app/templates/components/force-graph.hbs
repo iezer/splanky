@@ -1,2 +1,15 @@
 <svg width="700" height="700">
+  <g class='force-graph__links'>
+    {{#each graph.links as |link|}}
+      <line stroke-width={{link.sqrtValue}}></line>
+    {{/each}}
+
+    <g class='force-graph__nodes'>
+      {{#each graph.nodes as |node|}}
+        <circle r={{if (eq node.id selectedArtist.id) 10 5}} dd-artist={{node.id}} fill={{d3-color node.group}}>
+          <title>{{node.text}}</title>
+        </circle>
+      {{/each}}
+    </g>
+  </g>
 </svg>

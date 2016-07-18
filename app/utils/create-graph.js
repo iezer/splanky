@@ -35,9 +35,10 @@ export default function(events) {
         (l.source === target && l.target === source);
     });
     if (link === undefined) {
-      links.push({ source, target, value: 1 });
+      links.push({ source, target, value: 1, sqrtValue: 1 });
     } else {
       link.value++;
+      link.sqrtValue = Math.sqrt(link.value);
     }
   }
 
