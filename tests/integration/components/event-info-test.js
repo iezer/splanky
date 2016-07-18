@@ -9,7 +9,10 @@ moduleForComponent('event-info', 'Integration | Component | event info', {
   beforeEach() {
     setupMirage(this);
     this.artist = { id: 'monk', name: 'Monk' };
-    this.event = { startTime: new Date(), artists: [ this.artist ] };
+    this.event = {
+      startTime: new Date('Sun Jul 17 2016 22:00'),
+      artists: [ this.artist ]
+    };
     this.set('event', this.event);
     this.on('selectArtist', () => this);
   },
@@ -19,12 +22,13 @@ moduleForComponent('event-info', 'Integration | Component | event info', {
 });
 
 test('it renders an event', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
 
   this.render(hbs`{{event-info event=event selectArtist=(action 'selectArtist')}}`);
   let text = this.$().text().trim();
   assert.notStrictEqual(text.indexOf('Monk'), -1, 'shows event name');
-  assert.notStrictEqual(text.indexOf(this.event.startTime.toDateString()), -1, 'shows event date');
+  assert.notStrictEqual(text.indexOf('Sunday 7/17/2016'), -1, 'shows event date');
+  assert.notStrictEqual(text.indexOf('10:00 PM'), -1, 'shows event time');
 });
 
 test('it renders artists for event and handles action', function(assert) {
