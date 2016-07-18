@@ -3,9 +3,12 @@
 </div>
 
 <div class='event-info__date'>
-  {{format-date event.startTime}}
+  {{moment-format event.startTime "ddd MMM D YYYY"}}
 </div>
 
+<div class='event-info__date'>
+  {{moment-format event.startTime "LT"}}
+</div>
 <div class='event-info__artists'>
   {{#each event.artists as |artist|}}
     <div {{action selectArtist (if (eq artist.id selectedArtist.id) null artist)}}
