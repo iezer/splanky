@@ -43,3 +43,20 @@ test('it renders artists for event and handles action', function(assert) {
   this.$('.event-info__artist').click();
   assert.is$('.event-info__artist.selected:contains(Monk)', 'artist name is selected');
 });
+
+test('can unselect artist', function(assert) {
+  assert.expect(4);
+  this.set('selectedArtist', this.artist);
+
+  this.on('selectArtist', param => {
+    assert.deepEqual(param, null, 'null artist sent to action on click to reset');
+    this.set('selectedArtist', param);
+  });
+
+  this.render(hbs`{{event-info event=event selectArtist=(action 'selectArtist') selectedArtist=selectedArtist}}`);
+
+  assert.is$('.event-info__artist.selected:contains(Monk)', 'artist name initially selected');
+  this.$('.event-info__artist').click();
+  assert.is$('.event-info__artist:contains(Monk)', 'artist name still visible');
+  assert.notOk(this.$('.event-info__artist.selected:contains(Monk)').length, 'artist name not selected');
+});

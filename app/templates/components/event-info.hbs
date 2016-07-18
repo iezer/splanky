@@ -8,14 +8,15 @@
 
 <div class='event-info__artists'>
   {{#each event.artists as |artist|}}
-    <div {{action selectArtist artist}} class='event-info__artist {{if (eq artist.id selectedArtist.id) 'selected'}}'>
-      <span class='event-info__artist_name'>
-        {{artist.name}}
-      </span>
-      <span class='event-info__instrument'>
-        {{artist.instrument}}
-      </span>
-      <span style="clear: both;"></span>
-    </div>
+    <div {{action selectArtist (if (eq artist.id selectedArtist.id) null artist)}}
+      class='event-info__artist {{if (eq artist.id selectedArtist.id) 'selected'}}'>
+        <span class='event-info__artist_name'>
+          {{artist.name}}
+        </span>
+        <span class='event-info__instrument'>
+          {{artist.instrument}}
+        </span>
+        <span style="clear: both;"></span>
+      </div>
   {{/each}}
 </div>
