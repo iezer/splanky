@@ -6,15 +6,20 @@ export default JSONAPISerializer.extend({
     // TODO move to mirage so all artists are sideloaded
 
     let normalizeEvent = event => {
-      let artistIds = event.attributes['artist-ids'];
-      delete event.attributes['artist-ids'];
+      let artistIds = event.attributes['artist_ids'];
+      if (artistIds) {
+        if (typeof artistIds === 'string') {
+          artistIds = artistIds.split(',');
+        }
+        delete event.attributes['artist_ids'];
 
-      event.relationships = event.relationships || {};
-      event.relationships.artists = event.relationships.artists || { data: [] };
+        event.relationships = event.relationships || {};
+        event.relationships.artists = event.relationships.artists || { data: [] };
 
-      artistIds.forEach(artistId => {
-        event.relationships.artists.data.push({ id: artistId, type: 'artist' });
-      });
+        artistIds.forEach(artistId => {
+          event.relationships.artists.data.push({ id: artistId, type: 'artist' });
+        });
+      }
     };
 
     if (isEmberArray(payload.data)) {
