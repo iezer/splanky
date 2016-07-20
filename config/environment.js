@@ -20,6 +20,22 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.APP.API_URL = 'http://localhost:4000';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
+
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' http://localhost:4000",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    };
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -40,10 +56,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-
     ENV.baseURL = '/jazz-cats/';
     ENV.locationType = 'hash';
   }
