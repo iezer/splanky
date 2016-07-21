@@ -56,9 +56,20 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = '/';
+    ENV.APP.API_URL = 'http://jazz-cats-api.herokuapp.com';
     ENV.baseURL = '/jazz-cats/';
     ENV.locationType = 'hash';
+
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' https://jazz-cats-api.herokuapp.com",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    };
+
   }
 
   return ENV;
