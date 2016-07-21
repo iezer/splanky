@@ -16,24 +16,25 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' https://jazz-cats-api.herokuapp.com http://localhost:4000",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
     }
   };
 
   if (environment === 'development') {
     ENV.APP.API_URL = 'http://localhost:4000';
+    // ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
 
     ENV['ember-cli-mirage'] = {
       enabled: false
-    };
-
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self'",
-      'connect-src': "'self' http://localhost:4000",
-      'img-src': "'self'",
-      'style-src': "'self'",
-      'media-src': "'self'"
     };
 
     // ENV.APP.LOG_RESOLVER = true;
@@ -59,17 +60,6 @@ module.exports = function(environment) {
     ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
     ENV.baseURL = '/jazz-cats/';
     ENV.locationType = 'hash';
-
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self'",
-      'connect-src': "'self' https://jazz-cats-api.herokuapp.com",
-      'img-src': "'self'",
-      'style-src': "'self'",
-      'media-src': "'self'"
-    };
-
   }
 
   return ENV;

@@ -7,6 +7,10 @@
 @import './components/event-info.scss';
 @import './components/force-graph.scss';
 
+body {
+  margin: 0px;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Playfair Display', serif;

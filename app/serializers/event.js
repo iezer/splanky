@@ -1,7 +1,7 @@
-import JSONAPISerializer from 'ember-data/serializers/json-api';
+import Serializer from './application';
 import { isEmberArray } from 'ember-array/utils';
 
-export default JSONAPISerializer.extend({
+export default Serializer.extend({
   normalizeResponse(store, type, payload, id, requestType) {
     // TODO move to mirage so all artists are sideloaded
 
