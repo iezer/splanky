@@ -8,5 +8,6 @@ let randomInstrument = function() {
 
 export default Factory.extend({
   name() { return faker.name.findName(); },
-  instrument() { return randomInstrument(); }
+  instrument() { return randomInstrument(); },
+  image: 'image.jpg'
 });

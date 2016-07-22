@@ -15,7 +15,7 @@ moduleForModel('artist', 'Unit | Model | Artist', {
 });
 
 test('can find single record', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   let artistData = this.server.create('artist');
 
   run(() => {
@@ -24,5 +24,6 @@ test('can find single record', function(assert) {
     assert.equal(artist.get('id'), artistData.id, `id serialized - ${artistData.id}`);
     assert.equal(artist.get('name'), artistData.name, `name serialized - ${artistData.name}`);
     assert.equal(artist.get('instrument'), artistData.instrument, `instrument serialized - ${artistData.instrument}`);
+    assert.equal(artist.get('image'), artistData.image, `image serialized - ${artistData.image}`);
   });
 });

@@ -13,5 +13,6 @@ export let INSTRUMENTS = [
 export default Model.extend({
   name: attr('string'),
   instrument: attr('string'),
-  events: hasMany('event', { inverse: 'artists' })
+  events: hasMany('event', { inverse: 'artists' }),
+  image: attr('string')
 });
