@@ -25,7 +25,7 @@ export default Component.extend({
           .data(graph.links);
 
     var node = d3.select("svg g.force-graph__nodes")
-          .selectAll("circle")
+          .selectAll("g.node")
           .data(graph.nodes)
           .call(d3.drag()
                 .on("start", dragstarted)
@@ -47,9 +47,7 @@ export default Component.extend({
         .attr("y2", function(d) { return d.target.y; });
 
       node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
     }
 
     function dragstarted(d) {
