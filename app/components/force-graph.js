@@ -15,7 +15,7 @@ export default Component.extend({
 
     var simulation = d3.forceSimulation()
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
-          .force("charge", d3.forceManyBody())
+          .force("charge", d3.forceManyBody().strength(function() { return -4; }))
           .force("center", d3.forceCenter(width / 2, height / 2));
 
     let graph = this.get('graph');
@@ -39,6 +39,7 @@ export default Component.extend({
     simulation.force("link")
       .links(graph.links);
 
+    let radius = 5;
     function ticked() {
       link
         .attr("x1", function(d) { return d.source.x; })
@@ -47,7 +48,11 @@ export default Component.extend({
         .attr("y2", function(d) { return d.target.y; });
 
       node
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        .attr("transform", function(d) {
+          d.x = Math.max(radius, Math.min(width - radius, d.x));
+          d.y = Math.max(radius, Math.min(height - radius, d.y));
+          return "translate(" + d.x + "," + d.y + ")";
+        });
     }
 
     function dragstarted(d) {
