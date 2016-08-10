@@ -11,6 +11,7 @@ moduleForComponent('event-info', 'Integration | Component | event info', {
     this.artist = { id: 'monk', name: 'Monk' };
     this.event = {
       startTime: new Date('Sun Jul 17 2016 22:00'),
+      endTime: new Date('Mon Jul 18 2016 01:30'),
       artists: [ this.artist ]
     };
     this.set('event', this.event);
@@ -28,7 +29,7 @@ test('it renders an event', function(assert) {
   let text = this.$().text().trim();
   assert.notStrictEqual(text.indexOf('Monk'), -1, 'shows event name');
   assert.notStrictEqual(text.indexOf('Sunday 7/17/2016'), -1, 'shows event date');
-  assert.notStrictEqual(text.indexOf('10:00 PM'), -1, 'shows event time');
+  assert.notStrictEqual(text.indexOf('10:00 PM - 1:30 AM'), -1, 'shows event time');
 });
 
 test('it renders artists for event and handles action', function(assert) {

@@ -15,7 +15,7 @@ moduleForModel('event', 'Unit | Model | Event', {
 });
 
 test('can find single record', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   let data = this.server.create('event');
 
   run(() => {
@@ -24,6 +24,7 @@ test('can find single record', function(assert) {
     assert.equal(event.get('id'), data.id, `id serialized - ${data.id}`);
     assert.equal(event.get('name'), data.name, `name serialized - ${data.name}`);
     assert.deepEqual(event.get('startTime'), data.start_time, `start_time serialized - ${data.start_time}`);
+    assert.deepEqual(event.get('endTime'), data.end_time, `end_time serialized - ${data.end_time}`);
   });
 });
 

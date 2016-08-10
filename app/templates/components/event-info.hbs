@@ -7,7 +7,7 @@
 </div>
 
 <div class='event-info__time'>
-  {{moment-format event.startTime "LT"}}
+  {{moment-format event.startTime "LT"}} - {{moment-format event.endTime "LT"}}
 </div>
 <div class='event-info__artists'>
   {{#each event.artists as |artist|}}
