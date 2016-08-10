@@ -53,10 +53,10 @@ test('can select nodes', function(assert) {
   ];
 
   this.set('selectedArtist', artists[0]);
-  assert.equal(this.$('circle[dd-artist=1][r=10]').length, 1, 'node 1 set to radius 10');
+  assert.equal(this.$('circle[dd-artist=1][r=75]').length, 1, 'node 1 set to radius 75');
   assert.equal(this.$('circle[dd-artist=2][r=5]').length, 1, 'node 2 radius unchanged');
 
   this.set('selectedArtist', artists[1]);
   assert.equal(this.$('circle[dd-artist=1][r=5]').length, 1, 'node 1 reset to radius 5');
-  assert.equal(this.$('circle[dd-artist=2][r=10]').length, 1, 'node 2 set to radius 10');
+  assert.equal(this.$('circle[dd-artist=2][r=75]').length, 1, 'node 2 set to radius 75');
 });
