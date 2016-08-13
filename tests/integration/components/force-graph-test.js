@@ -28,6 +28,7 @@ moduleForComponent('force-graph', 'Integration | Component | force graph', {
     };
 
     this.set('graph', this.graph);
+    this.on('selectArtist', () => this);
   }
 });
 
@@ -41,7 +42,7 @@ let page = {
 
 test('it renders', function(assert) {
   assert.expect(3);
-  this.render(hbs`{{force-graph graph=graph}}`);
+  this.render(hbs`{{force-graph graph=graph selectArtist=(action 'selectArtist')}}`);
 
   assert.is$(page.line, '1 link');
   assert.is$(page.node(1, 'miles'), 'node for miles');
@@ -51,7 +52,8 @@ test('it renders', function(assert) {
 test('can select nodes', function(assert) {
   assert.expect(5);
   this.set('selectedArtist', null);
-  this.render(hbs`{{force-graph graph=graph selectedArtist=selectedArtist}}`);
+  this.render(hbs`{{force-graph graph=graph selectedArtist=selectedArtist
+                    selectArtist=(action 'selectArtist')}}`);
 
   assert.equal(this.$('circle[r=5]').length, 2, 'initially all circles have radius 5');
 
