@@ -5,11 +5,19 @@ import EmberObject from 'ember-object';
 moduleForComponent('force-graph', 'Integration | Component | force graph', {
   integration: true,
   beforeEach() {
+    this.artists = [
+      { id: 1, name: 'miles' },
+      { id: 2, name: 'pops' }
+    ]
     this.graph = {
-      nodes: [
-        { id: 1, text: 'miles', group: 1 },
-        { id: 2, text: 'pops', group: 2 }
-      ],
+      nodes: this.artists.map(artist => {
+        return {
+          id: artist.id,
+          text: artist.name,
+          group: artist.id,
+          artist
+        };
+      }),
       links: [
         {
           source: 1,
@@ -59,4 +67,16 @@ test('can select nodes', function(assert) {
   this.set('selectedArtist', artists[1]);
   assert.equal(this.$('circle[dd-artist=1][r=5]').length, 1, 'node 1 reset to radius 5');
   assert.equal(this.$('circle[dd-artist=2][r=75]').length, 1, 'node 2 set to radius 75');
+});
+
+test('selected nodes fires action', function(assert) {
+  assert.expect(1);
+  this.on('selectArtist', (artist) => {
+    assert.deepEqual(artist, this.artists[0], 'artist passed to selectArtist');
+  });
+
+  this.render(hbs`{{force-graph graph=graph
+                    selectArtist=(action 'selectArtist')}}`);
+
+  this.$('circle[dd-artist=1]').click();
 });

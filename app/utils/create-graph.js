@@ -19,7 +19,7 @@ export default function(events) {
     if (node === undefined) {
       let group = groupCode(artist);
       let image = artist.get('image');
-      nodes.push({ id, text, group, image });
+      nodes.push({ id, text, group, image, artist });
     }
   }
 

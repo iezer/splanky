@@ -6,8 +6,9 @@
 
     <g class='force-graph__nodes'>
       {{#each graph.nodes as |node|}}
-        <g class="node" width="20" height="20">
-          <circle r={{if (eq node.id selectedArtist.id) 75 5}} dd-artist={{node.id}} fill={{d3-color node.group}}>
+        <g class="node" width="20" height="20"
+          {{action selectArtist (if (eq node.id selectedArtist.id) null node.artist)}}>
+          <circle r={{if (eq node.id selectedArtist.id) 75 5}} dd-artist={{node.id}} fill={{d3-color node.group}} >
           <title>{{node.text}}</title>
           </circle>
 
