@@ -63,5 +63,12 @@ module.exports = function(environment) {
     ENV.locationType = 'hash';
   }
 
+  ENV.fastboot = {
+    hostWhitelist: [
+      ENV.APP.API_URL,
+      'localhost:3000'
+    ]
+  };
+
   return ENV;
 };
