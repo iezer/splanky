@@ -24,4 +24,13 @@
   .artist-info__name {
     font-weight: bold;
   }
+
+  .artist-info__button {
+    padding: 2px;
+    border: 1px solid $grey-color;
+
+    &:hover {
+      background-color: $dark-grey-color;
+    }
+  }
 }
