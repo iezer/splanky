@@ -14,20 +14,24 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(...arguments);
 
-    subscribe("create-graph", {
-      before: function(name, start) {
-        return start;
-      },
+    // subscribe("create-graph", {
+    //   before: function(name, start) {
+    //     return start;
+    //   },
 
-      after: function(name, end, payload, start) {
-        let duration = Math.round(end - start);
-        console.log(`create-graph took ${duration} ms.`); // eslint-disable-line no-console
-      }
-    });
+    //   after: function(name, end, payload, start) {
+    //     let duration = Math.round(end - start);
+    //     console.log(`create-graph took ${duration} ms.`); // eslint-disable-line no-console
+    //   }
+    // });
 
-    instrument('create-graph', () => {
-      let graph = createGraph(model);
-      controller.set('graph', graph);
-    });
+    // instrument('create-graph', () => {
+    //   let events = model.filter(event => {
+    //     return event.get('startTime').getMonth() === 6;
+    //   });
+
+    //   let graph = createGraph(events);
+    //   controller.set('graph', graph);
+    // });
   }
 });
