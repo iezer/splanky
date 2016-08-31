@@ -2,14 +2,34 @@ import Controller from 'ember-controller';
 import computed from 'ember-computed';
 import createGraph from 'cats-client/utils/create-graph';
 import { A as emberA } from 'ember-array/utils';
+import injectService from 'ember-service/inject';
 
 export default Controller.extend({
-  selectedArtist: null,
+  store: injectService(),
+
+  selectedArtist: computed('artist', {
+    get() {
+      let artist = this.get('artist');
+      if (artist) {
+        return this.get('store').peekRecord('artist', artist);
+      }
+
+      return null;
+    },
+    set(key, value) {
+      this.set('artist', value && value.get('id'));
+      return value;
+    }
+  }),
+
   sortDef: ['startTime:desc'],
   sortedEvents: computed.sort('events', 'sortDef'),
 
+  includeBandmates: false,
   month: null,
-  queryParams: [ 'month' ],
+  artist: null,
+
+  queryParams: [ 'month', 'includeBandmates', 'artist' ],
 
   // converter query-string month input "1"-"12"
   // do 0 based int 0-11 so that getMonth() works.
@@ -23,7 +43,7 @@ export default Controller.extend({
   }),
 
   // Filter on month and/or selectedArtist
-  events: computed('monthInt', 'selectedArtist', function() {
+  events: computed('monthInt', 'selectedArtist', 'includeBandmates', function() {
     let month = this.get('monthInt');
     let events;
 
@@ -43,14 +63,16 @@ export default Controller.extend({
 
       pushEvents(selectedArtist);
 
-      let bandMates = emberA();
-      events.forEach(event => {
-        bandMates.pushObjects(event.get('artists').toArray());
-      });
+      if (this.get('includeBandmates')) {
+        let bandMates = emberA();
+        events.forEach(event => {
+          bandMates.pushObjects(event.get('artists').toArray());
+        });
 
-      bandMates = bandMates.uniq().removeObject(selectedArtist);
+        bandMates = bandMates.uniq().removeObject(selectedArtist);
 
-      bandMates.forEach(bandMate => pushEvents(bandMate));
+        bandMates.forEach(bandMate => pushEvents(bandMate));
+      }
 
       return events;
     }
