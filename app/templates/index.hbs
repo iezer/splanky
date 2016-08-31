@@ -2,7 +2,7 @@
   <div class='index-container__column'>
     <div class='index-container__events'>
       {{#if selectedArtist}}
-        {{#artist-info artist=selectedArtist}}
+        {{#artist-info artist=selectedArtist month=monthInt}}
           {{input type="checkbox" name="includeBandmates" checked=includeBandmates}} Include Bandmates
         {{/artist-info}}
       {{/if}}

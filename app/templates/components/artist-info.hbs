@@ -12,6 +12,18 @@
   {{artist.events.length}} - Gigs This Year
 </div>
 
+{{#if hasMonth}}
+  For {{monthString}}
+
+  <div class='artist-info_stat'>
+    {{bandMatesForMonth.length}} - Number of Artists Performed With in {{monthString}}
+  </div>
+
+  <div class='artist-info_stat'>
+    {{eventsForMonth.length}} - Gigs in {{monthString}}
+  </div>
+{{/if}}
+
 <span>
   {{yield}}
 </span>
