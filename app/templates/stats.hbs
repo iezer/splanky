@@ -1,0 +1,8 @@
+<div>
+  <div {{action 'setType' 'events'}}>Most Shows</div>
+  <div {{action 'setType' 'bandMates'}}>Most Bandmates</div>
+</div>
+
+{{#each sortedArtists as |a|}}
+  {{a.name}} {{get-length a type}} {{a.instrument}}
+{{/each}}

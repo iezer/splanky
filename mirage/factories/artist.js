@@ -1,5 +1,12 @@
 import { Factory, faker } from 'ember-cli-mirage';
-import { INSTRUMENTS } from 'cats-client/models/artist';
+
+export const INSTRUMENTS = [
+  'Piano',
+  'Bass',
+  'Drums',
+  'Guitar',
+  'Trumpet'
+];
 
 let randomInstrument = function() {
   let i = Math.floor(Math.random() * INSTRUMENTS.length);

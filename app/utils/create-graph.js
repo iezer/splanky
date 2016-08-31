@@ -1,4 +1,3 @@
-import { INSTRUMENTS } from 'cats-client/models/artist';
 /*
  * Create a D3-force diagram compatible graph
  * based on an array of events.
@@ -7,6 +6,7 @@ import { INSTRUMENTS } from 'cats-client/models/artist';
 export default function(events) {
   let nodes = [];
   let links = [];
+  let instruments = [];
 
   function desc(artist) {
     return `${artist.get('name')} (${artist.get('instrument')})`;
@@ -25,7 +25,14 @@ export default function(events) {
 
   function groupCode(artist) {
     let instrument = artist.get('instrument');
-    return INSTRUMENTS.indexOf(instrument) + 1;
+    let i = instruments.indexOf(instrument);
+
+    if (i === -1) {
+      instruments.push(instrument);
+      return instruments.length;
+    }
+
+    return i + 1;
   }
 
   function addEvent(artistA, artistB) {
@@ -56,5 +63,5 @@ export default function(events) {
     }
   });
 
-  return { nodes, links };
+  return { nodes, links, instruments };
 }
