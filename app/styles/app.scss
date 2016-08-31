@@ -27,3 +27,9 @@ body {
     background-color: $darker-grey-color;
   }
 }
+
+.nav {
+  a, a:visited {
+    color: $red-color;
+  }
+}
