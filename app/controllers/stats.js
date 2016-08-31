@@ -5,7 +5,7 @@ export default Controller.extend({
   queryParams: ['type'],
 
   // events or artists
-  type: null,
+  type: 'events',
 
   sortKey: computed('type', function() {
     let type = this.get('type');
