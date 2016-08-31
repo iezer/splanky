@@ -6,6 +6,7 @@
 
     {{stats-column artists=model
       key="bandMates"
+      selectedArtist=selectedArtist
       selectArtist=(action (mut selectedArtist))}}
   </div>
 
@@ -16,6 +17,7 @@
 
     {{stats-column artists=model
       key="events"
+      selectedArtist=selectedArtist
       selectArtist=(action (mut selectedArtist))}}
   </div>
 

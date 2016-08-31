@@ -31,14 +31,6 @@
   .event-info__artist {
     overflow: hidden;
     width: 100%;
-
-    &:hover {
-      background-color: $dark-grey-color;
-    }
-
-    &.selected {
-      background-color: $darker-grey-color;
-    }
   }
 
   .event-info__artist_name {
