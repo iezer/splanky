@@ -4,13 +4,9 @@
       Who's played with the most people?
     </span>
 
-    {{#each sortedArtists as |a|}}
-      <div onclick={{action (mut selectedArtist) a}} class="stats__line">
-        <span class="stats__number">
-          {{a.bandMates.length}}
-        </span> {{a.name}} - {{a.instrument}}
-      </div>
-    {{/each}}
+    {{stats-column artists=model
+      key="bandMates"
+      selectArtist=(action (mut selectedArtist))}}
   </div>
 
   <div class="stats__column">
@@ -18,13 +14,9 @@
       Who's had the most gigs?
     </span>
 
-    {{#each sortedArtistsByEvents as |a|}}
-      <div onclick={{action (mut selectedArtist) a}} class="stats__line">
-        <span class="stats__number">
-          {{a.events.length}}
-        </span> {{a.name}} - {{a.instrument}}
-      </div>
-    {{/each}}
+    {{stats-column artists=model
+      key="events"
+      selectArtist=(action (mut selectedArtist))}}
   </div>
 
   <div class="stats__column">

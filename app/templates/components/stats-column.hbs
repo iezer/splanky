@@ -1,0 +1,7 @@
+{{#each sortedArtists as |a|}}
+  <div onclick={{action selectArtist a}} class="stats__line">
+    <span class="stats__number">
+      {{get-length a key}}
+    </span> {{a.name}} - {{a.instrument}}
+  </div>
+{{/each}}
