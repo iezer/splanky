@@ -29,8 +29,13 @@
 
   <div class="stats__column">
     {{#if selectedArtist}}
-      {{artist-info artist=selectedArtist
-        clearArtist=(action (mut selectedArtist))}}
+      {{#artist-info artist=selectedArtist
+         clearArtist=(action (mut selectedArtist))}}
+
+        {{#link-to 'index' (query-params artist=selectedArtist.id)}}
+          See {{selectedArtist.name}}'s graph
+        {{/link-to}}
+      {{/artist-info}}
     {{/if}}
   </div>
 </div>
