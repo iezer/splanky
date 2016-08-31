@@ -13,7 +13,10 @@ export default Controller.extend({
     return [`${type}.length:desc`];
   }),
 
-  sortedArtists: computed.sort('model', 'sortKey'),
+  artistsKey: ['bandMates.length:desc'],
+  eventsKey: ['events.length:desc'],
+  sortedArtists: computed.sort('model', 'artistsKey'),
+  sortedArtistsByEvents: computed.sort('model', 'eventsKey'),
 
   actions: {
     setType(type) {

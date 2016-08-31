@@ -5,6 +5,7 @@ import moment from 'moment';
 
 export default Component.extend({
   classNames: [ 'artist-info' ],
+  month: null,
 
   // could be zero
   hasMonth: computed('month', function() {
@@ -12,7 +13,12 @@ export default Component.extend({
   }),
 
   monthString: computed('month', function() {
-    return moment().month(this.get('month')).format('MMMM');
+    let month = this.get('month');
+    if (month) {
+      return moment().month(this.get('month')).format('MMMM');
+    }
+
+    return null;
   }),
 
   eventsForMonth: computed('artist.events.[]', 'month', function() {

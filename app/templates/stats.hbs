@@ -1,8 +1,36 @@
-<div>
-  <div {{action 'setType' 'events'}}>Most Shows</div>
-  <div {{action 'setType' 'bandMates'}}>Most Bandmates</div>
-</div>
+<div class='stats'>
+  <div class="stats__column">
+    <span class="stats__title">
+      Who's played with the most people?
+    </span>
 
-{{#each sortedArtists as |a|}}
-  {{a.name}} {{get-length a type}} {{a.instrument}}
-{{/each}}
+    {{#each sortedArtists as |a|}}
+      <div onclick={{action (mut selectedArtist) a}} class="stats__line">
+        <span class="stats__number">
+          {{a.bandMates.length}}
+        </span> {{a.name}} - {{a.instrument}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="stats__column">
+    <span class="stats__title">
+      Who's had the most gigs?
+    </span>
+
+    {{#each sortedArtistsByEvents as |a|}}
+      <div onclick={{action (mut selectedArtist) a}} class="stats__line">
+        <span class="stats__number">
+          {{a.events.length}}
+        </span> {{a.name}} - {{a.instrument}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="stats__column">
+    {{#if selectedArtist}}
+      {{artist-info artist=selectedArtist
+        clearArtist=(action (mut selectedArtist))}}
+    {{/if}}
+  </div>
+</div>

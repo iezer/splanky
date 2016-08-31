@@ -1,0 +1,21 @@
+.stats {
+  display: flex;
+  padding: 10px;
+
+  .stats__title {
+    font-weight: bold;
+  }
+
+  .stats__column {
+    flex: 1;
+  }
+
+  .stats__number {
+    color: $red-color
+  }
+
+  .stats__line {
+    padding: 10px;
+    width: 100%;
+  }
+}

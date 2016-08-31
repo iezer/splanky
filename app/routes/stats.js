@@ -7,10 +7,5 @@ export default Route.extend({
 
   model() {
     return this.store.findAll('artist');
-  },
-
-  setupController(model, controller) {
-    this._super(...arguments);
-    controller.set('type', 'events');
   }
 });
