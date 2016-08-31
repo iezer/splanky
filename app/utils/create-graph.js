@@ -1,3 +1,5 @@
+import { subscribe, instrument } from 'ember-instrumentation';
+
 /*
  * Create a D3-force diagram compatible graph
  * based on an array of events.
@@ -50,17 +52,30 @@ export default function(events) {
     }
   }
 
-  events.forEach(event => {
-    let artists = event.get('artists');
-    for(let i = 0; i < artists.length; i++) {
-      let artist = artists.objectAt(i);
-      addNode(artist);
+  subscribe("create-graph", {
+    before: function(name, start) {
+      return start;
+    },
 
-      for(let j = i + 1; j < artists.length; j++) {
-        let targetArtist = artists.objectAt(j);
-        addEvent(artist, targetArtist);
-      }
+    after: function(name, end, payload, start) {
+      let duration = Math.round(end - start);
+      console.log(`create-graph took ${duration} ms.`); // eslint-disable-line no-console
     }
+  });
+
+  instrument('create-graph', () => {
+    events.forEach(event => {
+      let artists = event.get('artists');
+      for(let i = 0; i < artists.length; i++) {
+        let artist = artists.objectAt(i);
+        addNode(artist);
+
+        for(let j = i + 1; j < artists.length; j++) {
+          let targetArtist = artists.objectAt(j);
+          addEvent(artist, targetArtist);
+        }
+      }
+    });
   });
 
   return { nodes, links, instruments };
