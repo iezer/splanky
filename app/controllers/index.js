@@ -7,6 +7,9 @@ import injectService from 'ember-service/inject';
 export default Controller.extend({
   store: injectService(),
 
+  // save instruments so that node colors stay consistent
+  instruments: emberA(),
+
   selectedArtist: computed('artist', {
     get() {
       let artist = this.get('artist');
@@ -88,6 +91,7 @@ export default Controller.extend({
 
   graph: computed('events.[]', function() {
     let events = this.get('events');
-    return createGraph(events);
+    let instruments = this.get('instruments');
+    return createGraph(events, instruments);
   })
 });

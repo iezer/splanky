@@ -5,10 +5,9 @@ import { subscribe, instrument } from 'ember-instrumentation';
  * based on an array of events.
  * returns { nodes, links }
  */
-export default function(events) {
+export default function(events, instruments) {
   let nodes = [];
   let links = [];
-  let instruments = [];
 
   function desc(artist) {
     return `${artist.get('name')} (${artist.get('instrument')})`;
