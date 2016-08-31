@@ -13,9 +13,10 @@ export default Component.extend({
         width = +svg.attr("width"),
         height = +svg.attr("height");
 
+    let strength = this.get('selectedArtist') ? -40 : -13;
     var simulation = d3.forceSimulation()
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
-          .force("charge", d3.forceManyBody().strength(function() { return -4; }))
+          .force("charge", d3.forceManyBody().strength(function() { return strength; }))
           .force("center", d3.forceCenter(width / 2, height / 2))
 //          .alphaDecay(0.05)
           .velocityDecay(0.5);
