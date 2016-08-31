@@ -30,9 +30,9 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.API_URL = 'http://localhost:4000';
+    ENV.APP.API_URL = 'http://localhost:4000';
     // ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
-    ENV.APP.API_URL = '';
+    // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {
       enabled: false
