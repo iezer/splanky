@@ -1,6 +1,12 @@
 <div class='index-container'>
   <div class='index-container__column'>
     <div class='index-container__events'>
+      {{#if selectedArtist}}
+        {{#artist-info artist=selectedArtist}}
+          {{input type="checkbox" name="includeBandmates" checked=includeBandmates}} Include Bandmates
+        {{/artist-info}}
+      {{/if}}
+
       {{#each sortedEvents as |event|}}
         {{event-info event=event
           selectArtist=(action (mut selectedArtist))
