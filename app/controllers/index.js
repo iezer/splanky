@@ -80,7 +80,7 @@ export default Controller.extend({
       return events;
     }
 
-    if (month) {
+    if (month !== null) {
       return this.get('model').filter(event => {
         return event.get('startTime').getMonth() === month;
       });
