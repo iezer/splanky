@@ -47,7 +47,8 @@ export default function(events, instruments) {
       links.push({ source, target, value: 1, sqrtValue: 1 });
     } else {
       link.value++;
-      link.sqrtValue = Math.sqrt(link.value);
+      link.sqrtValue = link.value;
+//      link.sqrtValue = Math.sqrt(link.value);
     }
   }
 

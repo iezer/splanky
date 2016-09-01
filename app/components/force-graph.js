@@ -18,7 +18,7 @@ export default Component.extend({
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
           .force("charge", d3.forceManyBody().strength(function() { return strength; }))
           .force("center", d3.forceCenter(width / 2, height / 2))
-//          .alphaDecay(0.05)
+//          .alphaDecay(0.04)
           .velocityDecay(0.5);
     window.simulation = simulation;
     let graph = this.get('graph');

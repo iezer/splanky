@@ -2,6 +2,9 @@
   padding: 10px 10px 0px 10px;
 
   a, a:visited {
+    margin-right: 10px;
+    text-decoration: none;
     color: $red-color;
+    font-weight: bold;
   }
 }
