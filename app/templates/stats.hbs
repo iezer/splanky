@@ -1,34 +1,24 @@
 {{partial 'nav'}}
 
 <div class='stats'>
-  <div class="stats__column">
-    <span class="stats__title">
-      Who's played with the most people?
-    </span>
+  {{stats-column artists=model
+    key="bandMates"
+    title="Who's played with the most people?"
+    selectedArtist=selectedArtist
+    selectArtist=(action (mut selectedArtist))}}
 
-    {{stats-column artists=model
-      key="bandMates"
-      selectedArtist=selectedArtist
-      selectArtist=(action (mut selectedArtist))}}
-  </div>
-
-  <div class="stats__column">
-    <span class="stats__title">
-      Who's had the most gigs?
-    </span>
-
-    {{stats-column artists=model
-      key="events"
-      selectedArtist=selectedArtist
-      selectArtist=(action (mut selectedArtist))}}
-  </div>
+  {{stats-column artists=model
+    key="events"
+    title="Who's had the most gigs?"
+    selectedArtist=selectedArtist
+    selectArtist=(action (mut selectedArtist))}}
 
   <div class="stats__column">
     {{#if selectedArtist}}
       {{#artist-info artist=selectedArtist
          clearArtist=(action (mut selectedArtist))}}
 
-        {{#link-to 'index' (query-params artist=selectedArtist.id)}}
+        {{#link-to 'index' (query-params artist=selectedArtist.id month=null)}}
           See {{selectedArtist.name}}'s graph
         {{/link-to}}
       {{/artist-info}}
