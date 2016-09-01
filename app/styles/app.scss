@@ -9,6 +9,9 @@
 @import './components/event-info.scss';
 @import './components/force-graph.scss';
 
+// Partials
+@import './_nav.scss';
+
 body {
   margin: 0px;
 }
@@ -25,11 +28,5 @@ body {
 
   &.selected {
     background-color: $darker-grey-color;
-  }
-}
-
-.nav {
-  a, a:visited {
-    color: $red-color;
   }
 }
