@@ -77,7 +77,7 @@ export default Controller.extend({
         bandMates.forEach(bandMate => pushEvents(bandMate));
       }
 
-      return events;
+      return events.uniq();
     }
 
     if (month !== null) {
