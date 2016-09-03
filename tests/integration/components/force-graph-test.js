@@ -1,23 +1,15 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import EmberObject from 'ember-object';
 
 moduleForComponent('force-graph', 'Integration | Component | force graph', {
   integration: true,
   beforeEach() {
     this.artists = [
-      { id: 1, name: 'miles' },
-      { id: 2, name: 'pops' }
+      { id: 1, name: 'miles', text: 'miles' },
+      { id: 2, name: 'pops', text: 'pops' }
     ]
     this.graph = {
-      nodes: this.artists.map(artist => {
-        return {
-          id: artist.id,
-          text: artist.name,
-          group: artist.id,
-          artist
-        };
-      }),
+      nodes: this.artists,
       links: [
         {
           source: 1,
@@ -57,18 +49,13 @@ test('can select nodes', function(assert) {
 
   assert.equal(this.$('circle[r=5]').length, 2, 'initially all circles have radius 5');
 
-  let artists = [
-    EmberObject.create({ id: 1 }),
-    EmberObject.create({ id: 2 })
-  ];
-
-  this.set('selectedArtist', artists[0]);
-  assert.equal(this.$('circle[dd-artist=1][r=75]').length, 1, 'node 1 set to radius 75');
+  this.set('selectedArtist', this.artists[0]);
+  assert.equal(this.$('circle[dd-artist=1][r=15]').length, 1, 'node 1 set to radius 75');
   assert.equal(this.$('circle[dd-artist=2][r=5]').length, 1, 'node 2 radius unchanged');
 
-  this.set('selectedArtist', artists[1]);
+  this.set('selectedArtist', this.artists[1]);
   assert.equal(this.$('circle[dd-artist=1][r=5]').length, 1, 'node 1 reset to radius 5');
-  assert.equal(this.$('circle[dd-artist=2][r=75]').length, 1, 'node 2 set to radius 75');
+  assert.equal(this.$('circle[dd-artist=2][r=15]').length, 1, 'node 2 set to radius 75');
 });
 
 test('selected nodes fires action', function(assert) {

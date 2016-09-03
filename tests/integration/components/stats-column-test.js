@@ -1,24 +1,43 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import EmberObject from 'ember-object';
 
 moduleForComponent('stats-column', 'Integration | Component | stats column', {
-  integration: true
+  integration: true,
+  beforeEach() {
+    this.set('data', [
+      EmberObject.create({ id: 1, events: { length: 1 }, name: 'miles' }),
+      EmberObject.create({ id: 2, events: { length: 3 }, name: 'pops' }),
+      EmberObject.create({ id: 3, events: { length: 2 }, name: 'monk' })
+    ]);
+  }
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  assert.expect(4);
 
-  this.render(hbs`{{stats-column}}`);
+  this.on('selectArtist', () => this);
+  this.render(hbs`{{stats-column artists=data key='events' title='Stats Page' selectArtist=(action 'selectArtist')}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.ok(this.$('.stats__title:contains(Stats Page)').length, 'title');
+  assert.ok(this.$('.stats__line:eq(0)').text().match(/3\s+pops/), '3 pops');
+  assert.ok(this.$('.stats__line:eq(1)').text().match(/2\s+monk/), '2 monk');
+  assert.ok(this.$('.stats__line:eq(2)').text().match(/1\s+miles/), '1 miles');
+});
 
-  // Template block usage:
-  this.render(hbs`
-    {{#stats-column}}
-      template block text
-    {{/stats-column}}
-  `);
+test('selectAction', function(assert) {
+  assert.expect(2);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.on('selectArtist', param => {
+    assert.equal(param, this.get('data').objectAt(2), 'selected passed to action');
+  });
+
+  this.render(hbs`{{stats-column artists=data key='events' title='Stats Page' selectArtist=(action 'selectArtist')}}`);
+  this.$('.stats__line:eq(1)').click();
+
+  this.on('selectArtist', param => {
+    assert.strictEqual(param, null, 'null passed to action to clear');
+  });
+
+  this.$('.stats__line:eq(1)').click();
 });

@@ -19,11 +19,23 @@ test('can find single record', function(assert) {
   let artistData = this.server.create('artist');
 
   run(() => {
-    return this.store().find('artist', artistData.id);
+    return this.store().findRecord('artist', artistData.id);
   }).then(artist => {
     assert.equal(artist.get('id'), artistData.id, `id serialized - ${artistData.id}`);
     assert.equal(artist.get('name'), artistData.name, `name serialized - ${artistData.name}`);
     assert.equal(artist.get('instrument'), artistData.instrument, `instrument serialized - ${artistData.instrument}`);
     assert.equal(artist.get('image'), artistData.image, `image serialized - ${artistData.image}`);
+  });
+});
+
+test('can compute text', function(assert) {
+  assert.expect(1);
+
+  let artistData = this.server.create('artist');
+
+  run(() => {
+    return this.store().findRecord('artist', artistData.id);
+  }).then(artist => {
+    assert.equal(artist.get('text'), `${artistData.name} (${artistData.instrument})`, 'computes description text');
   });
 });

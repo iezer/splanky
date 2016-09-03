@@ -16,5 +16,9 @@ export default Model.extend({
       bandMates.pushObjects(event.get('artists').toArray());
     });
     return bandMates.uniq().removeObject(this);
+  }),
+
+  text: computed('name', 'instrument', function() {
+    return `${this.get('name')} (${this.get('instrument')})`;
   })
 });

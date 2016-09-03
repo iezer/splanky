@@ -5,35 +5,16 @@ import { subscribe, instrument } from 'ember-instrumentation';
  * based on an array of events.
  * returns { nodes, links }
  */
-export default function(events, instruments) {
+export default function(events) {
   let nodes = [];
   let links = [];
 
-  function desc(artist) {
-    return `${artist.get('name')} (${artist.get('instrument')})`;
-  }
-
   function addNode(artist) {
-    let text = desc(artist);
     let id = artist.get('id');
     let node = nodes.find(n => n.id === id);
     if (node === undefined) {
-      let group = groupCode(artist);
-      let image = artist.get('image');
-      nodes.push({ id, text, group, image, artist });
+      nodes.push(artist);
     }
-  }
-
-  function groupCode(artist) {
-    let instrument = artist.get('instrument');
-    let i = instruments.indexOf(instrument);
-
-    if (i === -1) {
-      instruments.push(instrument);
-      return instruments.length;
-    }
-
-    return i + 1;
   }
 
   function addEvent(artistA, artistB) {
@@ -78,5 +59,5 @@ export default function(events, instruments) {
     });
   });
 
-  return { nodes, links, instruments };
+  return { nodes, links };
 }
