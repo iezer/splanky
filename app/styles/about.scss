@@ -1,0 +1,35 @@
+.about {
+  padding: 20px;
+
+  margin-left: 100px;
+  margin-right: 100px;
+
+  a, a:visited {
+    text-decoration: none;
+    color: $red-color;
+    font-weight: bold;
+  }
+
+  h1 {
+    color: $red-color;
+    font-size: 18px;
+  }
+
+  .about__quote {
+    margin-bottom: 20px;
+    border: 2px solid black;
+    padding: 0 10px 0 10px;
+  }
+
+  .about__images {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  img {
+    width: 450px;
+    height: 200px;
+    border: 1px solid $grey-color;
+  }
+}

@@ -1,6 +1,7 @@
 @import './colors.scss';
 
 // Route Templates
+@import './about.scss';
 @import './index.scss';
 @import './stats.scss';
 
@@ -27,7 +28,12 @@ body {
     background-color: $dark-grey-color;
   }
 
-  &.selected {
+  &.selected, &.active {
     background-color: $darker-grey-color;
   }
+}
+
+strong {
+  font-weight: bold;
+  color: $red-color;
 }
