@@ -2,6 +2,14 @@
   height: 100vh;
   display: flex;
 
+  .index-container__cta {
+    border: 1px solid $grey-color;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: $red-color;
+  }
+
   .index-container__column {
     flex: 1;
     overflow-y: auto;

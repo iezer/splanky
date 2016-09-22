@@ -6,6 +6,15 @@ import injectService from 'ember-service/inject';
 
 export default Controller.extend({
   store: injectService(),
+  showCTA: computed({
+    get() {
+      return !localStorage.getItem('seenCTA');
+    },
+    set(key, value) {
+      localStorage.setItem('seenCTA', !value);
+      return value;
+    }
+  }),
 
   selectedArtist: computed('artist', {
     get() {
@@ -17,6 +26,7 @@ export default Controller.extend({
       return null;
     },
     set(key, value) {
+      this.set('showCTA', false);
       this.set('artist', value && value.get('id'));
       return value;
     }
