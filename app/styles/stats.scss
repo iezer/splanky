@@ -1,6 +1,12 @@
 .stats {
   display: flex;
   padding: 10px;
+  height: 100vh;
+
+  .stats__scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
   .stats__title {
     font-weight: bold;

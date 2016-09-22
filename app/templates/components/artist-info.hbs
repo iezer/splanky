@@ -6,10 +6,14 @@
     {{artist.name}}
   </span>
 
+  <span class='artist-info__instrument'>
+    {{artist.instrument}}
+  </span>
+
   <div class='artist-info__stat'>
     <span class='artist-info__number'>
       {{artist.bandMates.length}}
-    </span> - Number of Artists Performed With
+    </span> - Bandmates
   </div>
 
   <div class='artist-info__stat'>
@@ -22,7 +26,7 @@
     <div class='artist-info__stat'>
       <span class='artist-info__number'>
         {{bandMatesForMonth.length}}
-      </span> - Number of Artists Performed With in {{monthString}}
+      </span> - Bandmates in {{monthString}}
     </div>
 
     <div class='artist-info__stat'>

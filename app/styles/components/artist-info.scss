@@ -25,7 +25,13 @@
     font-weight: bold;
   }
 
+  .artist-info__instrument {
+    margin-left: 10px;
+    color: $red-color;
+  }
+
   .artist-info__button {
+    margin-left: 10px;
     padding: 0 2px;
     border: 1px solid $grey-color;
 

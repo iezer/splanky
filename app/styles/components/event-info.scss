@@ -8,10 +8,12 @@
 // artist search tab (by name and instrument, only artists in actual events)
 // see if I can use data from recording paper
 
+$event-info-width: 212px;
+
 .event-info {
   flex: auto;
-  width: 230px;
-  max-width: 230px;
+  width: $event-info-width;
+  max-width: $event-info-width;
   min-height: 160px;
   padding: 10px;
 

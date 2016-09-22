@@ -21,11 +21,12 @@ moduleForComponent('artist-info', 'Integration | Component | artist info', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
   this.on('clearArtist', () => this);
   this.render(hbs`{{artist-info artist=artist clearArtist=(action 'clearArtist')}}`);
 
-  assert.ok(this.$(`.artist-info__name:contains(${this.artistData.name})`).length, 'renderd artist name');
+  assert.ok(this.$(`.artist-info__name:contains(${this.artistData.name})`).length, 'rendered artist name');
+  assert.ok(this.$(`.artist-info__instrument:contains(${this.artistData.instrument})`).length, 'rendered artist instrument');
 
   // Template block usage:
   this.render(hbs`

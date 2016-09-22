@@ -25,7 +25,7 @@ export default Controller.extend({
   sortDef: ['startTime:desc'],
   sortedEvents: computed.sort('events', 'sortDef'),
 
-  includeBandmates: false,
+  includeBandmates: true,
   month: null,
   artist: null,
 
