@@ -93,12 +93,11 @@ export default Component.extend({
 
   actions: {
     selectArtist(artist) {
-      let value = artist ? parseInt(artist.get('id'), 10) : 0;
+      let value = artist ? artist.get('id') : 'clear';
       this.get('metrics').trackEvent({
         category: 'ui-interaction',
-        action: 'select-artist',
-        label: 'force-graph',
-        value
+        action: `select-artist-${value}`,
+        label: 'force-graph'
       });
 
       this.get('selectArtist')(artist);
