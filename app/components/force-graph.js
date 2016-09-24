@@ -1,12 +1,15 @@
 /* eslint-disable ember-rules/no-function-prototype-extension-calls */
 import Component from 'ember-component';
 import d3 from 'd3';
+import injectService from 'ember-service/inject';
 
 export default Component.extend({
   classNames: [ 'force-graph' ],
 
   graph: null,
   selectedArtist: null,
+
+  metrics: injectService(),
 
   didRender() {
     var svg = d3.select("svg"),
@@ -85,6 +88,20 @@ export default Component.extend({
 
       // d.fx = null;
       // d.fy = null;
+    }
+  },
+
+  actions: {
+    selectArtist(artist) {
+      let value = artist ? parseInt(artist.get('id'), 10) : 0;
+      this.get('metrics').trackEvent({
+        category: 'ui-interaction',
+        action: 'select-artist',
+        label: 'force-graph',
+        value
+      });
+
+      this.get('selectArtist')(artist);
     }
   }
 });

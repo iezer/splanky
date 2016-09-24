@@ -6,6 +6,17 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-84664562-1'
+        }
+      }
+    ],
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,9 +31,9 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self'",
+      'script-src': "'self' www.google-analytics.com",
       'font-src': "'self'",
-      'connect-src': "'self' https://jazz-cats-api.herokuapp.com http://localhost:4000",
+      'connect-src': "'self' https://jazz-cats-api.herokuapp.com http://localhost:4000 www.google-analytics.com",
       'img-src': "'self'",
       'style-src': "'self'",
       'media-src': "'self'"

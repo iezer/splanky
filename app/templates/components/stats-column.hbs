@@ -3,7 +3,7 @@
 </span>
 
 {{#each sortedArtists as |a|}}
-  <div onclick={{action selectArtist (if (eq a.id selectedArtist.id) null a)}} class="stats__line selectable {{if (eq a.id selectedArtist.id) 'selected'}}">
+  <div onclick={{action 'selectArtist' (if (eq a.id selectedArtist.id) null a)}} class="stats__line selectable {{if (eq a.id selectedArtist.id) 'selected'}}">
     <span class="stats__number">
       {{get-length a key}}
     </span> {{a.name}} - {{a.instrument}}
