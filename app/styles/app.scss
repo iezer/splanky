@@ -24,6 +24,8 @@ body {
 }
 
 .selectable {
+  cursor: pointer;
+
   &:hover {
     background-color: $dark-grey-color;
   }
@@ -31,6 +33,11 @@ body {
   &.selected, &.active {
     background-color: $darker-grey-color;
   }
+}
+
+.button {
+  padding: 0 2px;
+  border: 1px solid $grey-color;
 }
 
 strong {

@@ -33,6 +33,7 @@ $event-info-width: 212px;
   .event-info__artist {
     overflow: hidden;
     width: 100%;
+    cursor: pointer;
   }
 
   .event-info__artist_name {

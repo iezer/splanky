@@ -9,5 +9,10 @@
   .force-graph__nodes circle {
     stroke: #fff;
     stroke-width: 1.5px;
+    cursor: pointer;
+  }
+
+  .force-graph__nodes text {
+    font-weight: bold;
   }
 }
