@@ -6,12 +6,15 @@
 
     <g class='force-graph__nodes'>
       {{#each graph.nodes as |artist|}}
-        <g class="node" width="20" height="20"
-          {{action 'selectArtist' (if (eq artist.id selectedArtist.id) null artist)}}>
-          <circle r={{if (eq artist.id selectedArtist.id) 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
-          <title>{{artist.text}}</title>
-          </circle>
-        </g>
+        {{#is-selected current=artist.id selected=selectedArtist.id as |isSelected|}}
+          <g class="node" width="20" height="20"
+            {{action 'selectArtist' (if isSelected null artist)}}>
+
+            <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
+              <title>{{artist.text}}</title>
+            </circle>
+          </g>
+        {{/is-selected}}
       {{/each}}
     </g>
   </g>
