@@ -10,6 +10,14 @@
           <g class="node" width="20" height="20"
             {{action 'selectArtist' (if isSelected null artist)}}>
 
+            {{#if isSelected}}
+              <text
+                dy={{if isSelected "-0.75em" "-0.25em"}}
+                dx={{if isSelected "12" "4"}}>
+                {{artist.text}}
+              </text>
+            {{/if}}
+
             <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
               <title>{{artist.text}}</title>
             </circle>
