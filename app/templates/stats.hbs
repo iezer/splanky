@@ -18,7 +18,7 @@
       {{#artist-info artist=selectedArtist
          clearArtist=(action (mut selectedArtist))}}
 
-        {{#link-to 'index' (query-params artist=selectedArtist.id month=null)}}
+        {{#link-to 'index' (query-params artist=selectedArtist.id month=allMonths)}}
           See {{selectedArtist.name}}'s graph
         {{/link-to}}
       {{/artist-info}}

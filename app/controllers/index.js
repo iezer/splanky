@@ -4,8 +4,12 @@ import createGraph from 'cats-client/utils/create-graph';
 import { A as emberA } from 'ember-array/utils';
 import injectService from 'ember-service/inject';
 
+export const ALL_MONTHS = 0;
+
 export default Controller.extend({
   store: injectService(),
+  allMonths: ALL_MONTHS,
+
   showCTA: computed({
     get() {
       return !localStorage.getItem('seenCTA');
@@ -36,7 +40,8 @@ export default Controller.extend({
   sortedEvents: computed.sort('events', 'sortDef'),
 
   includeBandmates: true,
-  month: null,
+  month: ALL_MONTHS,
+
   artist: null,
 
   queryParams: [ 'month', 'includeBandmates', 'artist' ],
@@ -45,11 +50,11 @@ export default Controller.extend({
   // do 0 based int 0-11 so that getMonth() works.
   monthInt: computed('month', function() {
     let month = this.get('month');
-    if (month !== null) {
-      return parseInt(month, 10) - 1;
+    if (month === ALL_MONTHS || month === null) {
+      return null;
     }
 
-    return null;
+    return parseInt(month, 10) - 1;
   }),
 
   // Filter on month and/or selectedArtist
