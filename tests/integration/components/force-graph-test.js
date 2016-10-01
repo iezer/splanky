@@ -1,12 +1,12 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-
+import EmberObject from 'ember-object';
 moduleForComponent('force-graph', 'Integration | Component | force graph', {
   integration: true,
   beforeEach() {
     this.artists = [
-      { id: 1, name: 'miles', text: 'miles' },
-      { id: 2, name: 'pops', text: 'pops' }
+      EmberObject.create({ id: 1, name: 'miles', text: 'miles' }),
+      EmberObject.create({ id: 2, name: 'pops', text: 'pops' })
     ]
     this.graph = {
       nodes: this.artists,

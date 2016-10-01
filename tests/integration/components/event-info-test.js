@@ -3,12 +3,13 @@ import hbs from 'htmlbars-inline-precompile';
 import {
   setup as setupMirage, teardown as teardownMirage
 } from 'cats-client/tests/helpers/setup-mirage-for-integration';
+import EmberObject from 'ember-object';
 
 moduleForComponent('event-info', 'Integration | Component | event info', {
   integration: true,
   beforeEach() {
     setupMirage(this);
-    this.artist = { id: 'monk', name: 'Monk' };
+    this.artist = EmberObject.create({ id: 'monk', name: 'Monk' });
     this.event = {
       startTime: new Date('Sun Jul 17 2016 22:00'),
       endTime: new Date('Mon Jul 18 2016 01:30'),
