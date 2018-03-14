@@ -18,7 +18,7 @@ test('can find single record', function(assert) {
   assert.expect(4);
   let artistData = this.server.create('artist');
 
-  run(() => {
+  return run(() => {
     return this.store().findRecord('artist', artistData.id);
   }).then(artist => {
     assert.equal(artist.get('id'), artistData.id, `id serialized - ${artistData.id}`);
@@ -33,7 +33,7 @@ test('can compute text', function(assert) {
 
   let artistData = this.server.create('artist');
 
-  run(() => {
+  return run(() => {
     return this.store().findRecord('artist', artistData.id);
   }).then(artist => {
     assert.equal(artist.get('text'), `${artistData.name} (${artistData.instrument})`, 'computes description text');
