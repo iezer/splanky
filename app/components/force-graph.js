@@ -1,5 +1,5 @@
 /* eslint-disable ember-rules/no-function-prototype-extension-calls */
-import Component from 'ember-component';
+import Component from '@ember/component';
 import d3 from 'd3';
 import injectService from 'ember-service/inject';
 
