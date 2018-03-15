@@ -1,9 +1,12 @@
 ---
 language: node_js
 node_js:
-  - "4"
+  - "6"
 
-sudo: false
+sudo: required
+
+addons:
+  chrome: stable
 
 cache:
   directories:
@@ -11,12 +14,9 @@ cache:
 
 before_install:
   - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
 
 install:
-  - npm install
-  - bower install
+  - yarn install --non-interactive --pure-lockfile
 
 script:
   - npm test
