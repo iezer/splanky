@@ -1,6 +1,0 @@
-{
-  "name": "cats-client",
-  "dependencies": {
-    "d3": "^4.1.1"
-  }
-}

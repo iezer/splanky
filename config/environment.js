@@ -7,6 +7,10 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
 
+    'ember-d3': {
+      bundle: true
+    },
+
     metricsAdapters: [
       {
         name: 'GoogleAnalytics',
