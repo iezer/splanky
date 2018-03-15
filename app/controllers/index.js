@@ -8,10 +8,15 @@ export const ALL_MONTHS = 0;
 
 export default Controller.extend({
   store: service(),
+  fastboot: service(),
+
   allMonths: ALL_MONTHS,
 
   showCTA: computed({
     get() {
+      if (this.get('fastboot.isFastBoot')) {
+        return;
+      }
       return !localStorage.getItem('seenCTA');
     },
     set(key, value) {

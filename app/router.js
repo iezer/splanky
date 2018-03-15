@@ -5,6 +5,7 @@ import {run} from '@ember/runloop';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
+  fastboot: service(),
   metrics: service(),
 
   didTransition() {
@@ -13,6 +14,7 @@ const Router = EmberRouter.extend({
   },
 
   _trackPage() {
+    if (this.get('fastboot.isFastBoot')) { return; }
     run.scheduleOnce('afterRender', this, () => {
       const page = document.location.pathname + document.location.search;
       const title = this.getWithDefault('currentRouteName', 'unknown');
