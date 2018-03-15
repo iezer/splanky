@@ -1,16 +1,14 @@
 import { moduleForModel, test } from 'ember-qunit';
-import {
-  setup as setupMirage, teardown as teardownMirage
-} from 'cats-client/tests/helpers/setup-mirage-for-integration';
+import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
 import run from 'ember-runloop';
 
 moduleForModel('event', 'Unit | Model | Event', {
   integration: true,
   beforeEach() {
-    setupMirage(this);
+    this.server = startMirage();
   },
   afterEach() {
-    teardownMirage(this);
+    this.server.shutdown();
   }
 });
 
