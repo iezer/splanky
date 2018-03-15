@@ -1,5 +1,5 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
+import Component from '@ember/component';
+import computed from '@ember/computed';
 import { A as emberA } from 'ember-array/utils';
 import moment from 'moment';
 
