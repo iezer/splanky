@@ -1,11 +1,11 @@
 import EmberRouter from 'ember-router';
 import config from './config/environment';
-import injectService from 'ember-service/inject';
+import { inject as service } from '@ember/service';
 import run from 'ember-runloop';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
-  metrics: injectService(),
+  metrics: service(),
 
   didTransition() {
     this._super(...arguments);

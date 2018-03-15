@@ -1,13 +1,13 @@
-import Controller from 'ember-controller';
-import computed from 'ember-computed';
+import Controller from '@ember/controller';
+import {computed} from '@ember/object';
 import createGraph from 'cats-client/utils/create-graph';
-import { A as emberA } from 'ember-array/utils';
-import injectService from 'ember-service/inject';
+import { A as emberA } from '@ember/array';
+import { inject as service } from '@ember/service';
 
 export const ALL_MONTHS = 0;
 
 export default Controller.extend({
-  store: injectService(),
+  store: service(),
   allMonths: ALL_MONTHS,
 
   showCTA: computed({
