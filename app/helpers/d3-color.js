@@ -1,4 +1,4 @@
-import Helper from 'ember-helper';
+import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
 import d3 from 'd3';
 

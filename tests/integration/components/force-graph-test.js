@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
+
 moduleForComponent('force-graph', 'Integration | Component | force graph', {
   integration: true,
   beforeEach() {

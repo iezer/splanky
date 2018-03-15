@@ -36,7 +36,7 @@ export default Controller.extend({
     }
   }),
 
-  sortDef: ['startTime:desc'],
+  sortDef: Object.freeze(['startTime:desc']),
   sortedEvents: computed.sort('events', 'sortDef'),
 
   includeBandmates: true,
@@ -44,7 +44,7 @@ export default Controller.extend({
 
   artist: null,
 
-  queryParams: [ 'month', 'includeBandmates', 'artist' ],
+  queryParams: Object.freeze([ 'month', 'includeBandmates', 'artist' ]),
 
   // converter query-string month input "1"-"12"
   // do 0 based int 0-11 so that getMonth() works.

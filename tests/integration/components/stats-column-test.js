@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
 
 moduleForComponent('stats-column', 'Integration | Component | stats column', {
   integration: true,

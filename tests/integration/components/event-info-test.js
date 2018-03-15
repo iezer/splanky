@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
 
 moduleForComponent('event-info', 'Integration | Component | event info', {
   integration: true,

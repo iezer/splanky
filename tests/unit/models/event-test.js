@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
-import run from 'ember-runloop';
+import {run} from '@ember/runloop';
 
 moduleForModel('event', 'Unit | Model | Event', {
   integration: true,
