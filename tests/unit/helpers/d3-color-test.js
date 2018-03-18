@@ -4,6 +4,7 @@ import d3 from 'd3';
 let color = d3.scaleOrdinal(d3.schemeCategory20);
 
 moduleFor('helper:d3-color', 'Unit | Helper | d3 color', {
+  unit: true,
   needs: [ 'service:instruments' ]
 });
 
