@@ -1,7 +1,7 @@
 /* eslint-disable ember-rules/no-function-prototype-extension-calls */
-import Component from 'ember-component';
+import Component from '@ember/component';
 import d3 from 'd3';
-import injectService from 'ember-service/inject';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: [ 'force-graph' ],
@@ -9,7 +9,7 @@ export default Component.extend({
   graph: null,
   selectedArtist: null,
 
-  metrics: injectService(),
+  metrics: service(),
 
   didRender() {
     var svg = d3.select("svg"),

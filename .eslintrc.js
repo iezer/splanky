@@ -1,16 +1,47 @@
-var path = require('path');
-
 module.exports = {
-  extends: [
-    require.resolve('ember-cli-eslint/coding-standard/ember-application.js')
-  ],
+  root: true,
+  parserOptions: {
+    ecmaVersion: 2017,
+    sourceType: 'module'
+  },
   plugins: [
-    'ember-rules'
+    'ember'
   ],
+  extends: [
+    'eslint:recommended',
+    'plugin:ember/recommended'
+  ],
+  env: {
+    browser: true
+  },
   rules: {
-    // Ember Rules
-    "ember-rules/destructure-namespaces": [2, ["Ember", "DS"]],
-    "ember-rules/no-function-prototype-extension-calls": 2
+  },
+  overrides: [
+    // node files
+    {
+      files: [
+        'testem.js',
+        'ember-cli-build.js',
+        'config/**/*.js',
+        'lib/*/index.js'
+      ],
+      parserOptions: {
+        sourceType: 'script',
+        ecmaVersion: 2015
+      },
+      env: {
+        browser: false,
+        node: true
+      }
+    },
 
-  }
+    // test files
+    {
+      files: ['tests/**/*.js'],
+      excludedFiles: ['tests/dummy/**/*.js'],
+      env: {
+        embertest: true
+      }
+    }
+  ]
 };

@@ -15,6 +15,6 @@ test('visiting /', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/');
     assert.equal(find('.event-info').length, 10, '10 events on the page');
-    assert.is$('.force-graph', 'force-graph rendered');
+    assert.ok(find('.force-graph').length, 'force-graph rendered');
   });
 });

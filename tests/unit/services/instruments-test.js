@@ -1,6 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('service:instruments', 'Unit | Service | instruments', {
+  unit: true
 });
 
 test('it stores instrument lookup values', function(assert) {

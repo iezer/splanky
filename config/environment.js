@@ -4,8 +4,12 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'cats-client',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
+
+    'ember-d3': {
+      bundle: true
+    },
 
     metricsAdapters: [
       {
@@ -58,7 +62,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
+    ENV.rootURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -70,16 +74,16 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
-    ENV.baseURL = '/jazz-cats/';
+    ENV.rootURL = '/jazz-cats/';
     ENV.locationType = 'hash';
   }
 
-  ENV.fastboot = {
-    hostWhitelist: [
-      ENV.APP.API_URL,
-      'localhost:3000'
-    ]
-  };
+  // ENV.fastboot = {
+  //   hostWhitelist: [
+  //     ENV.APP.API_URL,
+  //     'localhost:3000'
+  //   ]
+  // };
 
   return ENV;
 };

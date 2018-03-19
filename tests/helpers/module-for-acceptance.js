@@ -1,10 +1,8 @@
+import { Promise } from 'rsvp';
 import { module } from 'qunit';
-import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import getServer from 'cats-client/mirage/get-server';
-
-const { RSVP: { Promise } } = Ember;
 
 export default function(name, options = {}) {
   module(name, {
@@ -17,6 +15,7 @@ export default function(name, options = {}) {
     },
 
     afterEach() {
+      this.server.shutdown();
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
       return Promise.resolve(afterEach).then(() => destroyApp(this.application));
     }

@@ -1,16 +1,14 @@
 import { moduleForModel, test } from 'ember-qunit';
-import {
-  setup as setupMirage, teardown as teardownMirage
-} from 'cats-client/tests/helpers/setup-mirage-for-integration';
-import run from 'ember-runloop';
+import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
+import {run} from '@ember/runloop';
 
 moduleForModel('artist', 'Unit | Model | Artist', {
   integration: true,
   beforeEach() {
-    setupMirage(this);
+    this.server = startMirage();
   },
   afterEach() {
-    teardownMirage(this);
+    this.server.shutdown();
   }
 });
 
@@ -18,7 +16,7 @@ test('can find single record', function(assert) {
   assert.expect(4);
   let artistData = this.server.create('artist');
 
-  run(() => {
+  return run(() => {
     return this.store().findRecord('artist', artistData.id);
   }).then(artist => {
     assert.equal(artist.get('id'), artistData.id, `id serialized - ${artistData.id}`);
@@ -33,7 +31,7 @@ test('can compute text', function(assert) {
 
   let artistData = this.server.create('artist');
 
-  run(() => {
+  return run(() => {
     return this.store().findRecord('artist', artistData.id);
   }).then(artist => {
     assert.equal(artist.get('text'), `${artistData.name} (${artistData.instrument})`, 'computes description text');

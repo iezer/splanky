@@ -1,10 +1,10 @@
-import Component from 'ember-component';
-import injectService from 'ember-service/inject';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: ['event-info'],
 
-  metrics: injectService(),
+  metrics: service(),
 
   actions: {
     selectArtist(artist) {

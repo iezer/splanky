@@ -1,11 +1,11 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
-import injectService from 'ember-service/inject';
+import Component from '@ember/component';
+import {computed} from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: [ 'stats__column', 'stats__scroll' ],
 
-  metrics: injectService(),
+  metrics: service(),
 
   sortKey: computed('key', function() {
     let key = this.get('key');

@@ -1,5 +1,4 @@
 import Serializer from './application';
-import { isEmberArray } from 'ember-array/utils';
 
 export default Serializer.extend({
   normalizeResponse(store, type, payload, id, requestType) {
@@ -22,7 +21,7 @@ export default Serializer.extend({
       }
     };
 
-    if (isEmberArray(payload.data)) {
+    if (Array.isArray(payload.data)) {
       payload.data.forEach(normalizeEvent);
     } else {
       normalizeEvent(payload.data);

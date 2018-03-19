@@ -1,11 +1,12 @@
-import EmberRouter from 'ember-router';
+import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
-import injectService from 'ember-service/inject';
-import run from 'ember-runloop';
+import { inject as service } from '@ember/service';
+import {run} from '@ember/runloop';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
-  metrics: injectService(),
+  fastboot: service(),
+  metrics: service(),
 
   didTransition() {
     this._super(...arguments);
@@ -13,6 +14,7 @@ const Router = EmberRouter.extend({
   },
 
   _trackPage() {
+    if (this.get('fastboot.isFastBoot')) { return; }
     run.scheduleOnce('afterRender', this, () => {
       const page = document.location.pathname + document.location.search;
       const title = this.getWithDefault('currentRouteName', 'unknown');

@@ -1,16 +1,14 @@
 import { moduleForModel, test } from 'ember-qunit';
-import {
-  setup as setupMirage, teardown as teardownMirage
-} from 'cats-client/tests/helpers/setup-mirage-for-integration';
-import run from 'ember-runloop';
+import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
+import {run} from '@ember/runloop';
 
 moduleForModel('event', 'Unit | Model | Event', {
   integration: true,
   beforeEach() {
-    setupMirage(this);
+    this.server = startMirage();
   },
   afterEach() {
-    teardownMirage(this);
+    this.server.shutdown();
   }
 });
 
@@ -18,7 +16,7 @@ test('can find single record', function(assert) {
   assert.expect(4);
   let data = this.server.create('event');
 
-  run(() => {
+  return run(() => {
     return this.store().find('event', data.id);
   }).then(event => {
     assert.equal(event.get('id'), data.id, `id serialized - ${data.id}`);
@@ -32,7 +30,7 @@ test('can find all records', function(assert) {
   assert.expect(4);
   let data = this.server.create('event');
 
-  run(() => {
+  return run(() => {
     return this.store().findAll('event');
   }).then(events => {
     assert.equal(events.get('length'), 1, '1 event returned');
@@ -47,7 +45,7 @@ test('can sets ID for related artists', function(assert) {
   assert.expect(1);
   let data = this.server.create('event', { artist_ids: [ 'a5' ]});
 
-  run(() => {
+  return run(() => {
     return this.store().find('event', data.id);
   }).then(event => {
     let artistIds = event.hasMany('artists').ids();

@@ -1,11 +1,17 @@
-import Route from 'ember-route';
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+
+const oneMonthInSeconds = 60*60*24*30;
 
 export default Route.extend({
+  fastboot: service(),
+
   beforeModel() {
-    return this.store.findAll('artist');
+    this.get('fastboot').setResponseHeader('Surrogate-Control', `max-age=${oneMonthInSeconds} stale-while-revalidate=60`);
+    return this.store.findAll('artist', { reload: false, backgroundReload: false});
   },
 
   model() {
-    return this.store.findAll('event');
+    return this.store.findAll('event', { reload: false, backgroundReload: false });
   }
 });

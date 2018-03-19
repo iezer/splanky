@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
+
 moduleForComponent('force-graph', 'Integration | Component | force graph', {
   integration: true,
   beforeEach() {
@@ -36,9 +37,9 @@ test('it renders', function(assert) {
   assert.expect(3);
   this.render(hbs`{{force-graph graph=graph selectArtist=(action 'selectArtist')}}`);
 
-  assert.is$(page.line, '1 link');
-  assert.is$(page.node(1, 'miles'), 'node for miles');
-  assert.is$(page.node(2, 'pops'), 'node for pops');
+  assert.ok(this.$(page.line).length, '1 link');
+  assert.ok(this.$(page.node(1, 'miles')).length, 'node for miles');
+  assert.ok(this.$(page.node(2, 'pops')).length, 'node for pops');
 });
 
 test('can select nodes', function(assert) {

@@ -1,14 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import {
-  setup as setupMirage, teardown as teardownMirage
-} from 'cats-client/tests/helpers/setup-mirage-for-integration';
-
+import { startMirage } from 'cats-client/initializers/ember-cli-mirage';
 
 moduleForComponent('artist-info', 'Integration | Component | artist info', {
   integration: true,
   beforeEach() {
-    setupMirage(this);
+    this.server = startMirage();
     this.artistData = this.server.create('artist');
     let store = this.container.lookup('service:store');
     return store.findRecord('artist', this.artistData.id).then(artist => {
@@ -16,7 +13,7 @@ moduleForComponent('artist-info', 'Integration | Component | artist info', {
     });
   },
   afterEach() {
-    teardownMirage(this);
+    this.server.shutdown();
   }
 });
 

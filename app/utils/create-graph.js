@@ -1,4 +1,4 @@
-import { subscribe, instrument } from 'ember-instrumentation';
+import { subscribe, instrument } from '@ember/instrumentation';
 
 /*
  * Create a D3-force diagram compatible graph
