@@ -46,10 +46,11 @@ export default Controller.extend({
 
   includeBandmates: true,
   month: ALL_MONTHS,
+  year: null,
 
   artist: null,
 
-  queryParams: Object.freeze([ 'month', 'includeBandmates', 'artist' ]),
+  queryParams: Object.freeze([ 'month', 'year', 'includeBandmates', 'artist' ]),
 
   // converter query-string month input "1"-"12"
   // do 0 based int 0-11 so that getMonth() works.
@@ -97,11 +98,6 @@ export default Controller.extend({
       return events.uniq();
     }
 
-    if (month !== null) {
-      return this.get('model').filter(event => {
-        return event.get('startTime').getMonth() === month;
-      });
-    }
 
     return this.get('model');
   }),
