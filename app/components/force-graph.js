@@ -12,9 +12,13 @@ export default Component.extend({
   metrics: service(),
 
   didRender() {
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+    let parent = document.querySelector('.index-container__column');
+    let width = parent.offsetWidth;
+    let height = parent.offsetHeight;
+    this.setProperties({ height, width });
+
+
+    let svg = d3.select("svg");
 
     let strength = this.get('selectedArtist') ? -40 : -13;
     var simulation = d3.forceSimulation()
@@ -94,6 +98,7 @@ export default Component.extend({
   actions: {
     selectArtist(artist) {
       let value = artist ? artist.get('id') : 'clear';
+      console.log(`select artist ${value}`);
       this.get('metrics').trackEvent({
         category: 'ui-interaction',
         action: `select-artist-${value}`,

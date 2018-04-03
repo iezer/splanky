@@ -1,0 +1,28 @@
+{{#if sortedEvents.length}}
+  <div class='index-container'>
+    <div class='index-container__graph-viewport'>
+      <div class='index-container__column'>
+        {{force-graph graph=graph
+          selectArtist=(action (mut selectedArtist))
+          selectedArtist=selectedArtist}}
+      </div>
+
+      <div class='index-container__column'>
+        <div class='index-container__events'>
+          {{#artist-info artist=artist
+             month=monthInt
+             clearArtist=(action (mut selectedArtist))}}
+            {{input type="checkbox" name="includeBandmates" checked=includeBandmates}} Graph Bandmates' Gigs
+          {{/artist-info}}
+
+          {{#each sortedEvents as |event|}}
+            {{event-info event=event
+              selectArtist=(action (mut selectedArtist))
+              selectedArtist=selectedArtist}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{outlet}}
+{{/if}}

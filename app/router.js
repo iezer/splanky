@@ -27,6 +27,8 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('stats');
   this.route('about');
+  this.route('graph', { path: 'graph/:year/:month'});
+  this.route('artist', { path: 'artist/:id'});
 });
 
 export default Router;

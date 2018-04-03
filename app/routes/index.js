@@ -1,21 +1,9 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  queryParams: {
-    month: { refreshModel: true },
-    year: { refreshModel: true }
-  },
-  model({month, year}) {
-    if (!month || !year) {
-      return this.replaceWith('application', { queryParams: getCurrentMonth() } );
-    }
-    return this.store.query('event', {
-      filter: {
-        month,
-        year
-      },
-      include: 'artists'
-    });
+  beforeModel() {
+    let { month, year } = getCurrentMonth();
+    this.replaceWith('graph', year, month);
   }
 });
 

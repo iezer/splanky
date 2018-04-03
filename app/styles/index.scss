@@ -1,6 +1,14 @@
+$margin: 10px;
+
 .index-container {
-  height: 100vh;
-  display: flex;
+  height: calc(100vh - 10px);
+  width: calc(100% - 12px);
+  padding: 10px;
+
+  .index-container__graph-viewport {
+    height: calc(100vh - 134px);
+    width: 100%;
+  }
 
   .index-container__cta {
     border: 1px solid $grey-color;
@@ -11,9 +19,8 @@
   }
 
   .index-container__column {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   .index-container__events {

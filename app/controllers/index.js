@@ -98,6 +98,11 @@ export default Controller.extend({
       return events.uniq();
     }
 
+    // if (month !== null) {
+    //   return this.get('model').filter(event => {
+    //     return event.get('startTime').getMonth() === month;
+    //   });
+    // }
 
     return this.get('model');
   }),
