@@ -1,0 +1,32 @@
+<div class='index-container'>
+  <div class='index-container__header'>
+    <h1><strong>Splanky</strong></h1>
+    <h2>A social graph of NYC jazz musicians.</h2>
+    <div class="nav">
+
+      {{#power-select options=years
+         searchEnabled=false
+         selected=year
+         onchange=(action 'changeYear')
+         as |value|}}
+        {{value}}
+      {{/power-select}}
+
+      {{#power-select options=months
+         searchEnabled=false
+         selected=month
+         onchange=(action 'changeMonth')
+         as |value|}}
+        {{value}}
+      {{/power-select}}
+
+      {{link-to "Monthly graph" "index" class="selectable"}}
+      {{link-to "Leader board" "stats" class="selectable"}}
+      {{link-to "About" "about" class="selectable"}}
+    </div>
+  </div>
+
+  <div class='index-container__graph-viewport'>
+    {{outlet}}
+  </div>
+</div>

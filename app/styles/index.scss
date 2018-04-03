@@ -5,8 +5,14 @@ $margin: 10px;
   width: calc(100% - 12px);
   padding: 10px;
 
+  .index-container__header {
+    width: 100%;
+    height: 70px;
+    position: relative;
+  }
+
   .index-container__graph-viewport {
-    height: calc(100vh - 134px);
+    height: calc(100vh - 320px);
     width: 100%;
   }
 
@@ -23,9 +29,22 @@ $margin: 10px;
     height: 100%;
   }
 
+  .index-container__column-header {
+    width: 100%;
+    text-align: center;
+    margin: 20px;
+  }
+
   .index-container__events {
     display: flex;
     flex-flow: wrap;
     justify-content: flex-start;
+  }
+
+  .index-container__artist-info {
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    background-color: rgba(0,0,0,0.15);
   }
 }

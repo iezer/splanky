@@ -10,6 +10,7 @@ export default Component.extend({
   selectedArtist: null,
 
   metrics: service(),
+  router: service(),
 
   didRender() {
     let parent = document.querySelector('.index-container__column');
@@ -105,7 +106,11 @@ export default Component.extend({
         label: 'force-graph'
       });
 
-      this.get('selectArtist')(artist);
+      if (artist) {
+        this.get('router').transitionTo('artist', value);
+      } else {
+        this.get('router').transitionTo('index');
+      }
     }
   }
 });

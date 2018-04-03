@@ -41,5 +41,11 @@ export default Component.extend({
 
     bandMates = bandMates.uniq().removeObject(artist);
     return bandMates;
-  })
+  }),
+
+  actions: {
+    clearArtist() {
+      window.history.back();
+    }
+  }
 });

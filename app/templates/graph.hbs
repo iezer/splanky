@@ -1,19 +1,19 @@
-<div class='index-container'>
-  <div class='index-container__graph-viewport'>
-    <div class='index-container__column'>
-      {{force-graph graph=graph
+<div class='index-container__column'>
+  {{force-graph graph=graph
+    selectArtist=(action (mut selectedArtist))
+    selectedArtist=selectedArtist}}
+</div>
+
+<div class='index-container__column'>
+  <div class='index-container__column-header'>
+    <h2>Artists & shows</h2>
+  </div>
+
+  <div class='index-container__events'>
+    {{#each sortedEvents as |event|}}
+      {{event-info event=event
         selectArtist=(action (mut selectedArtist))
         selectedArtist=selectedArtist}}
-    </div>
-
-    <div class='index-container__column'>
-      <div class='index-container__events'>
-        {{#each sortedEvents as |event|}}
-          {{event-info event=event
-            selectArtist=(action (mut selectedArtist))
-            selectedArtist=selectedArtist}}
-        {{/each}}
-      </div>
-    </div>
+    {{/each}}
   </div>
 </div>
