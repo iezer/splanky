@@ -9,6 +9,7 @@ export default Model.extend({
   instrument: attr('string'),
   events: hasMany('event', { inverse: 'artists', async: false }),
   image: attr('string'),
+  url: attr('string'),
 
   bandMates: computed('events.@each.artists', function() {
     let bandMates = emberA();

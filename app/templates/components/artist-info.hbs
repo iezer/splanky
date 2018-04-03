@@ -22,20 +22,9 @@
     </span> - Gigs This Year
   </div>
 
-  {{#if hasMonth}}
-    <div class='artist-info__stat'>
-      <span class='artist-info__number'>
-        {{bandMatesForMonth.length}}
-      </span> - Bandmates in {{monthString}}
-    </div>
-
-    <div class='artist-info__stat'>
-      <span class='artist-info__number'>
-        {{eventsForMonth.length}}
-      </span> - Gigs in {{monthString}}
-    </div>
-  {{/if}}
-
+  <div class='artist-info__stat'>
+    <a href="https://smallslive.com{{artist.url}}" class="selectable" target="_blank">Visit artist on Smallslive</a>
+  </div>
   <span>
     {{yield}}
   </span>

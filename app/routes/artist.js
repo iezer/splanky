@@ -3,14 +3,13 @@ import RSVP from 'rsvp';
 
 export default Route.extend({
   model({ id }) {
-    return this.store.findRecord('artist', id, { include: 'events' });
-  },
+    let include = [
+      'events',
+      'events.artists',
+      'events.artists.events',
+      'events.artists.events.artists'
+    ].join(',');
 
-  afterModel(artist) {
-    let promises = artist.get('events').map(e => {
-      return this.store.findRecord('event', e.get('id'), { include: 'artists' });
-    });
-
-    return RSVP.all(promises);
+    return this.store.findRecord('artist', id, { include });
   }
 });
