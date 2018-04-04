@@ -6,7 +6,7 @@ import moment from 'moment';
 export default Component.extend({
   classNames: [ 'artist-info' ],
   month: null,
-
+  showClearButton: true,
   // could be zero
   hasMonth: computed('month', function() {
     return this.get('month') !== null;
@@ -41,5 +41,11 @@ export default Component.extend({
 
     bandMates = bandMates.uniq().removeObject(artist);
     return bandMates;
-  })
+  }),
+
+  actions: {
+    clearArtist() {
+      window.history.back();
+    }
+  }
 });

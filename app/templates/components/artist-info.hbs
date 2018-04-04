@@ -22,26 +22,12 @@
     </span> - Gigs This Year
   </div>
 
-  {{#if hasMonth}}
-    <div class='artist-info__stat'>
-      <span class='artist-info__number'>
-        {{bandMatesForMonth.length}}
-      </span> - Bandmates in {{monthString}}
-    </div>
-
-    <div class='artist-info__stat'>
-      <span class='artist-info__number'>
-        {{eventsForMonth.length}}
-      </span> - Gigs in {{monthString}}
-    </div>
-  {{/if}}
-
   <span>
     {{yield}}
   </span>
 </div>
-<div class="artist-info__column">
-  <div {{action clearArtist null}} class="artist-info__button selectable button">
-    Clear
+{{#if showClearButton}}
+  <div class="artist-info__column">
+    {{link-to 'Clear' 'index' class="artist-info__button selectable button"}}
   </div>
-</div>
+{{/if}}

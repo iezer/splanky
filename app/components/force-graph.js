@@ -2,6 +2,7 @@
 import Component from '@ember/component';
 import d3 from 'd3';
 import { inject as service } from '@ember/service';
+import { schedule } from '@ember/runloop';
 
 export default Component.extend({
   classNames: [ 'force-graph' ],
@@ -10,11 +11,34 @@ export default Component.extend({
   selectedArtist: null,
 
   metrics: service(),
+  router: service(),
+  fastboot: service(),
 
-  didRender() {
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+  hoverArtist: null,
+  mouseMove(event) {
+    if(event.target.tagName === 'circle') {
+      let artistId = event.target.getAttribute('dd-artist');
+      if (artistId === this.get('hoverArtist.id')) { return; }
+      let artist = this.get('graph.nodes').findBy('id', artistId);
+      this.set('hoverArtist', artist);
+    } else {
+      this.set('hoverArtist', null);
+    }
+  },
+
+  didReceiveAttrs() {
+    if (this.get('fastboot.isFastBoot')) { return; }
+    schedule('afterRender', () => this.doGraph());
+  },
+
+  doGraph() {
+    let parent = document.querySelector('.index-container__column');
+    let width = parent.offsetWidth;
+    let height = parent.offsetHeight;
+    this.setProperties({ height, width });
+
+
+    let svg = d3.select("svg");
 
     let strength = this.get('selectedArtist') ? -40 : -13;
     var simulation = d3.forceSimulation()
@@ -94,13 +118,18 @@ export default Component.extend({
   actions: {
     selectArtist(artist) {
       let value = artist ? artist.get('id') : 'clear';
+
       this.get('metrics').trackEvent({
         category: 'ui-interaction',
         action: `select-artist-${value}`,
         label: 'force-graph'
       });
 
-      this.get('selectArtist')(artist);
+      if (artist) {
+        this.get('router').transitionTo('artist', value);
+      } else {
+        this.get('router').transitionTo('index');
+      }
     }
   }
 });

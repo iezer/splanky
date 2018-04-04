@@ -7,8 +7,9 @@ import { A as emberA } from '@ember/array';
 export default Model.extend({
   name: attr('string'),
   instrument: attr('string'),
-  events: hasMany('event', { inverse: 'artists' }),
+  events: hasMany('event', { inverse: 'artists', async: false }),
   image: attr('string'),
+  url: attr('string'),
 
   bandMates: computed('events.@each.artists', function() {
     let bandMates = emberA();

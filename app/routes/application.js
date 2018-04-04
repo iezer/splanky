@@ -8,10 +8,11 @@ export default Route.extend({
 
   beforeModel() {
     this.get('fastboot').setResponseHeader('Surrogate-Control', `max-age=${oneMonthInSeconds} stale-while-revalidate=60`);
-    return this.store.findAll('artist', { reload: false, backgroundReload: false});
   },
 
-  model() {
-    return this.store.findAll('event', { reload: false, backgroundReload: false });
+  actions: {
+    willTransition(transition) {
+      this.controllerFor('application').set('showCTA', false);
+    }
   }
 });

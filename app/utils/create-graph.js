@@ -47,11 +47,11 @@ export default function(events) {
   instrument('create-graph', () => {
     events.forEach(event => {
       let artists = event.get('artists');
-      for(let i = 0; i < artists.length; i++) {
+      for(let i = 0; i < artists.get('length'); i++) {
         let artist = artists.objectAt(i);
         addNode(artist);
 
-        for(let j = i + 1; j < artists.length; j++) {
+        for(let j = i + 1; j < artists.get('length'); j++) {
           let targetArtist = artists.objectAt(j);
           addEvent(artist, targetArtist);
         }

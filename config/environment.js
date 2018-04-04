@@ -45,8 +45,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.API_URL = 'http://localhost:4000';
-    ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
+    ENV.APP.API_URL = 'http://localhost:4000';
+    //ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
     // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {
@@ -74,16 +74,16 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
-    ENV.rootURL = '/jazz-cats/';
-    ENV.locationType = 'hash';
+    ENV.rootURL = '/';
   }
 
-  // ENV.fastboot = {
-  //   hostWhitelist: [
-  //     ENV.APP.API_URL,
-  //     'localhost:3000'
-  //   ]
-  // };
+  ENV.fastboot = {
+    hostWhitelist: [
+      ENV.APP.API_URL,
+      'localhost:3000',
+      'jazz-cats-api.herokuapp.com'
+    ]
+  };
 
   return ENV;
 };

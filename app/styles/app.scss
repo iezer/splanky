@@ -15,12 +15,20 @@
 
 body {
   margin: 0px;
+  padding: 0;
+  font-size: 14px;
 }
 
 * {
+  margin:0;
+  padding:0;
   box-sizing: border-box;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .selectable {
@@ -44,3 +52,19 @@ strong {
   font-weight: bold;
   color: $red-color;
 }
+
+.red-text {
+  color: $red-color;
+}
+
+.ember-power-select-trigger {
+  display: inline-block;
+  min-width: 45px;
+  margin-right: 10px;
+}
+
+.ember-power-select-options[role=listbox] {
+  max-height: none !important;
+}
+
+@import "ember-power-select";
