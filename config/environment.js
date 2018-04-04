@@ -74,14 +74,14 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'https://jazz-cats-api.herokuapp.com';
-    ENV.rootURL = '/jazz-cats/';
-    ENV.locationType = 'hash';
+    ENV.rootURL = '/';
   }
 
   ENV.fastboot = {
     hostWhitelist: [
       ENV.APP.API_URL,
-      'localhost:3000'
+      'localhost:3000',
+      'jazz-cats-api.herokuapp.com'
     ]
   };
 
