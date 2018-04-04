@@ -6,7 +6,7 @@ import moment from 'moment';
 export default Component.extend({
   classNames: [ 'artist-info' ],
   month: null,
-
+  showClearButton: true,
   // could be zero
   hasMonth: computed('month', function() {
     return this.get('month') !== null;

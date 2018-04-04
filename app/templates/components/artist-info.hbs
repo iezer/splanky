@@ -22,13 +22,12 @@
     </span> - Gigs This Year
   </div>
 
-  <div class='artist-info__stat'>
-    <a href="https://smallslive.com{{artist.url}}" class="selectable" target="_blank">Visit artist on Smallslive</a>
-  </div>
   <span>
     {{yield}}
   </span>
 </div>
-<div class="artist-info__column">
-  {{link-to 'Clear' 'index' class="artist-info__button selectable button"}}
-</div>
+{{#if showClearButton}}
+  <div class="artist-info__column">
+    {{link-to 'Clear' 'index' class="artist-info__button selectable button"}}
+  </div>
+{{/if}}

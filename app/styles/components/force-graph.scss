@@ -1,4 +1,13 @@
 .force-graph {
+  position: relative;
+
+  .force-graph__artist-hover {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.15);
+  }
+
   .force-graph__links line {
     stroke: #999;
     stroke-opacity: 0.6;

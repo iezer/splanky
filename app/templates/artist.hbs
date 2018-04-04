@@ -16,6 +16,9 @@
            month=monthInt
            clearArtist=(action (mut selectedArtist))}}
           {{input type="checkbox" name="includeBandmates" checked=includeBandmates}} Graph Bandmates' Gigs
+          <div>
+            <a href="https://smallslive.com{{artist.url}}" class="selectable" target="_blank">Visit artist on Smallslive</a>
+          </div>
         {{/artist-info}}
       </div>
       {{#each sortedEvents as |event|}}

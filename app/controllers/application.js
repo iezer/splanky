@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 
 const YEARS = [
   2017,
@@ -31,6 +32,19 @@ export default Controller.extend({
   router: service(),
   years: YEARS,
   months: MONTHS,
+
+  showCTA: computed({
+    get() {
+      if (this.get('fastboot.isFastBoot')) {
+        return;
+      }
+      return !localStorage.getItem('seenCTA');
+    },
+    set(key, value) {
+      localStorage.setItem('seenCTA', !value);
+      return value;
+    }
+  }),
 
   actions: {
     changeMonth(month) {

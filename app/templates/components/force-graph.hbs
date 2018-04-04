@@ -1,4 +1,4 @@
-<svg  width="{{width}}" height="{{height}}">
+<svg width="{{width}}" height="{{height}}">
   <g class='force-graph__links'>
     {{#each graph.links as |link|}}
       <line stroke-width={{link.sqrtValue}}></line>
@@ -19,7 +19,6 @@
             {{/if}}
 
             <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
-              <title>{{artist.text}}</title>
             </circle>
           </g>
         {{/is-selected}}
@@ -27,3 +26,11 @@
     </g>
   </g>
 </svg>
+
+{{#if hoverArtist}}
+  <div class='force-graph__artist-hover'>
+    {{#artist-info artist=hoverArtist showClearButton=false}}
+      Click the dot to focus on the artist.
+    {{/artist-info}}
+  </div>
+{{/if}}

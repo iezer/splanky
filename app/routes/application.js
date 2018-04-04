@@ -8,5 +8,11 @@ export default Route.extend({
 
   beforeModel() {
     this.get('fastboot').setResponseHeader('Surrogate-Control', `max-age=${oneMonthInSeconds} stale-while-revalidate=60`);
+  },
+
+  actions: {
+    willTransition(transition) {
+      this.controllerFor('application').set('showCTA', false);
+    }
   }
 });

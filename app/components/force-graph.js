@@ -2,6 +2,7 @@
 import Component from '@ember/component';
 import d3 from 'd3';
 import { inject as service } from '@ember/service';
+import { schedule } from '@ember/runloop';
 
 export default Component.extend({
   classNames: [ 'force-graph' ],
@@ -11,8 +12,26 @@ export default Component.extend({
 
   metrics: service(),
   router: service(),
+  fastboot: service(),
 
-  didRender() {
+  hoverArtist: null,
+  mouseMove(event) {
+    if(event.target.tagName === 'circle') {
+      let artistId = event.target.getAttribute('dd-artist');
+      if (artistId === this.get('hoverArtist.id')) { return; }
+      let artist = this.get('graph.nodes').findBy('id', artistId);
+      this.set('hoverArtist', artist);
+    } else {
+      this.set('hoverArtist', null);
+    }
+  },
+
+  didReceiveAttrs() {
+    if (this.get('fastboot.isFastBoot')) { return; }
+    schedule('afterRender', () => this.doGraph());
+  },
+
+  doGraph() {
     let parent = document.querySelector('.index-container__column');
     let width = parent.offsetWidth;
     let height = parent.offsetHeight;
@@ -99,7 +118,7 @@ export default Component.extend({
   actions: {
     selectArtist(artist) {
       let value = artist ? artist.get('id') : 'clear';
-      console.log(`select artist ${value}`);
+
       this.get('metrics').trackEvent({
         category: 'ui-interaction',
         action: `select-artist-${value}`,
