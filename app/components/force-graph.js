@@ -63,14 +63,8 @@ export default Component.extend({
                 .on("end", dragended));
 
     simulation
-      .nodes(graph.nodes)
-      .on("tick", ticked)
-      .on("end", () => {
-        simulation.nodes().forEach(n => {
-          n.fx = n.x;
-          n.fy = n.y;
-        });
-      });
+    .nodes(graph.nodes)
+    .on("tick", ticked);
 
     simulation.force("link")
       .links(graph.links);
