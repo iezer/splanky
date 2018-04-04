@@ -8,18 +8,18 @@ const YEARS = [
 ];
 
 const MONTHS = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12
+  { name: 'Jan' , value: 1},
+  { name: 'Feb', value: 2 },
+  { name: 'Mar', value: 3 },
+  { name: 'Apr', value: 4 },
+  { name: 'May', value: 5 },
+  { name: 'Jun', value: 6 },
+  { name: 'Jul', value: 7 },
+  { name: 'Aug', value: 8 },
+  { name: 'Sep', value: 9 },
+  { name: 'Oct', value: 10 },
+  { name: 'Nov', value: 11 },
+  { name: 'Dec', value: 12 }
 ];
 
 const CURRENT_DATE = new Date();
@@ -33,21 +33,27 @@ export default Controller.extend({
   years: YEARS,
   months: MONTHS,
 
+  selectedMonth: computed('month', 'months', function() {
+    let months = this.get('months');
+    let month = parseInt(this.get('month'));
+    return months.findBy('value', month);
+  }),
+
   showCTA: computed({
     get() {
       if (this.get('fastboot.isFastBoot')) {
         return;
       }
-      return !localStorage.getItem('seenCTA');
+      return !localStorage.getItem('seenCTA-2');
     },
     set(key, value) {
-      localStorage.setItem('seenCTA', !value);
+      localStorage.setItem('seenCTA-2', !value);
       return value;
     }
   }),
 
   actions: {
-    changeMonth(month) {
+    changeMonth({ value: month }) {
       let year = this.get('year');
       this.get('router').transitionTo('graph', year, month);
     },

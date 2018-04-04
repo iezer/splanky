@@ -20,10 +20,10 @@
 
       {{#power-select options=months
          searchEnabled=false
-         selected=month
+         selected=selectedMonth
          onchange=(action 'changeMonth')
          as |value|}}
-        {{value}}
+        {{value.name}}
       {{/power-select}}
 
       {{link-to "Monthly graph" "index" class="selectable"}}

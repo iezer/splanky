@@ -59,6 +59,12 @@ strong {
 
 .ember-power-select-trigger {
   display: inline-block;
+  min-width: 45px;
+  margin-right: 10px;
+}
+
+.ember-power-select-options[role=listbox] {
+  max-height: none !important;
 }
 
 @import "ember-power-select";
