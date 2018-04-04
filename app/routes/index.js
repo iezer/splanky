@@ -8,7 +8,6 @@ export default Route.extend({
 });
 
 function getCurrentMonth() {
-  return { month: 11, year: 2017 };
   let d = new Date();
   let month = d.getMonth() + 1;
   let year = d.getFullYear();
