@@ -3,5 +3,5 @@ import config from '../config/environment';
 
 export default JSONAPIAdapter.extend({
   host: config.APP.API_URL,
-  namespace: 'api'
+  namespace: config.apiNamespace
 });

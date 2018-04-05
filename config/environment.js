@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    apiNamespace: 'api',
 
     'ember-d3': {
       bundle: true
