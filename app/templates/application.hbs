@@ -1,7 +1,9 @@
 <div class='index-container'>
   <div class='index-container__header'>
-    <h1><strong>Splanky</strong></h1>
-    <h2>A social graph of NYC jazz musicians.</h2>
+    {{#link-to 'index' class='selectable'}}
+      <h1><strong>Splanky</strong></h1>
+      <h2>A social graph of NYC jazz musicians.</h2>
+    {{/link-to}}
 
     {{#if showCTA}}
       <div {{action (mut showCTA) false}} class='index-container__cta selectable'>
