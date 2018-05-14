@@ -1,4 +1,6 @@
 .about {
+  font-size: 16px;
+
   padding: 20px;
 
   margin-left: 100px;
@@ -13,12 +15,21 @@
   h1 {
     color: $red-color;
     font-size: 18px;
+    margin-bottom: 0.5em;
+  }
+
+  .about__p {
+    margin-bottom: 1em;
   }
 
   .about__quote {
     margin-bottom: 20px;
     border: 2px solid black;
-    padding: 0 10px 0 10px;
+    padding: 10px;
+
+    p {
+      margin-bottom: 1em;
+    }
   }
 
   .about__images {
