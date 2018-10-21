@@ -38,9 +38,15 @@
     text-align: center;
   }
 
-  img {
+  .about__network_img {
     width: 450px;
     height: 200px;
     border: 1px solid $grey-color;
+  }
+
+  .about__bio {
+    border: 1px solid $grey-color;
+    width: 200px;
+    height: 175px;
   }
 }
