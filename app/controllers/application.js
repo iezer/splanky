@@ -2,11 +2,6 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 
-const YEARS = [
-  2017,
-  2018
-];
-
 const MONTHS = [
   { name: 'Jan' , value: 1},
   { name: 'Feb', value: 2 },
@@ -25,12 +20,23 @@ const MONTHS = [
 const CURRENT_DATE = new Date();
 const CURRENT_MONTH = CURRENT_DATE.getMonth() + 1;
 const CURRENT_YEAR = CURRENT_DATE.getFullYear();
+const OLDEST_YEAR = 2017;
 
 export default Controller.extend({
   month: CURRENT_MONTH,
   year: CURRENT_YEAR,
   router: service(),
-  years: YEARS,
+  currentYear: CURRENT_YEAR,
+  oldestYear: OLDEST_YEAR,
+  years: computed('currentYear', 'oldestYear', function() {
+    const { currentYear, oldestYear } = this;
+    let results = [];
+    for (let i = currentYear; i >= oldestYear; i--) {
+      results.push(i);
+    }
+    return results;
+  }),
+  
   months: MONTHS,
 
   selectedMonth: computed('month', 'months', function() {
