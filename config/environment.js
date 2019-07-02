@@ -82,6 +82,7 @@ module.exports = function(environment) {
     hostWhitelist: [
       ENV.APP.API_URL,
       'localhost:3000',
+      'localhost:4200',
       'jazz-cats-api.herokuapp.com'
     ]
   };
