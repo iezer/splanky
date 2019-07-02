@@ -1,25 +1,30 @@
 <div class="stats">
-  {{stats-column artists=model
-    key="bandMates"
-    title="Who's played with the most people?"
-    selectedArtist=selectedArtist
-    selectArtist=(action (mut selectedArtist))}}
-
-  {{stats-column artists=model
-    key="events"
-    title="Who's had the most gigs?"
-    selectedArtist=selectedArtist
-    selectArtist=(action (mut selectedArtist))}}
-
+  <StatsColumn
+    @artists={{model}}
+    @key="bandMates"
+    @title="Who's played with the most people?"
+    @selectedArtist={{selectedArtist}}
+    @selectArtist={{action (mut selectedArtist)}}
+  />
+  <StatsColumn
+    @artists={{model}}
+    @key="events"
+    @title="Who's had the most gigs?"
+    @selectedArtist={{selectedArtist}}
+    @selectArtist={{action (mut selectedArtist)}}
+  />
   <div class="stats__column">
     {{#if selectedArtist}}
-      {{#artist-info artist=selectedArtist
-         clearArtist=(action (mut selectedArtist))}}
-
-        {{#link-to "artist" selectedArtist.id}}
-          See {{selectedArtist.name}}'s graph
-        {{/link-to}}
-      {{/artist-info}}
+      <ArtistInfo
+        @artist={{selectedArtist}}
+        @clearArtist={{action (mut selectedArtist)}}
+      >
+        <LinkTo @route="artist" @model={{selectedArtist.id}}>
+          See
+          {{selectedArtist.name}}
+          's graph
+        </LinkTo>
+      </ArtistInfo>
     {{/if}}
   </div>
 </div>

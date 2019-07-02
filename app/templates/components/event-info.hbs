@@ -1,18 +1,22 @@
 <div class="event-info__name">
   {{event.title}}
 </div>
-
 <div class="event-info__date">
   {{moment-format event.startTime "dddd M/D/YYYY"}}
 </div>
-
 <div class="event-info__time">
-  {{moment-format event.startTime "LT"}} - {{moment-format event.endTime "LT"}}
+  {{moment-format event.startTime "LT"}}
+  -
+  {{moment-format event.endTime "LT"}}
 </div>
 <div class="event-info__artists">
   {{#each event.artists as |artist|}}
-    {{#link-to "artist" artist.id
-       class="event-info__artist selectable" activeClass="selected"}}
+    <LinkTo
+      @route="artist"
+      @model={{artist.id}}
+      class="event-info__artist selectable"
+      @activeClass="selected"
+    >
       <span class="event-info__artist_name">
         {{artist.name}}
       </span>
@@ -20,6 +24,6 @@
         {{artist.instrument}}
       </span>
       <span style="clear: both;"></span>
-    {{/link-to}}
+    </LinkTo>
   {{/each}}
 </div>

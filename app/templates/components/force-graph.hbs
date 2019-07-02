@@ -6,7 +6,7 @@
 
     <g class="force-graph__nodes">
       {{#each graph.nodes as |artist|}}
-        {{#is-selected current=artist.id selected=selectedArtist.id as |isSelected|}}
+        <IsSelected @current={{artist.id}} @selected={{selectedArtist.id}} as |isSelected|>
           <g class="node" width="20" height="20"
             {{action "selectArtist" (if isSelected null artist)}}>
 
@@ -21,7 +21,7 @@
             <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
             </circle>
           </g>
-        {{/is-selected}}
+        </IsSelected>
       {{/each}}
     </g>
   </g>
@@ -29,8 +29,8 @@
 
 {{#if hoverArtist}}
   <div class="force-graph__artist-hover">
-    {{#artist-info artist=hoverArtist showClearButton=false}}
+    <ArtistInfo @artist={{hoverArtist}} showClearButton={{false}}>
       Click the dot to focus on the artist.
-    {{/artist-info}}
+    </ArtistInfo>
   </div>
 {{/if}}
