@@ -19,4 +19,6 @@ install:
   - yarn install --non-interactive --pure-lockfile
 
 script:
+  - npm run lint:hbs
+  - npm run lint:js
   - npm test
