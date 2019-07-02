@@ -38,7 +38,7 @@ export default Component.extend({
     this.setProperties({ height, width });
 
 
-    let svg = d3.select("svg");
+    // let svg = d3.select("svg");
 
     let strength = this.selectedArtist ? -40 : -13;
     var simulation = d3.forceSimulation()

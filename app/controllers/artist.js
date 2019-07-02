@@ -16,7 +16,6 @@ export default Controller.extend({
     }
 
     let events = emberA();
-    let artist = this.artist;
     let artistEvents = this.get('artist.events');
 
     let bandMates = emberA();

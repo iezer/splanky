@@ -11,7 +11,7 @@ export default Route.extend({
   },
 
   actions: {
-    willTransition(transition) {
+    willTransition(/* transition */) {
       this.controllerFor('application').set('showCTA', false);
     }
   }
