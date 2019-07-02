@@ -9,20 +9,20 @@ export default Component.extend({
   showClearButton: true,
   // could be zero
   hasMonth: computed('month', function() {
-    return this.get('month') !== null;
+    return this.month !== null;
   }),
 
   monthString: computed('month', function() {
-    let month = this.get('month');
+    let month = this.month;
     if (month) {
-      return moment().month(this.get('month')).format('MMMM');
+      return moment().month(this.month).format('MMMM');
     }
 
     return null;
   }),
 
   eventsForMonth: computed('artist.events.[]', 'month', function() {
-    let month = this.get('month');
+    let month = this.month;
     if (month === null) { return null; }
 
     return this.get('artist.events').filter(event => {
@@ -31,8 +31,8 @@ export default Component.extend({
   }),
 
   bandMatesForMonth: computed('eventsForMonth.[]', 'artist', function() {
-    let events = this.get('eventsForMonth');
-    let artist = this.get('artist');
+    let events = this.eventsForMonth;
+    let artist = this.artist;
 
     let bandMates = emberA();
     events.forEach(event => {

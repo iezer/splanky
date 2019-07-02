@@ -9,8 +9,8 @@ export default Component.extend({
   isSelected: false,
 
   didReceiveAttrs() {
-    let current = this.get('current');
-    let selected = this.get('selected');
+    let current = this.current;
+    let selected = this.selected;
     this.set('isSelected', !!selected && (current === selected));
   }
 });

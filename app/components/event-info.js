@@ -9,13 +9,13 @@ export default Component.extend({
   actions: {
     selectArtist(artist) {
       let value = artist ? artist.get('id') : 'clear';
-      this.get('metrics').trackEvent({
+      this.metrics.trackEvent({
         category: 'ui-interaction',
         action: `select-artist-${value}`,
         label: 'event-info'
       });
 
-      this.get('selectArtist')(artist);
+      this.selectArtist(artist);
     }
   }
 });

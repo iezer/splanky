@@ -7,7 +7,7 @@ export default Route.extend({
   fastboot: service(),
 
   beforeModel() {
-    this.get('fastboot').setResponseHeader('Surrogate-Control', `max-age=${oneMonthInSeconds} stale-while-revalidate=60`);
+    this.fastboot.setResponseHeader('Surrogate-Control', `max-age=${oneMonthInSeconds} stale-while-revalidate=60`);
   },
 
   actions: {

@@ -40,7 +40,7 @@ export default Component.extend({
 
     let svg = d3.select("svg");
 
-    let strength = this.get('selectedArtist') ? -40 : -13;
+    let strength = this.selectedArtist ? -40 : -13;
     var simulation = d3.forceSimulation()
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
           .force("charge", d3.forceManyBody().strength(function() { return strength; }))
@@ -48,7 +48,7 @@ export default Component.extend({
 //          .alphaDecay(0.04)
           .velocityDecay(0.5);
     window.simulation = simulation;
-    let graph = this.get('graph');
+    let graph = this.graph;
 
     var link = d3.select("svg g.force-graph__links")
           .selectAll("line")
@@ -113,16 +113,16 @@ export default Component.extend({
     selectArtist(artist) {
       let value = artist ? artist.get('id') : 'clear';
 
-      this.get('metrics').trackEvent({
+      this.metrics.trackEvent({
         category: 'ui-interaction',
         action: `select-artist-${value}`,
         label: 'force-graph'
       });
 
       if (artist) {
-        this.get('router').transitionTo('artist', value);
+        this.router.transitionTo('artist', value);
       } else {
-        this.get('router').transitionTo('index');
+        this.router.transitionTo('index');
       }
     }
   }

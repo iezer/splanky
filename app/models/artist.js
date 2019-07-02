@@ -1,7 +1,7 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
-import {computed} from '@ember/object';
+import { computed } from '@ember/object';
 import { A as emberA } from '@ember/array';
 
 export default Model.extend({
@@ -13,13 +13,13 @@ export default Model.extend({
 
   bandMates: computed('events.@each.artists', function() {
     let bandMates = emberA();
-    this.get('events').forEach(event => {
+    this.events.forEach(event => {
       bandMates.pushObjects(event.get('artists').toArray());
     });
     return bandMates.uniq().removeObject(this);
   }),
 
   text: computed('name', 'instrument', function() {
-    return `${this.get('name')} (${this.get('instrument')})`;
+    return `${this.name} (${this.instrument})`;
   })
 });

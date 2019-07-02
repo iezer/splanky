@@ -17,7 +17,7 @@ export default Route.extend({
 
   setupController() {
     this._super(...arguments);
-    let { year, month } = this.getProperties('year' , 'month');
+    let { year, month } = this;
     this.controllerFor('application').setProperties({year, month});
   }
 });

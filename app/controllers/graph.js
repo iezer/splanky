@@ -9,7 +9,7 @@ export default Controller.extend({
   sortedEvents: sort('events', 'sortDef'),
 
   graph: computed('events.[]', function() {
-    let events = this.get('events');
+    let events = this.events;
     let graph = createGraph(events);
 
     return graph;

@@ -8,13 +8,13 @@ export default Service.extend({
   },
 
   code(key) {
-    let instruments = this.get('instruments');
+    let instruments = this.instruments;
     let val = instruments[key];
     if (val) {
       return val;
     }
 
-    let code = this.get('lastCode');
+    let code = this.lastCode;
     instruments[key] = code;
     this.set('lastCode', code + 1);
     return code;
