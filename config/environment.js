@@ -84,9 +84,10 @@ module.exports = function(environment) {
 
   ENV.fastboot = {
     hostWhitelist: [
-      ENV.APP.API_URL,
       'localhost:3000',
       'localhost:4200',
+      'splanky.net',
+      'splanky.herokuapp.com',
       'jazz-cats-api.herokuapp.com'
     ]
   };
