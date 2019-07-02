@@ -1,11 +1,18 @@
-<span class="stats__title">
-  {{title}}
-</span>
-
-{{#each sortedArtists as |a|}}
-  <div onclick={{action 'selectArtist' (if (eq a.id selectedArtist.id) null a)}} class="stats__line selectable {{if (eq a.id selectedArtist.id) 'selected'}}">
-    <span class="stats__number">
-      {{get-length a key}}
-    </span> {{a.name}} - {{a.instrument}}
-  </div>
-{{/each}}
+<div class="stats__column stats_scroll" ...attributes>
+  <span class="stats__title">
+    {{title}}
+  </span>
+  {{#each sortedArtists as |a|}}
+    <div
+      onclick={{action "selectArtist" (if (eq a.id selectedArtist.id) null a)}}
+      class="stats__line selectable {{if (eq a.id selectedArtist.id) "selected"}}"
+      >
+      <span class="stats__number">
+        {{get-length a key}}
+      </span>
+      {{a.name}}
+      -
+      {{a.instrument}}
+    </div>
+  {{/each}}
+</div>

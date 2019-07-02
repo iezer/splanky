@@ -1,30 +1,48 @@
 {{#if sortedEvents.length}}
-  <div class='index-container__column'>
-    {{force-graph graph=graph
-      selectArtist=(action (mut selectedArtist))
-      selectedArtist=selectedArtist}}
+  <div class="index-container__column">
+    <ForceGraph
+      @graph={{graph}}
+      @selectArtist={{action (mut selectedArtist)}}
+      @selectedArtist={{selectedArtist}}
+    />
   </div>
-
-  <div class='index-container__column'>
-    <div class='index-container__column-header'>
-      <h2>The artist & their shows</h2>
+  <div class="index-container__column">
+    <div class="index-container__column-header">
+      <h2>
+        The artist & their shows
+      </h2>
     </div>
-
-    <div class='index-container__events'>
-      <div class='index-container__artist-info'>
-        {{#artist-info artist=artist
-           month=monthInt
-           clearArtist=(action (mut selectedArtist))}}
-          {{input type="checkbox" name="includeBandmates" checked=includeBandmates}} Graph Bandmates' Gigs
+    <div class="index-container__events">
+      <div class="index-container__artist-info">
+        <ArtistInfo
+          @artist={{artist}}
+          @month={{monthInt}}
+          @clearArtist={{action (mut selectedArtist)}}
+        >
+          <Input
+            @type="checkbox"
+            @name="includeBandmates"
+            @checked={{includeBandmates}}
+          />
+          Graph Bandmates' Gigs
           <div>
-            <a href="https://smallslive.com{{artist.url}}" class="selectable" target="_blank">Visit artist on Smallslive</a>
+            <a
+              href="https://smallslive.com{{artist.url}}"
+              class="selectable"
+              target="_blank"
+              rel="noopener"
+            >
+              Visit artist on Smallslive
+            </a>
           </div>
-        {{/artist-info}}
+        </ArtistInfo>
       </div>
       {{#each sortedEvents as |event|}}
-        {{event-info event=event
-          selectArtist=(action (mut selectedArtist))
-          selectedArtist=selectedArtist}}
+        <EventInfo
+          @event={{event}}
+          @selectArtist={{action (mut selectedArtist)}}
+          @selectedArtist={{selectedArtist}}
+        />
       {{/each}}
     </div>
   </div>

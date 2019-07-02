@@ -40,8 +40,8 @@ export default Controller.extend({
   months: MONTHS,
 
   selectedMonth: computed('month', 'months', function() {
-    let months = this.get('months');
-    let month = parseInt(this.get('month'));
+    let months = this.months;
+    let month = parseInt(this.month);
     return months.findBy('value', month);
   }),
 
@@ -60,12 +60,12 @@ export default Controller.extend({
 
   actions: {
     changeMonth({ value: month }) {
-      let year = this.get('year');
-      this.get('router').transitionTo('graph', year, month);
+      let year = this.year;
+      this.router.transitionTo('graph', year, month);
     },
     changeYear(year) {
-      let month = this.get('month');
-      this.get('router').transitionTo('graph', year, month);
+      let month = this.month;
+      this.router.transitionTo('graph', year, month);
     }
   }
 });

@@ -1,14 +1,38 @@
 <div class="nav">
-  {{link-to "About" "about" class="selectable"}}
-  {{link-to "Leader Board" "stats" class="selectable"}}
-  {{link-to "All Gigs" "index" (query-params month=allMonths) class="selectable"}}
-  {{link-to "Jan" "index" (query-params month=1) class="selectable"}}
-  {{link-to "Feb" "index" (query-params month=2) class="selectable"}}
-  {{link-to "Mar" "index" (query-params month=3) class="selectable"}}
-  {{link-to "Apr" "index" (query-params month=4) class="selectable"}}
-  {{link-to "May" "index" (query-params month=5) class="selectable"}}
-  {{link-to "Jun" "index" (query-params month=6) class="selectable"}}
-  {{link-to "Jul" "index" (query-params month=7) class="selectable"}}
-  {{link-to "Aug" "index" (query-params month=8) class="selectable"}}
-  {{link-to "Sep" "index" (query-params month=9) class="selectable"}}
+  <LinkTo @route="about" class="selectable">
+    About
+  </LinkTo>
+  <LinkTo @route="stats" class="selectable">
+    Leader Board
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=allMonths}} class="selectable">
+    All Gigs
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=1}} class="selectable">
+    Jan
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=2}} class="selectable">
+    Feb
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=3}} class="selectable">
+    Mar
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=4}} class="selectable">
+    Apr
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=5}} class="selectable">
+    May
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=6}} class="selectable">
+    Jun
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=7}} class="selectable">
+    Jul
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=8}} class="selectable">
+    Aug
+  </LinkTo>
+  <LinkTo @route="index" @query={{hash month=9}} class="selectable">
+    Sep
+  </LinkTo>
 </div>

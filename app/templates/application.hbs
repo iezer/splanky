@@ -1,40 +1,52 @@
-<div class='index-container'>
-  <div class='index-container__header'>
-    {{#link-to 'index' class='selectable'}}
-      <h1><strong>Splanky</strong></h1>
-      <h2>A social graph of NYC jazz musicians.</h2>
-    {{/link-to}}
-
+<div class="index-container">
+  <div class="index-container__header">
+    <LinkTo @route="index" class="selectable">
+      <h1>
+        <strong>
+          Splanky
+        </strong>
+      </h1>
+      <h2>
+        A social graph of NYC jazz musicians.
+      </h2>
+    </LinkTo>
     {{#if showCTA}}
-      <div {{action (mut showCTA) false}} class='index-container__cta selectable'>
+      <div
+        class="index-container__cta selectable"
+        {{action (mut showCTA) false}}
+      >
         Click a dot or a musician's name to get started.
       </div>
     {{/if}}
-
     <div class="nav">
-      {{#power-select options=years
-         searchEnabled=false
-         selected=year
-         onchange=(action 'changeYear')
-         as |value|}}
+      <PowerSelect
+        @options={{years}}
+        @searchEnabled={{false}}
+        @selected={{year}}
+        @onchange={{action "changeYear"}} as |value|
+      >
         {{value}}
-      {{/power-select}}
-
-      {{#power-select options=months
-         searchEnabled=false
-         selected=selectedMonth
-         onchange=(action 'changeMonth')
-         as |value|}}
+      </PowerSelect>
+      <PowerSelect
+        @options={{months}}
+        @searchEnabled={{false}}
+        @selected={{selectedMonth}}
+        @onchange={{action "changeMonth"}} as |value|
+      >
         {{value.name}}
-      {{/power-select}}
-
-      {{link-to "Monthly graph" "index" class="selectable"}}
-      {{link-to "Leader board" "stats" class="selectable"}}
-      {{link-to "About" "about" class="selectable"}}
+      </PowerSelect>
+      <LinkTo @route="index" class="selectable">
+        Monthly graph
+      </LinkTo>
+      <LinkTo @route="stats" class="selectable">
+        Leader board
+      </LinkTo>
+      <LinkTo @route="about" class="selectable">
+        About
+      </LinkTo>
     </div>
   </div>
-
-  <div class='index-container__graph-viewport'>
+  <div class="index-container__graph-viewport">
     {{outlet}}
   </div>
 </div>

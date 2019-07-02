@@ -8,7 +8,7 @@ export default Helper.extend({
   instruments: service(),
 
   compute([instrument]) {
-    let service = this.get('instruments');
+    let service = this.instruments;
     let code = service.code(instrument);
     return color(code);
   }

@@ -1,7 +1,7 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import { inject as service } from '@ember/service';
-import {run} from '@ember/runloop';
+import { run } from '@ember/runloop';
 import RouterScroll from 'ember-router-scroll';
 
 const Router = EmberRouter.extend(RouterScroll, {
@@ -20,7 +20,7 @@ const Router = EmberRouter.extend(RouterScroll, {
       const page = document.location.pathname + document.location.search;
       const title = this.getWithDefault('currentRouteName', 'unknown');
 
-      this.get('metrics').trackPage({ page, title });
+      this.metrics.trackPage({ page, title });
     });
   }
 });

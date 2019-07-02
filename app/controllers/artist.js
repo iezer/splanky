@@ -11,12 +11,11 @@ export default Controller.extend({
   includeBandmates: true,
 
   events: computed('artist', 'artist.events.[]', 'includeBandmates', function() {
-    if (!this.get('includeBandmates')) {
+    if (!this.includeBandmates) {
       return this.get('artist.events');
     }
 
     let events = emberA();
-    let artist = this.get('artist');
     let artistEvents = this.get('artist.events');
 
     let bandMates = emberA();
@@ -32,7 +31,7 @@ export default Controller.extend({
   }),
 
   graph: computed('events.[]', function() {
-    let events = this.get('events');
+    let events = this.events;
     return createGraph(events);
   })
 });
