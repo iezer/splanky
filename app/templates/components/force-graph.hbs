@@ -1,36 +1,38 @@
-<svg width={{width}} height={{height}}>
-  <g class="force-graph__links">
-    {{#each graph.links as |link|}}
-      <line stroke-width={{link.sqrtValue}}></line>
-    {{/each}}
-
-    <g class="force-graph__nodes">
-      {{#each graph.nodes as |artist|}}
-        <IsSelected @current={{artist.id}} @selected={{selectedArtist.id}} as |isSelected|>
-          <g class="node" width="20" height="20"
-            {{action "selectArtist" (if isSelected null artist)}}>
-
-            {{#if isSelected}}
-              <text
-                dy={{if isSelected "-0.75em" "-0.25em"}}
-                dx={{if isSelected "12" "4"}}>
-                {{artist.text}}
-              </text>
-            {{/if}}
-
-            <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
-            </circle>
-          </g>
-        </IsSelected>
+<div class="force-graph" onmousemove={{action "mouseMove"}} ...attributes>
+  <svg width={{width}} height={{height}}>
+    <g class="force-graph__links">
+      {{#each graph.links as |link|}}
+        <line stroke-width={{link.sqrtValue}}></line>
       {{/each}}
-    </g>
-  </g>
-</svg>
 
-{{#if hoverArtist}}
-  <div class="force-graph__artist-hover">
-    <ArtistInfo @artist={{hoverArtist}} showClearButton={{false}}>
-      Click the dot to focus on the artist.
-    </ArtistInfo>
-  </div>
-{{/if}}
+      <g class="force-graph__nodes">
+        {{#each graph.nodes as |artist|}}
+          <IsSelected @current={{artist.id}} @selected={{selectedArtist.id}} as |isSelected|>
+            <g class="node" width="20" height="20"
+              {{action "selectArtist" (if isSelected null artist)}}>
+
+              {{#if isSelected}}
+                <text
+                  dy={{if isSelected "-0.75em" "-0.25em"}}
+                  dx={{if isSelected "12" "4"}}>
+                  {{artist.text}}
+                </text>
+              {{/if}}
+
+              <circle r={{if isSelected 15 5}} dd-artist={{artist.id}} fill={{d3-color artist.instrument}}>
+              </circle>
+            </g>
+          </IsSelected>
+        {{/each}}
+      </g>
+    </g>
+  </svg>
+
+  {{#if hoverArtist}}
+    <div class="force-graph__artist-hover">
+      <ArtistInfo @artist={{hoverArtist}} showClearButton={{false}}>
+        Click the dot to focus on the artist.
+      </ArtistInfo>
+    </div>
+  {{/if}}
+</div>

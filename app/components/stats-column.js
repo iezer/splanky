@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  classNames: [ 'stats__column', 'stats__scroll' ],
+  tagName: '',
 
   metrics: service(),
 

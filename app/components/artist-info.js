@@ -4,7 +4,7 @@ import { A as emberA } from '@ember/array';
 import moment from 'moment';
 
 export default Component.extend({
-  classNames: [ 'artist-info' ],
+  tagName: '',
   month: null,
   showClearButton: true,
   // could be zero

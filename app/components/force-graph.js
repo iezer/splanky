@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import { schedule } from '@ember/runloop';
 
 export default Component.extend({
-  classNames: [ 'force-graph' ],
+  tagName: '',
 
   graph: null,
   selectedArtist: null,
@@ -15,17 +15,7 @@ export default Component.extend({
   fastboot: service(),
 
   hoverArtist: null,
-  mouseMove(event) {
-    if(event.target.tagName === 'circle') {
-      let artistId = event.target.getAttribute('dd-artist');
-      if (artistId === this.get('hoverArtist.id')) { return; }
-      let artist = this.get('graph.nodes').findBy('id', artistId);
-      this.set('hoverArtist', artist);
-    } else {
-      this.set('hoverArtist', null);
-    }
-  },
-
+  
   didReceiveAttrs() {
     if (this.get('fastboot.isFastBoot')) { return; }
     schedule('afterRender', () => this.doGraph());
@@ -123,6 +113,17 @@ export default Component.extend({
         this.router.transitionTo('artist', value);
       } else {
         this.router.transitionTo('index');
+      }
+    },
+
+    mouseMove(event) {
+      if(event.target.tagName === 'circle') {
+        let artistId = event.target.getAttribute('dd-artist');
+        if (artistId === this.get('hoverArtist.id')) { return; }
+        let artist = this.get('graph.nodes').findBy('id', artistId);
+        this.set('hoverArtist', artist);
+      } else {
+        this.set('hoverArtist', null);
       }
     }
   }

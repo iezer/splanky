@@ -1,33 +1,35 @@
-<div class="artist-info__column_image">
-  <img src={{artist.image}} alt="Artist image">
-</div>
-<div class="artist-info__column">
-  <span class="artist-info__name">
-    {{artist.name}}
-  </span>
-  <span class="artist-info__instrument">
-    {{artist.instrument}}
-  </span>
-  <div class="artist-info__stat">
-    <span class="artist-info__number">
-      {{artist.bandMates.length}}
-    </span>
-    - Bandmates
+<div class="artist-info" ...attributes>
+  <div class="artist-info__column_image">
+    <img src={{artist.image}} alt="Artist image">
   </div>
-  <div class="artist-info__stat">
-    <span class="artist-info__number">
-      {{artist.events.length}}
-    </span>
-    - Gigs This Year
-  </div>
-  <span>
-    {{yield}}
-  </span>
-</div>
-{{#if showClearButton}}
   <div class="artist-info__column">
-    <LinkTo @route="index" class="artist-info__button selectable button">
-      Clear
-    </LinkTo>
+    <span class="artist-info__name">
+      {{artist.name}}
+    </span>
+    <span class="artist-info__instrument">
+      {{artist.instrument}}
+    </span>
+    <div class="artist-info__stat">
+      <span class="artist-info__number">
+        {{artist.bandMates.length}}
+      </span>
+      - Bandmates
+    </div>
+    <div class="artist-info__stat">
+      <span class="artist-info__number">
+        {{artist.events.length}}
+      </span>
+      - Gigs This Year
+    </div>
+    <span>
+      {{yield}}
+    </span>
   </div>
-{{/if}}
+  {{#if showClearButton}}
+    <div class="artist-info__column">
+      <LinkTo @route="index" class="artist-info__button selectable button">
+        Clear
+      </LinkTo>
+    </div>
+  {{/if}}
+</div>
