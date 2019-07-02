@@ -1,4 +1,4 @@
-<div class='stats'>
+<div class="stats">
   {{stats-column artists=model
     key="bandMates"
     title="Who's played with the most people?"
@@ -16,7 +16,7 @@
       {{#artist-info artist=selectedArtist
          clearArtist=(action (mut selectedArtist))}}
 
-        {{#link-to 'artist' selectedArtist.id}}
+        {{#link-to "artist" selectedArtist.id}}
           See {{selectedArtist.name}}'s graph
         {{/link-to}}
       {{/artist-info}}

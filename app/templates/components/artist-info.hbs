@@ -1,23 +1,23 @@
 <div class="artist-info__column_image">
-  <img src={{artist.image}}>
+  <img src={{artist.image}} alt="Artist image">
 </div>
 <div class="artist-info__column">
-  <span class='artist-info__name'>
+  <span class="artist-info__name">
     {{artist.name}}
   </span>
 
-  <span class='artist-info__instrument'>
+  <span class="artist-info__instrument">
     {{artist.instrument}}
   </span>
 
-  <div class='artist-info__stat'>
-    <span class='artist-info__number'>
+  <div class="artist-info__stat">
+    <span class="artist-info__number">
       {{artist.bandMates.length}}
     </span> - Bandmates
   </div>
 
-  <div class='artist-info__stat'>
-    <span class='artist-info__number'>
+  <div class="artist-info__stat">
+    <span class="artist-info__number">
       {{artist.events.length}}
     </span> - Gigs This Year
   </div>
@@ -28,6 +28,6 @@
 </div>
 {{#if showClearButton}}
   <div class="artist-info__column">
-    {{link-to 'Clear' 'index' class="artist-info__button selectable button"}}
+    {{link-to "Clear" "index" class="artist-info__button selectable button"}}
   </div>
 {{/if}}

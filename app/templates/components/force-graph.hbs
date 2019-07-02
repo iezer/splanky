@@ -1,14 +1,14 @@
-<svg width="{{width}}" height="{{height}}">
-  <g class='force-graph__links'>
+<svg width={{width}} height={{height}}>
+  <g class="force-graph__links">
     {{#each graph.links as |link|}}
       <line stroke-width={{link.sqrtValue}}></line>
     {{/each}}
 
-    <g class='force-graph__nodes'>
+    <g class="force-graph__nodes">
       {{#each graph.nodes as |artist|}}
         {{#is-selected current=artist.id selected=selectedArtist.id as |isSelected|}}
           <g class="node" width="20" height="20"
-            {{action 'selectArtist' (if isSelected null artist)}}>
+            {{action "selectArtist" (if isSelected null artist)}}>
 
             {{#if isSelected}}
               <text
@@ -28,7 +28,7 @@
 </svg>
 
 {{#if hoverArtist}}
-  <div class='force-graph__artist-hover'>
+  <div class="force-graph__artist-hover">
     {{#artist-info artist=hoverArtist showClearButton=false}}
       Click the dot to focus on the artist.
     {{/artist-info}}

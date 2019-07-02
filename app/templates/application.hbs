@@ -1,12 +1,12 @@
-<div class='index-container'>
-  <div class='index-container__header'>
-    {{#link-to 'index' class='selectable'}}
+<div class="index-container">
+  <div class="index-container__header">
+    {{#link-to "index" class="selectable"}}
       <h1><strong>Splanky</strong></h1>
       <h2>A social graph of NYC jazz musicians.</h2>
     {{/link-to}}
 
     {{#if showCTA}}
-      <div {{action (mut showCTA) false}} class='index-container__cta selectable'>
+      <div {{action (mut showCTA) false}} class="index-container__cta selectable">
         Click a dot or a musician's name to get started.
       </div>
     {{/if}}
@@ -15,7 +15,7 @@
       {{#power-select options=years
          searchEnabled=false
          selected=year
-         onchange=(action 'changeYear')
+         onchange=(action "changeYear")
          as |value|}}
         {{value}}
       {{/power-select}}
@@ -23,7 +23,7 @@
       {{#power-select options=months
          searchEnabled=false
          selected=selectedMonth
-         onchange=(action 'changeMonth')
+         onchange=(action "changeMonth")
          as |value|}}
         {{value.name}}
       {{/power-select}}
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class='index-container__graph-viewport'>
+  <div class="index-container__graph-viewport">
     {{outlet}}
   </div>
 </div>
