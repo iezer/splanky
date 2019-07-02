@@ -46,8 +46,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.APP.API_URL = 'http://localhost:4000';
-    // ENV.APP.API_URL = 'http://splanky.net';
+    // ENV.APP.API_URL = 'http://localhost:4000';
+    ENV.APP.API_URL = 'http://splanky.net';
     // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {
