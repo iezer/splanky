@@ -1,7 +1,11 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  fastboot: service(),
+  
   beforeModel() {
+    if (this.get('fastboot.isFastBoot')) { return; }
     let { month, year } = getCurrentMonth();
     this.replaceWith('graph', year, month);
   }
