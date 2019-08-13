@@ -1,0 +1,47 @@
+// TODO
+// fix wrapping of long lines
+// hover for artist to show clickable
+// highlighted color
+// color for date and instruments
+// disappearing message to tell user to click on artist
+// select all artists in graph
+// artist search tab (by name and instrument, only artists in actual events)
+// see if I can use data from recording paper
+
+$calendar-event-width: 212px;
+
+.calendar-event {
+  flex: auto;
+  width: $calendar-event-width;
+  max-width: $calendar-event-width;
+  padding: 10px;
+
+  .calendar-event__name {
+    font-weight: bold;
+  }
+
+  .calendar-event__date, .calendar-event__time {
+    color: $red-color;
+    text-align: left;
+  }
+
+  .calendar-event__artists {
+    margin-top: 10px;
+  }
+
+  .calendar-event__artist {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .calendar-event__artist_name {
+    max-width: 150px;
+  }
+
+  .calendar-event__instrument {
+    color: $red-color;
+    float: right;
+  }
+}

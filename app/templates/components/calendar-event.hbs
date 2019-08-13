@@ -1,0 +1,36 @@
+<div class="calendar-event" ...attributes>
+  <div class="calendar-event__time">
+    {{moment-format event.startTime "LT"}}
+    -
+    {{moment-format event.endTime "LT"}}
+  </div>
+
+  <div class="calendar-event__name">
+    {{event.title}}
+  </div>
+
+  <button {{action "toggleArtist"}}>
+    {{if this.showArtists "Hide" "Show"}} Artists
+  </button>
+
+  {{#if this.showArtists}}
+    <div class="calendar-event__artists">
+      {{#each event.artists as |artist|}}
+        <LinkTo
+          @route="artist"
+          @model={{artist.id}}
+          class="calendar-event__artist selectable"
+          @activeClass="selected"
+        >
+          <span class="calendar-event__artist_name">
+            {{artist.name}}
+          </span>
+          <span class="calendar-event__instrument">
+            {{artist.instrument}}
+          </span>
+          <span style="clear: both;"></span>
+        </LinkTo>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

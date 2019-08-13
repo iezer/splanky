@@ -8,6 +8,7 @@
 // Components
 @import './components/artist-info.scss';
 @import './components/event-info.scss';
+@import './components/calendar-event.scss';
 @import './components/force-graph.scss';
 
 // Partials
@@ -69,3 +70,7 @@ strong {
 
 @import "ember-power-select";
 @import "ember-power-calendar";
+
+.ember-power-calendar-day {
+  border: 1px solid;
+}

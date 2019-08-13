@@ -8,7 +8,7 @@
 <div class="index-container__column">
   <div class="index-container__column-header">
     <h2>
-      Artists & shows
+      Artists & shows for August {{! TODO make dynamic}}
     </h2>
   </div>
   <div class="index-container__events">
@@ -19,7 +19,7 @@
             {{day.number}}
 
             {{#each eventsForDay as |event|}}
-              <EventInfo
+              <CalendarEvent
                 @event={{event}}
                 @selectArtist={{action (mut selectedArtist)}}
                 @selectedArtist={{selectedArtist}}
