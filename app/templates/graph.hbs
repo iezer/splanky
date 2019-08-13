@@ -12,12 +12,23 @@
     </h2>
   </div>
   <div class="index-container__events">
-    {{#each sortedEvents as |event|}}
-      <EventInfo
-        @event={{event}}
-        @selectArtist={{action (mut selectedArtist)}}
-        @selectedArtist={{selectedArtist}}
-      />
-    {{/each}}
+    <PowerCalendar @center={{this.center}} as |calendar|>
+      <calendar.Days as |day|>
+        {{#if day.isCurrentMonth}}
+          {{#with (get eventsByDay day.number) as |eventsForDay|}}
+            {{day.number}}
+
+            {{#each eventsForDay as |event|}}
+              <EventInfo
+                @event={{event}}
+                @selectArtist={{action (mut selectedArtist)}}
+                @selectedArtist={{selectedArtist}}
+                @hideDate={{false}}
+              />
+            {{/each}}
+          {{/with}}
+        {{/if}}
+      </calendar.Days>
+    </PowerCalendar>
   </div>
 </div>
