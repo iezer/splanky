@@ -2,7 +2,7 @@
 import Component from '@ember/component';
 import d3 from 'd3';
 import { inject as service } from '@ember/service';
-import { schedule } from '@ember/runloop';
+import { debounce, schedule } from '@ember/runloop';
 
 export default Component.extend({
   tagName: '',
@@ -15,10 +15,32 @@ export default Component.extend({
   fastboot: service(),
 
   hoverArtist: null,
-  
+
   didReceiveAttrs() {
+    this._super(...arguments);
     if (this.get('fastboot.isFastBoot')) { return; }
-    schedule('afterRender', () => this.doGraph());
+    schedule('afterRender', this, 'doGraph');
+    this._resizeHandler = this.handleResize.bind(this);
+    window.addEventListener('resize', this._resizeHandler);
+  },
+
+  willDestroyElement() {
+    window.removeEventListener('resize', this._resizeHandler);
+    this._super(...arguments);
+  },
+
+  handleResize() {
+    debounce(this, 'resizeGraph', 1000);
+  },
+
+  resizeGraph() {
+    schedule('afterRender', () => {
+      this.graph.nodes.forEach(node => {
+        node.x = node.y = 0;
+      });
+
+      this.doGraph();
+    });
   },
 
   doGraph() {
@@ -26,7 +48,6 @@ export default Component.extend({
     let width = parent.offsetWidth;
     let height = parent.offsetHeight;
     this.setProperties({ height, width });
-
 
     // let svg = d3.select("svg");
 
