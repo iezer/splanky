@@ -47,6 +47,8 @@ a {
 .button {
   padding: 0 2px;
   border: 1px solid $grey-color;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 strong {
@@ -69,8 +71,3 @@ strong {
 }
 
 @import "ember-power-select";
-@import "ember-power-calendar";
-
-.ember-power-calendar-day {
-  border: 1px solid;
-}

@@ -1,4 +1,4 @@
-<div class="force-graph" onmousemove={{action "mouseMove"}} ...attributes>
+<div class="force-graph" {{on "mousemove" (action "mouseMove")}} ...attributes>
   <svg width={{width}} height={{height}}>
     <g class="force-graph__links">
       {{#each graph.links as |link|}}
@@ -28,11 +28,10 @@
     </g>
   </svg>
 
-  {{#if hoverArtist}}
-    <div class="force-graph__artist-hover">
-      <ArtistInfo @artist={{hoverArtist}} showClearButton={{false}}>
-        Click the dot to focus on the artist.
-      </ArtistInfo>
-    </div>
-  {{/if}}
+  <div class="force-graph__artist-hover {{this.hoverClass}} {{if hoverArtist "is-visible"}}">
+    <ArtistInfo @artist={{hoverArtist}} @showClearButton={{false}}>
+      Click the dot to focus on the artist.
+    </ArtistInfo>
+  </div>
+
 </div>

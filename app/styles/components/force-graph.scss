@@ -1,15 +1,66 @@
+$mobile-width: 568px;
+
 .force-graph {
   position: relative;
 
+  &::after {
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    opacity: 0.4;
+    background-size: cover;
+
+    z-index: -1;
+
+    // image source: https://www.flickr.com/photos/8786051@N03/35311626170
+    background: url('/assets/images/abe-burton-smalls-large.jpg') no-repeat center center fixed;
+
+    @media (max-width: $mobile-width) {
+      background: url('/assets/images/abe-burton-smalls-medium.jpg') no-repeat center center fixed;
+    }
+  }
+
   .force-graph__artist-hover {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(113,255,201,0.65); // aquamarine
+    border-radius: 5px;
+    box-shadow: 3px 2px 4px grey;
+
+    opacity: 0;
+
+    &.is-visible {
+      -webkit-transition: opacity 0.4s ease-in;
+      -moz-transition: opacity 0.4s ease-in;
+      -o-transition: opacity 0.4s ease-in;
+      opacity: 1;
+    }
+
+    &.bottom-right {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    &.top-right {
+      top: 20px;
+      right: 20px
+    }
+
+    &.bottom-left {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    &.top-left {
+      top: 20px;
+      left: 20px;
+    }
   }
 
   .force-graph__links line {
-    stroke: #999;
+    stroke: $red-color;
     stroke-opacity: 0.6;
   }
 

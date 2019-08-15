@@ -1,0 +1,25 @@
+{{#if this.isVisible}}
+  <h2>
+    Artists & shows for {{moment-format firstEvent.startTime "MMMM"}}
+  </h2>
+
+  <div class="index-container__events">
+    {{#each-in eventsByDay as |day events|}}
+
+      <div class="index-container__day">
+        <div class="event-list__date">
+          {{moment-format events.startTime "dddd M/D/YYYY"}}
+        </div>
+
+        {{#each events.events as |event|}}
+          <CalendarEvent
+            @event={{event}}
+            @selectArtist={{action (mut selectedArtist)}}
+            @selectedArtist={{selectedArtist}}
+            @hideDate={{false}}
+          />
+        {{/each}}
+      </div>
+    {{/each-in}}
+  </div>
+{{/if}}

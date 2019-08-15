@@ -1,6 +1,9 @@
 .artist-info {
   width: 100%;
   padding: 10px;
+  background-color: rgba(113,255,201,0.65); // aquamarine
+  border-radius: 5px;
+  box-shadow: 3px 2px 4px grey;
 
   .artist-info__number {
     color: $red-color;

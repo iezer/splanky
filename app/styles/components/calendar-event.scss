@@ -11,10 +11,10 @@
 $calendar-event-width: 212px;
 
 .calendar-event {
-  flex: auto;
   width: $calendar-event-width;
   max-width: $calendar-event-width;
   padding: 10px;
+  position: relative;
 
   .calendar-event__name {
     font-weight: bold;
@@ -26,7 +26,28 @@ $calendar-event-width: 212px;
   }
 
   .calendar-event__artists {
+    background-color: aquamarine;
+    position: absolute;
     margin-top: 10px;
+    z-index: 2;
+    width: 100%;
+    padding: 10px;
+
+    background-color: rgb(113,255,201); // aquamarine
+    border-radius: 5px;
+    box-shadow: 3px 2px 4px grey;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &.is-visible {
+      visibility: visible;
+      -webkit-transition: visibility 0s, opacity 0.4s ease-in;
+      -moz-transition: visibility 0s, opacity 0.4s ease-in;
+      -o-transition: visibility 0s, opacity 0.4s ease-in;
+      opacity: 1;
+    }
+
   }
 
   .calendar-event__artist {
@@ -43,5 +64,10 @@ $calendar-event-width: 212px;
   .calendar-event__instrument {
     color: $red-color;
     float: right;
+  }
+
+  .calendar-event__button-caret {
+    color: $grey-color;
+    font-size: 10px;
   }
 }

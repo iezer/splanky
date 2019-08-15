@@ -30,7 +30,7 @@ export default Component.extend({
   },
 
   handleResize() {
-    debounce(this, 'resizeGraph', 1000);
+    debounce(this, 'resizeGraph', 500);
   },
 
   resizeGraph() {
@@ -139,12 +139,35 @@ export default Component.extend({
 
     mouseMove(event) {
       if(event.target.tagName === 'circle') {
+        console.log(`x ${event.clientX} y ${event.clientY} size ${this.width} ${this.height}`);
+
+        let isRight = event.clientX > (this.width / 2);
+        let isTop = event.clientY < (this.height /2);
+        let { hasFocusedArtist } = this;
+        if (isRight && isTop) { // top-right
+          this.set('hoverClass', 'bottom-right');
+        } else if (isTop) { // top-left
+          this.set('hoverClass', 'bottom-left');
+        } else if (isRight) { // bottom-right
+          this.set('hoverClass', 'top-right');
+        } else { // bottom-left
+          if (hasFocusedArtist) {
+            this.set('hoverClass', 'bottom-right');
+          } else {
+            this.set('hoverClass', 'top-left');
+          }
+        }
+
         let artistId = event.target.getAttribute('dd-artist');
         if (artistId === this.get('hoverArtist.id')) { return; }
         let artist = this.get('graph.nodes').findBy('id', artistId);
+
         this.set('hoverArtist', artist);
       } else {
-        this.set('hoverArtist', null);
+        this.setProperties({
+          hoverArtist: null,
+          hoverClass: ''
+        });
       }
     }
   }

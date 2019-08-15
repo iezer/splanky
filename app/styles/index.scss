@@ -35,19 +35,37 @@ $margin: 10px;
   .index-container__column-header {
     width: 100%;
     text-align: center;
-    margin: 20px;
+    margin: 20px 0;
   }
 
   .index-container__events {
     display: flex;
     flex-flow: wrap;
     justify-content: flex-start;
+    margin-top: 20px;
+  }
+
+  .index-container__day {
+    flex: auto;
+    max-width: 250px;
+
+    border: 1px solid $grey-color;
+    margin-top: -1px;
+    margin-left: -1px;
+    padding: 8px;
   }
 
   .index-container__artist-info {
     position: absolute;
     top: 100px;
-    left: 10px;
-    background-color: rgba(0,0,0,0.15);
+    left: 30px;
+    background-color: rgba(113,255,201,0.65); // aquamarine
+    border-radius: 5px;
+    box-shadow: 3px 2px 4px grey;
+
+  }
+
+  .event-list__date {
+    text-align: left;
   }
 }
