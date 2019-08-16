@@ -97,3 +97,12 @@ h1 {
   display: inline-block;
   margin-left: 10px;
 }
+
+.loading-spinner {
+  text-align: center;
+
+  svg {
+    stroke: $green-color;
+    fill: $green-color;
+  }
+}
