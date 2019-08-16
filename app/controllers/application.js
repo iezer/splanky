@@ -36,8 +36,12 @@ export default Controller.extend({
     }
     return results;
   }),
-  
+
   months: MONTHS,
+
+  isGraphRoute: computed('router.currentRouteName', function() {
+    return this.router.currentRouteName.includes('graph');
+  }),
 
   selectedMonth: computed('month', 'months', function() {
     let months = this.months;

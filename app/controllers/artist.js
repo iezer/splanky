@@ -5,6 +5,7 @@ import createGraph from 'cats-client/utils/create-graph';
 import { A as emberA } from '@ember/array';
 
 export default Controller.extend({
+  queryParams: ['includeBandmates'],
   sortDef: Object.freeze(['startTime:desc']),
   artist: alias('model'),
   sortedEvents: sort('events', 'sortDef'),
@@ -33,5 +34,11 @@ export default Controller.extend({
   graph: computed('events.[]', function() {
     let events = this.events;
     return createGraph(events);
-  })
+  }),
+
+  actions: {
+    doTransition() {
+      this.transitionToRoute(...arguments);
+    }
+  }
 });

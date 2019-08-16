@@ -11,5 +11,11 @@ export default Controller.extend({
     let graph = createGraph(events);
 
     return graph;
-  })
+  }),
+
+  actions: {
+    doTransition() {
+      this.transitionToRoute(...arguments);
+    }
+  }
 });

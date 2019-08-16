@@ -147,10 +147,11 @@ export default Component.extend({
         label: 'force-graph'
       });
 
+      let doTransition = this.doTransition || this.router.transitionTo.bind(this.router);
       if (artist) {
-        this.router.transitionTo('artist', value);
+        doTransition('artist', value);
       } else {
-        this.router.transitionTo('index');
+        doTransition('index');
       }
     },
 
@@ -175,7 +176,7 @@ export default Component.extend({
 
         let artistId = event.target.getAttribute('dd-artist');
         if (artistId === this.get('selectedArtist.id')) { return; }
-        if (artistId === this.get('hoverArtist.id')) { return; } // TODO not sure what this does
+        if (artistId === this.get('hoverArtist.id')) { return; }
         let artist = this.get('graph.nodes').findBy('id', artistId);
 
         this.set('hoverArtist', artist);

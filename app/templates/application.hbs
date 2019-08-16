@@ -1,6 +1,6 @@
 <div class="index-container">
   <div class="index-container__header">
-    <LinkTo @route="index" class="selectable">
+    <LinkTo @route="index" class="selectable" @activeClass="">
       <h1 class="index__title">
         Splanky
       </h1>
@@ -35,7 +35,7 @@
       >
         {{value.name}}
       </PowerSelect>
-      <LinkTo @route="index" class="selectable">
+      <LinkTo @route="index" class="selectable {{if this.isGraphRoute "active"}}">
         Monthly graph
       </LinkTo>
       <LinkTo @route="stats" class="selectable">

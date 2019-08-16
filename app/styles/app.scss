@@ -44,7 +44,7 @@ a {
   }
 
   &.selected, &.active {
-    background-color: $darker-grey-color;
+    border-bottom: 1px solid black;
   }
 }
 
