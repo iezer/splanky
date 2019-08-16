@@ -156,8 +156,6 @@ export default Component.extend({
 
     mouseMove(event) {
       if(event.target.tagName === 'circle' || event.target.tagName === 'text') {
-        console.log(`x ${event.clientX} y ${event.clientY} size ${this.width} ${this.height}`);
-
         let isRight = event.clientX > (this.width / 2);
         let isTop = event.clientY < (this.height /2);
         let { hasFocusedArtist } = this;
