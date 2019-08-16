@@ -1,3 +1,5 @@
+@import "ember-power-select";
+
 @import './colors.scss';
 
 // Route Templates
@@ -34,9 +36,11 @@ a {
 
 .selectable {
   cursor: pointer;
+  border-bottom: 1px solid transparent;
 
   &:hover {
-    background-color: $dark-grey-color;
+    border-bottom: 1px solid black;
+    transition: border-bottom-color .4s;
   }
 
   &.selected, &.active {
@@ -51,11 +55,6 @@ a {
   border-radius: 3px;
 }
 
-strong {
-  font-weight: bold;
-  color: $red-color;
-}
-
 .red-text {
   color: $red-color;
 }
@@ -64,10 +63,37 @@ strong {
   display: inline-block;
   min-width: 45px;
   margin-right: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-weight: bold;
+  top: 8px;
+
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+
+  &:hover {
+    border-bottom: 1px solid black;
+    transition: border-bottom-color .4s;
+  }
 }
 
 .ember-power-select-options[role=listbox] {
   max-height: none !important;
 }
 
-@import "ember-power-select";
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  color: $red-color;
+}
+
+.index__title {
+  display: inline-block;
+}
+
+.index__subtitle {
+  font-size: 15px;
+  display: inline-block;
+  margin-left: 20px;
+}

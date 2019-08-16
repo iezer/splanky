@@ -1,15 +1,15 @@
 <div class="index-container">
   <div class="index-container__header">
     <LinkTo @route="index" class="selectable">
-      <h1>
-        <strong>
+      <h1 class="index__title">
           Splanky
-        </strong>
       </h1>
-      <h2>
-        A social graph of NYC jazz musicians.
-      </h2>
     </LinkTo>
+
+    <h2 class="index__subtitle">
+      a social graph of NYC jazz musicians.
+    </h2>
+
     {{#if showCTA}}
       <div
         class="index-container__cta selectable"

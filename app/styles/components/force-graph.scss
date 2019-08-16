@@ -61,8 +61,7 @@ $mobile-width: 568px;
   }
 
   .force-graph__links line {
-    stroke: $red-color;
-    stroke-opacity: 0.6;
+    stroke: $black;
   }
 
   .force-graph__nodes circle {
