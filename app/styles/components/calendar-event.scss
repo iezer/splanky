@@ -26,14 +26,13 @@ $calendar-event-width: 212px;
   }
 
   .calendar-event__artists {
-    background-color: aquamarine;
     position: absolute;
     margin-top: 10px;
     z-index: 2;
     width: 100%;
     padding: 10px;
 
-    background-color: rgb(113,255,201); // aquamarine
+    background-color: $green-color;
     border-radius: 5px;
     box-shadow: 3px 2px 4px grey;
 
