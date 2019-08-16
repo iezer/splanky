@@ -55,14 +55,14 @@ export default Component.extend({
 
     // let svg = d3.select("svg");
 
-    let strength = this.selectedArtist ? -40 : -13;
+    let strength = this.selectedArtist ? -40 : -20;
     var simulation = d3.forceSimulation()
           .force("link", d3.forceLink().id(function(d) { return d.id; }))
           .force("charge", d3.forceManyBody().strength(function() { return strength; }))
           .force("center", d3.forceCenter(width / 2, height / 2))
 //          .alphaDecay(0.04)
-          .velocityDecay(0.5);
-    window.simulation = simulation;
+          .velocityDecay(0.45);
+
     let graph = this.graph;
 
     var link = d3.select("svg g.force-graph__links")
@@ -155,7 +155,7 @@ export default Component.extend({
     },
 
     mouseMove(event) {
-      if(event.target.tagName === 'circle') {
+      if(event.target.tagName === 'circle' || event.target.tagName === 'text') {
         console.log(`x ${event.clientX} y ${event.clientY} size ${this.width} ${this.height}`);
 
         let isRight = event.clientX > (this.width / 2);
@@ -176,7 +176,8 @@ export default Component.extend({
         }
 
         let artistId = event.target.getAttribute('dd-artist');
-        if (artistId === this.get('hoverArtist.id')) { return; }
+        if (artistId === this.get('selectedArtist.id')) { return; }
+        if (artistId === this.get('hoverArtist.id')) { return; } // TODO not sure what this does
         let artist = this.get('graph.nodes').findBy('id', artistId);
 
         this.set('hoverArtist', artist);

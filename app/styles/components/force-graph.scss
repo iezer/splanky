@@ -36,7 +36,7 @@ $mobile-width: 568px;
       -webkit-transition: opacity 0.4s ease-in;
       -moz-transition: opacity 0.4s ease-in;
       -o-transition: opacity 0.4s ease-in;
-      opacity: .75;
+      opacity: .85;
     }
 
     &.bottom-right {
@@ -64,13 +64,27 @@ $mobile-width: 568px;
     stroke: $black;
   }
 
-  .force-graph__nodes circle {
-    stroke: #fff;
-    stroke-width: 1.5px;
+  .force-graph__nodes {
     cursor: pointer;
-  }
 
-  .force-graph__nodes text {
-    font-weight: bold;
+    circle {
+      fill: white;
+      stroke: black;
+      stroke-width: 1.5px;
+    }
+
+    text {
+    font-size: 10px;
+    }
+
+    .selected {
+      circle {
+        fill: $green-color;
+      }
+
+      text {
+        font-size: 25px;
+      }
+    }
   }
 }

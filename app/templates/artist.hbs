@@ -2,8 +2,7 @@
   <div class="index-container__column">
     <ForceGraph
       @graph={{graph}}
-      @selectArtist={{action (mut selectedArtist)}}
-      @selectedArtist={{selectedArtist}}
+      @selectedArtist={{artist}}
       @hasFocusedArtist={{true}}
       @backgroundImage={{artist.image}}
     />
