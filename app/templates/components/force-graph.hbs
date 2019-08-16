@@ -1,4 +1,6 @@
 <div class="force-graph" {{on "mousemove" (action "mouseMove")}} ...attributes>
+  <div class="force-graph__background" style={{this.style}}>
+  </div>
   <svg width={{width}} height={{height}}>
     <g class="force-graph__links">
       {{#each graph.links as |link|}}

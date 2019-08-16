@@ -3,6 +3,7 @@ import Component from '@ember/component';
 import d3 from 'd3';
 import { inject as service } from '@ember/service';
 import { debounce, schedule } from '@ember/runloop';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: '',
@@ -35,6 +36,9 @@ export default Component.extend({
 
   resizeGraph() {
     schedule('afterRender', () => {
+      if (this.isDestroyed) {
+        return;
+      }
       this.graph.nodes.forEach(node => {
         node.x = node.y = 0;
       });
@@ -119,6 +123,19 @@ export default Component.extend({
       // d.fy = null;
     }
   },
+
+  style: computed('backgroundImage', function() {
+    let { backgroundImage } = this;
+    if (!backgroundImage) {
+      return '';
+    }
+
+    if (backgroundImage.includes('no-artist-photo')) {
+      return '';
+    }
+
+    return `background: url(${backgroundImage}) repeat center center fixed;`;
+  }),
 
   actions: {
     selectArtist(artist) {

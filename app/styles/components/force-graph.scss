@@ -3,7 +3,8 @@ $mobile-width: 568px;
 .force-graph {
   position: relative;
 
-  &::after {
+
+  .force-graph__background {
     content: '';
     top: 0;
     bottom: 0;
