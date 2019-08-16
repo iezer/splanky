@@ -32,7 +32,8 @@ $calendar-event-width: 212px;
     width: 100%;
     padding: 10px;
 
-    background-color: $green-color;
+    background-color: $black;
+    color: $white;
     border-radius: 5px;
     box-shadow: 3px 2px 4px grey;
 
@@ -54,14 +55,19 @@ $calendar-event-width: 212px;
     overflow: hidden;
     width: 100%;
     cursor: pointer;
+
+    &:hover {
+      border-color: $white;
+    }
   }
 
   .calendar-event__artist_name {
+    color: $white;
     max-width: 150px;
   }
 
   .calendar-event__instrument {
-    color: $red-color;
+    color: $green-color;
     float: right;
   }
 

@@ -1,12 +1,12 @@
 .artist-info {
   width: 100%;
   padding: 10px;
-  background-color: $green-background;
+  background-color: $black;
   border-radius: 5px;
   box-shadow: 3px 2px 4px grey;
-
+  color: $white;
   .artist-info__number {
-    color: $red-color;
+    color: $green-color;
   }
 
   .artist-info__column_image {
@@ -32,10 +32,18 @@
 
   .artist-info__instrument {
     margin-left: 10px;
-    color: $red-color;
+    color: $green-color;
   }
 
   .artist-info__button {
     margin-left: 10px;
+  }
+
+  a {
+    color: $white;
+
+    &:hover {
+      border-bottom: 1px solid $white;
+    }
   }
 }
