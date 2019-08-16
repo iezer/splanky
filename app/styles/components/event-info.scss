@@ -39,6 +39,10 @@ $event-info-width: 212px;
     &.selected {
       background-color: $darker-grey-color;
       border-bottom: none;
+
+      .event-info__instrument {
+        color: $dark-green;
+      }
     }
   }
 
