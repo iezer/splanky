@@ -35,6 +35,11 @@ $event-info-width: 212px;
     overflow: hidden;
     width: 100%;
     cursor: pointer;
+
+    &.selected {
+      background-color: $darker-grey-color;
+      border-bottom: none;
+    }
   }
 
   .event-info__artist_name {

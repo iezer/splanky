@@ -9,7 +9,7 @@ export default Controller.extend({
   sortDef: Object.freeze(['startTime:desc']),
   artist: alias('model'),
   sortedEvents: sort('events', 'sortDef'),
-  includeBandmates: true,
+  includeBandmates: false,
 
   events: computed('artist', 'artist.events.[]', 'includeBandmates', function() {
     if (!this.includeBandmates) {
