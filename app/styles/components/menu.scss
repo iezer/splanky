@@ -16,7 +16,7 @@
   }
 }
 
-@media (max-width: $mobile-width) {
+@media (max-width: $vertical-ipad) {
 
   #menuToggle
   {
@@ -116,7 +116,8 @@
   #menu
   {
     position: absolute;
-    width: 300px;
+    visibility: hidden;
+    width: 0;
     margin: -100px 0 0 -200px;
     padding: 50px;
     padding-top: 125px;
@@ -143,5 +144,7 @@
   #menuToggle input:checked ~ #menu
   {
     transform: none;
+    width: 300px;
+    visibility: visible;
   }
 }
