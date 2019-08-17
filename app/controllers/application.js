@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { schedule } from '@ember/runloop';
 
 const MONTHS = [
   { name: 'Jan' , value: 1},
@@ -49,14 +50,30 @@ export default Controller.extend({
     return months.findBy('value', month);
   }),
 
+  closeMenu() {
+    schedule('afterRender', function() {
+      let checkbox = document.querySelector('#menuToggle input[type=checkbox]');
+      checkbox.checked = false;
+    });
+  },
+
   actions: {
     changeMonth({ value: month }) {
       let year = this.year;
       this.router.transitionTo('graph', year, month);
+      this.closeMenu();
     },
+
     changeYear(year) {
       let month = this.month;
       this.router.transitionTo('graph', year, month);
+      this.closeMenu();
+    },
+
+    navClick(event) {
+      if (['A', 'a'].includes(event.target.tagName)) {
+        this.closeMenu();
+      }
     }
   }
 });

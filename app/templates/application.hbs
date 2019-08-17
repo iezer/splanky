@@ -29,7 +29,7 @@
         <span class="menu-hamburger"></span>
         <span class="menu-hamburger"></span>
 
-        <div id="menu">
+        <div id="menu" {{on "click" (action "navClick")}}>
           <div class="nav-item">
             <PowerSelect
               @options={{years}}
