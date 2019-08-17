@@ -2,6 +2,7 @@
   display: flex;
   padding: 10px;
   height: 100vh;
+  overflow-y: scroll;
 
   .stats__title {
     font-weight: bold;
@@ -19,5 +20,16 @@
     padding: 10px;
     width: 100%;
     cursor: pointer;
+  }
+
+  .stats__artist {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+
+    @media (max-width: $mobile-width) {
+      top: 50px;
+      right: 10px;
+    }
   }
 }

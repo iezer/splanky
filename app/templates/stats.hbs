@@ -13,8 +13,9 @@
     @selectedArtist={{selectedArtist}}
     @selectArtist={{action (mut selectedArtist)}}
   />
-  <div class="stats__column">
-    {{#if selectedArtist}}
+
+  {{#if selectedArtist}}
+    <div class="stats__artist">
       <ArtistInfo
         @artist={{selectedArtist}}
         @clearArtist={{action (mut selectedArtist)}}
@@ -25,6 +26,6 @@
           's graph
         </LinkTo>
       </ArtistInfo>
+    </div>
     {{/if}}
-  </div>
 </div>
