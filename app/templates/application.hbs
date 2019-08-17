@@ -10,14 +10,6 @@
       a social graph of NYC jazz musicians.
     </h2>
 
-    {{#if showCTA}}
-      <div
-        class="index-container__cta selectable"
-        {{action (mut showCTA) false}}
-      >
-        Click a dot or a musician's name to get started.
-      </div>
-    {{/if}}
     <div class="nav">
       <PowerSelect
         @options={{years}}

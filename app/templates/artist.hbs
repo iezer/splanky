@@ -1,5 +1,9 @@
+<h3 class="graph-intro-text {{unless this.hideInfoText "visible"}}">
+  Here is everyone who {{artist.name}} has played with at Smalls Jazz Club. Click on other musicians to explore their graph, or press <strong>Clear</strong> to return to the monthly graph.
+</h3>
+
 {{#if sortedEvents.length}}
-  <div class="index-container__column">
+  <div class="index-container__column" {{on "click" (action (mut this.hideInfoText) true)}}>
     <ForceGraph
       @graph={{graph}}
       @selectedArtist={{artist}}
@@ -11,7 +15,7 @@
   <div class="index-container__column">
     <div class="index-container__column-header">
       <h2>
-        The artist & their shows
+        Shows featuring {{artist.name}}
       </h2>
     </div>
     <div class="index-container__events">

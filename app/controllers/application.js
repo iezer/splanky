@@ -49,19 +49,6 @@ export default Controller.extend({
     return months.findBy('value', month);
   }),
 
-  showCTA: computed({
-    get() {
-      if (this.get('fastboot.isFastBoot')) {
-        return;
-      }
-      return !localStorage.getItem('seenCTA-2');
-    },
-    set(key, value) {
-      localStorage.setItem('seenCTA-2', !value);
-      return value;
-    }
-  }),
-
   actions: {
     changeMonth({ value: month }) {
       let year = this.year;

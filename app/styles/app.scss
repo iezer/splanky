@@ -1,6 +1,7 @@
 @import "ember-power-select";
 
 @import './colors.scss';
+$mobile-width: 568px;
 
 // Route Templates
 @import './about.scss';
@@ -104,5 +105,18 @@ h1 {
   svg {
     stroke: $green-color;
     fill: $green-color;
+  }
+}
+
+.graph-intro-text {
+  margin: 0 0 10px;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 1s ease;
+  font-size: 14px;
+  // text-align: center;
+
+  &.visible {
+    max-height: 100px;
   }
 }

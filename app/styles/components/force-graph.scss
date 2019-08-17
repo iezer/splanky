@@ -1,8 +1,6 @@
-$mobile-width: 568px;
-
 .force-graph {
   position: relative;
-
+  border: 1px solid $grey-color;
 
   .force-graph__background {
     content: '';

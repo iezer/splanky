@@ -1,4 +1,8 @@
-<div class="index-container__column">
+<h3 class="graph-intro-text {{unless this.hideInfoText "visible"}}">
+  See who's playing at Smalls Jazz Club this month and who they're connected with. Click an icon to see who each musician has played with this year.
+</h3>
+
+<div class="index-container__column" {{on "click" (action (mut this.hideInfoText) true)}}>
   <ForceGraph
     @graph={{graph}}
     @selectArtist={{action (mut selectedArtist)}}
