@@ -10,39 +10,60 @@
       a social graph of NYC jazz musicians.
     </h2>
 
-    <div class="nav">
-      <div class="nav-item">
-        <PowerSelect
-          @options={{years}}
-          @searchEnabled={{false}}
-          @selected={{year}}
-          @onchange={{action "changeYear"}} as |value|
-        >
-          {{value}}
-        </PowerSelect>
-      </div>
+    <nav class="nav" role="navigation">
 
-      <div class="nav-item">
-        <PowerSelect
-          @options={{months}}
-          @searchEnabled={{false}}
-          @selected={{selectedMonth}}
-          @onchange={{action "changeMonth"}} as |value|
-        >
-          {{value.name}}
-        </PowerSelect>
-      </div>
+      <div id="menuToggle">
+        <!--
+             A fake / hidden checkbox is used as click reciever,
+             so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
 
-      <LinkTo @route="index" class="selectable nav-item {{if this.isGraphRoute "active"}}">
-        Monthly graph
-      </LinkTo>
-      <LinkTo @route="stats" class="selectable nav-item">
-        Most popular
-      </LinkTo>
-      <LinkTo @route="about" class="selectable nav-item">
-        About
-      </LinkTo>
-    </div>
+        <!--
+             Some spans to act as a hamburger.
+
+             They are acting like a real hamburger,
+             not that McDonalds stuff.
+        -->
+        <span class="menu-hamburger"></span>
+        <span class="menu-hamburger"></span>
+        <span class="menu-hamburger"></span>
+
+        <div id="menu">
+          <div class="nav-item">
+            <PowerSelect
+              @options={{years}}
+              @searchEnabled={{false}}
+              @selected={{year}}
+              @onchange={{action "changeYear"}} as |value|
+            >
+              {{value}}
+            </PowerSelect>
+          </div>
+
+          <div class="nav-item">
+            <PowerSelect
+              @options={{months}}
+              @searchEnabled={{false}}
+              @selected={{selectedMonth}}
+              @onchange={{action "changeMonth"}} as |value|
+            >
+              {{value.name}}
+            </PowerSelect>
+          </div>
+
+          <LinkTo @route="index" class="selectable nav-item {{if this.isGraphRoute "active"}}">
+            Monthly graph
+          </LinkTo>
+          <LinkTo @route="stats" class="selectable nav-item">
+            Most popular
+          </LinkTo>
+          <LinkTo @route="about" class="selectable nav-item">
+            About
+          </LinkTo>
+        </div>
+      </div>
+    </nav>
   </div>
   <div class="index-container__graph-viewport">
     {{outlet}}

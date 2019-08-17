@@ -19,4 +19,15 @@
     display: inline-block;
     margin-right: 10px;
   }
+
+  // relates to menu.scss
+  @media (max-width: $mobile-width) {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .nav-item {
+      display: block;
+    }
+  }
 }
