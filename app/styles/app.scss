@@ -2,6 +2,7 @@
 
 @import './colors.scss';
 $mobile-width: 568px;
+$vertical-ipad: 768px;
 
 // Route Templates
 @import './about.scss';
@@ -108,7 +109,7 @@ h1 {
 }
 
 .graph-intro-text {
-  margin: 0 0 10px;
+  margin: 10px 0 10px;
   max-height: 0;
   overflow-y: hidden;
   transition: max-height 1s ease;

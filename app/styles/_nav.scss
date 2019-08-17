@@ -8,6 +8,10 @@
     font-weight: bold;
   }
 
+  @media (max-width: $vertical-ipad) {
+    float: none;
+  }
+
   .ember-power-select-trigger {
     min-width: 56px;
   }

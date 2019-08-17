@@ -18,7 +18,7 @@
     background: url('/assets/images/abe-burton-smalls-large.jpg') no-repeat center center fixed;
 
     @media (max-width: $mobile-width) {
-      background: url('/assets/images/abe-burton-smalls-medium.jpg') no-repeat center center fixed;
+      background: url('/assets/images/abe-burton-smalls-medium.jpg') repeat center center fixed;
     }
   }
 

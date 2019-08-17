@@ -10,5 +10,11 @@ export default Route.extend({
     ].join(',');
 
     return this.store.findRecord('artist', id, { include });
+  },
+
+  actions: {
+    willTransition() {
+      this.controller.set('hideInfoText', true);
+    }
   }
 });

@@ -19,5 +19,11 @@ export default Route.extend({
     this._super(...arguments);
     let { year, month } = this;
     this.controllerFor('application').setProperties({year, month});
+  },
+
+  actions: {
+    willTransition() {
+      this.controller.set('hideInfoText', true);
+    }
   }
 });
