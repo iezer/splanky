@@ -1,12 +1,18 @@
 .nav {
-  position: absolute;
-  top: 0;
-  right: 10px;
-  padding: 10px 10px 0px 10px;
+  display: block;
+  float: right;
+  padding: 10px 0 0 0;
 
   a, a:visited {
-    margin-right: 10px;
     text-decoration: none;
     font-weight: bold;
+  }
+
+  .ember-power-select-trigger {
+    min-width: 56px;
+  }
+  .nav-item {
+    display: inline-block;
+    margin-right: 10px;
   }
 }
