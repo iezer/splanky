@@ -30,6 +30,10 @@
         <span class="menu-hamburger"></span>
 
         <div id="menu" {{on "click" (action "navClick")}}>
+          <LinkTo @route="index" class="selectable nav-item {{if this.isGraphRoute "active"}}">
+            Monthly graph
+          </LinkTo>
+
           <div class="nav-item">
             <PowerSelect
               @options={{years}}
@@ -52,9 +56,6 @@
             </PowerSelect>
           </div>
 
-          <LinkTo @route="index" class="selectable nav-item {{if this.isGraphRoute "active"}}">
-            Monthly graph
-          </LinkTo>
           <LinkTo @route="stats" class="selectable nav-item">
             Most popular
           </LinkTo>
