@@ -98,6 +98,10 @@ h1 {
   font-size: 15px;
   display: inline-block;
   margin-left: 10px;
+
+  @media (max-width: $mobile-width) {
+    padding-right: 30px; // make sure it doesn't overlap with hamburger on mobile
+  }
 }
 
 .loading-spinner {
