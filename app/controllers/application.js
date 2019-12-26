@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 import { schedule } from '@ember/runloop';
 
 const MONTHS = [
-  { name: 'Jan' , value: 1},
+  { name: 'Jan' , value: 1 },
   { name: 'Feb', value: 2 },
   { name: 'Mar', value: 3 },
   { name: 'Apr', value: 4 },
