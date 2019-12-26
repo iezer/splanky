@@ -30,7 +30,13 @@ export default Controller.extend({
   currentYear: CURRENT_YEAR,
   oldestYear: OLDEST_YEAR,
   years: computed('currentYear', 'oldestYear', function() {
-    const { currentYear, oldestYear } = this;
+    let { currentYear, oldestYear } = this;
+
+    if (CURRENT_MONTH === 12) {
+      // If in December, make next year available
+      currentYear = currentYear + 1;
+    }
+
     let results = [];
     for (let i = currentYear; i >= oldestYear; i--) {
       results.push(i);
