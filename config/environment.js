@@ -51,7 +51,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.API_URL = 'http://localhost:4000';
-    ENV.APP.API_URL = 'http://splanky.net';
+    ENV.APP.API_URL = 'http://jazz.splanky.net';
     // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {
@@ -78,7 +78,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'http://splanky.net';
+    ENV.APP.API_URL = 'http://jazz.splanky.net';
     ENV.rootURL = '/';
   }
 
@@ -87,6 +87,8 @@ module.exports = function(environment) {
       'localhost:3000',
       'localhost:4200',
       'splanky.net',
+      'www.splanky.net',
+      'jazz.splanky.net',
       'splanky.herokuapp.com',
       'jazz-cats-api.herokuapp.com'
     ]
