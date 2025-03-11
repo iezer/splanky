@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'cats-client',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     apiNamespace: 'api',
 
     'ember-d3': {
