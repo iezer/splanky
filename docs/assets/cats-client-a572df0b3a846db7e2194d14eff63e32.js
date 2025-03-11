@@ -115,7 +115,7 @@ var a=t.default.extend({title:(0,n.default)("string"),artists:(0,r.hasMany)("art
 e.default=a}),define("cats-client/resolver",["exports","ember-resolver"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=t.default
 e.default=n}),define("cats-client/router",["exports","cats-client/config/environment","ember-router-scroll"],function(e,t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var r=Ember.Router.extend(n.default,{location:t.default.locationType,metrics:Ember.inject.service(),didTransition:function(){this._super.apply(this,arguments),this._trackPage()},_trackPage:function(){var e=this
+var r=Ember.Router.extend(n.default,{location:t.default.locationType,rootURL:t.default.rootURL,metrics:Ember.inject.service(),didTransition:function(){this._super.apply(this,arguments),this._trackPage()},_trackPage:function(){var e=this
 Ember.run.scheduleOnce("afterRender",this,function(){var t=document.location.pathname+document.location.search,n=e.getWithDefault("currentRouteName","unknown")
 e.metrics.trackPage({page:t,title:n})})}})
 r.map(function(){this.route("stats"),this.route("about"),this.route("graph",{path:"graph/:year/:month"}),this.route("artist",{path:"artist/:id"})})
@@ -190,4 +190,4 @@ void 0===s?n.push({source:r,target:a,value:1,sqrtValue:1}):(s.value++,s.sqrtValu
 console.log("create-graph took ".concat(a," ms."))}}),Ember.Instrumentation.instrument("create-graph",function(){e.forEach(function(e){for(var t=e.get("artists"),n=0;n<t.get("length");n++){var s=t.objectAt(n)
 r(s)
 for(var i=n+1;i<t.get("length");i++)a(s,t.objectAt(i))}})}),{nodes:t,links:n}}}),define("cats-client/utils/object-transforms",["exports","ember-metrics/utils/object-transforms"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})}),define("cats-client/config/environment",[],function(){try{var e="cats-client/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("cats-client/app").default.create({API_URL:"http://jazz.splanky.net",name:"cats-client",version:"0.0.0+cde49d51"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("cats-client/app").default.create({API_URL:"http://jazz.splanky.net",name:"cats-client",version:"0.0.0+5c9a1783"})
