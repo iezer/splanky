@@ -19,8 +19,8 @@
     "release": "ember build -prod && rm -rf docs && cp -R dist docs && git checkout docs/CNAME"
   },
   "engines": {
-    "node": "10.13.0",
-    "yarn": "1.9.4"
+    "node": "12.6.0",
+    "yarn": "1.17.3"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.0",
@@ -33,7 +33,6 @@
     "ember-cli-code-coverage": "^0.4.2",
     "ember-cli-dependency-checker": "^3.1.0",
     "ember-cli-eslint": "^5.1.0",
-    "ember-cli-fastboot": "^1.1.4-beta.1",
     "ember-cli-htmlbars": "^3.0.1",
     "ember-cli-htmlbars-inline-precompile": "^2.1.0",
     "ember-cli-inject-live-reload": "^1.8.2",
@@ -46,7 +45,6 @@
     "ember-cli-uglify": "^2.1.0",
     "ember-d3": "~0.4.3",
     "ember-data": "~3.8.0",
-    "ember-data-fastboot": "^0.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^2.0.0",
     "ember-metrics": "^0.12.1",
@@ -65,6 +63,6 @@
     "sass": "^1.22.2"
   },
   "dependencies": {
-    "fastboot-app-server": "^1.1.2-beta.1"
+  
   }
 }

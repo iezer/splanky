@@ -6,7 +6,6 @@ import RouterScroll from 'ember-router-scroll';
 
 const Router = EmberRouter.extend(RouterScroll, {
   location: config.locationType,
-  fastboot: service(),
   metrics: service(),
 
   didTransition() {
@@ -15,7 +14,6 @@ const Router = EmberRouter.extend(RouterScroll, {
   },
 
   _trackPage() {
-    if (this.get('fastboot.isFastBoot')) { return; }
     run.scheduleOnce('afterRender', this, () => {
       const page = document.location.pathname + document.location.search;
       const title = this.getWithDefault('currentRouteName', 'unknown');

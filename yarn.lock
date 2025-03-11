@@ -1067,10 +1067,6 @@ ansistyles@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/ansistyles/-/ansistyles-0.1.3.tgz#5de60415bda071bb37127854c864f41b23254539"
 
-any-promise@^1.0.0, any-promise@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
-
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
@@ -1931,7 +1927,7 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basic-auth@^2.0.0, basic-auth@~2.0.0:
+basic-auth@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.0.tgz#015db3f353e02e56377755f962742e8981e7bbba"
   dependencies:
@@ -3218,29 +3214,11 @@ component-inherit@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
 
-compressible@~2.0.13:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.13.tgz#0d1020ab924b2fdb4d6279875c7d6daba6baa7a9"
-  dependencies:
-    mime-db ">= 1.33.0 < 2"
-
 compressible@~2.0.16:
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.17.tgz#6e8c108a16ad58384a977f3a482ca20bff2f38c1"
   dependencies:
     mime-db ">= 1.40.0 < 2"
-
-compression@^1.6.2:
-  version "1.7.2"
-  resolved "http://registry.npmjs.org/compression/-/compression-1.7.2.tgz#aaffbcd6aaf854b44ebb280353d5ad1651f59a69"
-  dependencies:
-    accepts "~1.3.4"
-    bytes "3.0.0"
-    compressible "~2.0.13"
-    debug "2.6.9"
-    on-headers "~1.0.1"
-    safe-buffer "5.1.1"
-    vary "~1.1.2"
 
 compression@^1.7.4:
   version "1.7.4"
@@ -3364,7 +3342,7 @@ cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
 
-cookie@0.3.1, cookie@^0.3.1:
+cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
@@ -3824,17 +3802,17 @@ debug@2.6.9, debug@^2.1.0, debug@^2.1.1, debug@^2.1.3, debug@^2.2.0, debug@^2.3.
   dependencies:
     ms "2.0.0"
 
-debug@^3.0.0, debug@^3.1.0, debug@~3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  dependencies:
-    ms "2.0.0"
-
 debug@^3.0.1, debug@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   dependencies:
     ms "^2.1.1"
+
+debug@^3.1.0, debug@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  dependencies:
+    ms "2.0.0"
 
 debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@~4.1.0:
   version "4.1.1"
@@ -4217,27 +4195,6 @@ ember-cli-eslint@^5.1.0:
     rsvp "^4.6.1"
     walk-sync "^1.0.0"
 
-ember-cli-fastboot@^1.1.4-beta.1:
-  version "1.1.4-beta.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-fastboot/-/ember-cli-fastboot-1.1.4-beta.1.tgz#7063df36e62b92fd0f60c9a23dd03b5b57aec3fe"
-  dependencies:
-    broccoli-concat "^3.2.2"
-    broccoli-funnel "^2.0.0"
-    broccoli-merge-trees "^2.0.0"
-    broccoli-plugin "^1.2.1"
-    chalk "^2.0.1"
-    ember-cli-babel "^6.7.2"
-    ember-cli-lodash-subset "2.0.1"
-    ember-cli-preprocess-registry "^3.1.0"
-    ember-cli-version-checker "^2.1.0"
-    fastboot "^1.1.4-beta.1"
-    fastboot-express-middleware "^1.1.0"
-    fastboot-transform "^0.1.2"
-    fs-extra "^4.0.2"
-    json-stable-stringify "^1.0.1"
-    md5-hex "^2.0.0"
-    silent-error "^1.0.0"
-
 ember-cli-get-component-path-option@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-get-component-path-option/-/ember-cli-get-component-path-option-1.0.0.tgz#0d7b595559e2f9050abed804f1d8eff1b08bc771"
@@ -4276,13 +4233,9 @@ ember-cli-is-package-missing@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-is-package-missing/-/ember-cli-is-package-missing-1.0.0.tgz#6e6184cafb92635dd93ca6c946b104292d4e3390"
 
-ember-cli-lodash-subset@2.0.1, ember-cli-lodash-subset@^2.0.1:
+ember-cli-lodash-subset@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/ember-cli-lodash-subset/-/ember-cli-lodash-subset-2.0.1.tgz#20cb68a790fe0fde2488ddfd8efbb7df6fe766f2"
-
-ember-cli-lodash-subset@^1.0.7:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/ember-cli-lodash-subset/-/ember-cli-lodash-subset-1.0.12.tgz#af2e77eba5dcb0d77f3308d3a6fd7d3450f6e537"
 
 ember-cli-mirage@^0.4.15:
   version "0.4.15"
@@ -4342,19 +4295,6 @@ ember-cli-normalize-entity-name@^1.0.0:
 ember-cli-path-utils@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-path-utils/-/ember-cli-path-utils-1.0.0.tgz#4e39af8b55301cddc5017739b77a804fba2071ed"
-
-ember-cli-preprocess-registry@^3.1.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-preprocess-registry/-/ember-cli-preprocess-registry-3.1.1.tgz#38456c21c4d2b64945850cf9ec68db6ba769288a"
-  dependencies:
-    broccoli-clean-css "^1.1.0"
-    broccoli-funnel "^1.0.0"
-    broccoli-merge-trees "^1.0.0"
-    debug "^2.2.0"
-    ember-cli-lodash-subset "^1.0.7"
-    exists-sync "0.0.3"
-    process-relative-require "^1.0.0"
-    silent-error "^1.0.0"
 
 ember-cli-preprocess-registry@^3.3.0:
   version "3.3.0"
@@ -4596,13 +4536,6 @@ ember-d3@~0.4.3:
     d3 "4.1.0"
     d3-selection-multi "^1.0.1"
     ember-cli-babel "^6.6.0"
-
-ember-data-fastboot@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/ember-data-fastboot/-/ember-data-fastboot-0.1.2.tgz#fda63ea6b124dfc918f5cacb4ddc8e80a8461d04"
-  dependencies:
-    ember-cli-babel "^6.6.0"
-    ember-cli-version-checker "^2.0.0"
 
 ember-data@~3.8.0:
   version "3.8.0"
@@ -5224,7 +5157,7 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   dependencies:
     homedir-polyfill "^1.0.1"
 
-express@^4.10.7, express@^4.13.3:
+express@^4.10.7:
   version "4.16.3"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
   dependencies:
@@ -5414,60 +5347,6 @@ fast-sourcemap-concat@^1.4.0:
     source-map "^0.4.2"
     source-map-url "^0.3.0"
     sourcemap-validator "^1.1.0"
-
-fastboot-app-server@^1.1.2-beta.1:
-  version "1.1.2-beta.1"
-  resolved "https://registry.yarnpkg.com/fastboot-app-server/-/fastboot-app-server-1.1.2-beta.1.tgz#39169cdb8e16abdd789519b9b69651767841b90d"
-  dependencies:
-    basic-auth "^2.0.0"
-    chalk "^2.0.1"
-    compression "^1.6.2"
-    express "^4.13.3"
-    fastboot "^1.1.4-beta.1"
-    fastboot-express-middleware "^1.1.1"
-    fs-promise "^2.0.3"
-    request "^2.81.0"
-
-fastboot-express-middleware@^1.1.0, fastboot-express-middleware@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/fastboot-express-middleware/-/fastboot-express-middleware-1.1.1.tgz#b6e156a3acbaecef42b1f023ebb8405a934c28e6"
-  dependencies:
-    chalk "^2.0.1"
-    fastboot "^1.1.2"
-    request "^2.81.0"
-
-fastboot-transform@^0.1.2:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/fastboot-transform/-/fastboot-transform-0.1.3.tgz#7dea0b117594afd8772baa6c9b0919644e7f7dcd"
-  dependencies:
-    broccoli-stew "^1.5.0"
-    convert-source-map "^1.5.1"
-
-fastboot@^1.1.2:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-1.1.3.tgz#56c5f56415c5ae8de2db539c0d3ecbcd65538f8b"
-  dependencies:
-    chalk "^2.0.1"
-    cookie "^0.3.1"
-    debug "^3.0.0"
-    exists-sync "0.0.4"
-    najax "^1.0.2"
-    rsvp "^4.7.0"
-    simple-dom "^1.0.0"
-    source-map-support "^0.5.0"
-
-fastboot@^1.1.4-beta.1:
-  version "1.1.4-beta.1"
-  resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-1.1.4-beta.1.tgz#860f8af2bd032b3a7477fdf6e1a64b034a02829f"
-  dependencies:
-    chalk "^2.0.1"
-    cookie "^0.3.1"
-    debug "^3.0.0"
-    exists-sync "0.0.4"
-    najax "^1.0.2"
-    rsvp "^4.7.0"
-    simple-dom "^1.0.0"
-    source-map-support "^0.5.0"
 
 faye-websocket@~0.10.0:
   version "0.10.0"
@@ -5748,15 +5627,6 @@ fs-minipass@^1.2.5:
   resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.6.tgz#2c5cc30ded81282bfe8a0d7c7c1853ddeb102c07"
   dependencies:
     minipass "^2.2.1"
-
-fs-promise@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/fs-promise/-/fs-promise-2.0.3.tgz#f64e4f854bcf689aa8bddcba268916db3db46854"
-  dependencies:
-    any-promise "^1.3.0"
-    fs-extra "^2.0.0"
-    mz "^2.6.0"
-    thenify-all "^1.6.0"
 
 fs-tree-diff@^0.5.2, fs-tree-diff@^0.5.3, fs-tree-diff@^0.5.4, fs-tree-diff@^0.5.6:
   version "0.5.7"
@@ -7825,7 +7695,7 @@ mime-db@1.40.0, "mime-db@>= 1.40.0 < 2":
   version "1.40.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
 
-"mime-db@>= 1.33.0 < 2", mime-db@~1.33.0:
+mime-db@~1.33.0:
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
 
@@ -8005,22 +7875,6 @@ mustache@^3.0.0:
 mute-stream@0.0.7, mute-stream@~0.0.4:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
-
-mz@^2.6.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
-  dependencies:
-    any-promise "^1.0.0"
-    object-assign "^4.0.1"
-    thenify-all "^1.0.0"
-
-najax@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/najax/-/najax-1.0.3.tgz#11145f4d910446ea661d8ab7fcef53f6ad164ae5"
-  dependencies:
-    jquery-deferred "^0.3.0"
-    lodash.defaultsdeep "^4.6.0"
-    qs "^6.2.0"
 
 najax@^1.0.3:
   version "1.0.4"
@@ -8431,7 +8285,7 @@ oauth-sign@~0.8.0, oauth-sign@~0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@4.1.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -9309,7 +9163,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@2, request@^2.47.0, request@^2.81.0:
+request@2, request@^2.47.0:
   version "2.85.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.85.0.tgz#5a03615a47c61420b3eb99b7dba204f83603e1fa"
   dependencies:
@@ -9797,10 +9651,6 @@ silent-error@^1.1.1:
   dependencies:
     debug "^2.2.0"
 
-simple-dom@^1.0.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/simple-dom/-/simple-dom-1.3.0.tgz#8473e0d34e340544b061410dba3faf4f1b7aa282"
-
 simple-html-tokenizer@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/simple-html-tokenizer/-/simple-html-tokenizer-0.5.7.tgz#8eca336ecfbe2b3c6166cbb31b2682088de79f40"
@@ -9952,12 +9802,6 @@ source-map-support@^0.4.15:
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
   dependencies:
     source-map "^0.5.6"
-
-source-map-support@^0.5.0:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.3.tgz#2b3d5fff298cfa4d1afd7d4352d569e9a0158e76"
-  dependencies:
-    source-map "^0.6.0"
 
 source-map-support@~0.5.10:
   version "0.5.12"
@@ -10402,18 +10246,6 @@ text-table@^0.2.0, text-table@~0.2.0:
 "textextensions@1 || 2":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/textextensions/-/textextensions-2.2.0.tgz#38ac676151285b658654581987a0ce1a4490d286"
-
-thenify-all@^1.0.0, thenify-all@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/thenify-all/-/thenify-all-1.6.0.tgz#1a1918d402d8fc3f98fbf234db0bcc8cc10e9726"
-  dependencies:
-    thenify ">= 3.1.0 < 4"
-
-"thenify@>= 3.1.0 < 4":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
-  dependencies:
-    any-promise "^1.0.0"
 
 through2@^2.0.0:
   version "2.0.5"

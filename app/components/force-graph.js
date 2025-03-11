@@ -13,13 +13,11 @@ export default Component.extend({
 
   metrics: service(),
   router: service(),
-  fastboot: service(),
 
   hoverArtist: null,
 
   didReceiveAttrs() {
     this._super(...arguments);
-    if (this.get('fastboot.isFastBoot')) { return; }
     schedule('afterRender', this, 'doGraph');
     this._resizeHandler = this.handleResize.bind(this);
     window.addEventListener('resize', this._resizeHandler);
