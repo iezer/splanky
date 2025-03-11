@@ -79,7 +79,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'http://jazz.splanky.net';
-    ENV.rootURL = 'https://iezer.github.io/splanky/';
   }
 
   return ENV;
