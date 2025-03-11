@@ -15,7 +15,8 @@
     "lint:hbs": "ember-template-lint .",
     "start": "ember server",
     "test": "ember test",
-    "coverage": "COVERAGE=true ember test"
+    "coverage": "COVERAGE=true ember test",
+    "release": "ember build -prod && rm -rf docs && cp -R dist docs && git checkout docs/CNAME"
   },
   "engines": {
     "node": "10.13.0",
