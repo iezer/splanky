@@ -79,20 +79,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'http://jazz.splanky.net';
-    ENV.rootURL = '/';
+    ENV.rootURL = 'https://iezer.github.io/splanky/';
   }
-
-  ENV.fastboot = {
-    hostWhitelist: [
-      'localhost:3000',
-      'localhost:4200',
-      'splanky.net',
-      'www.splanky.net',
-      'jazz.splanky.net',
-      'splanky.herokuapp.com',
-      'jazz-cats-api.herokuapp.com'
-    ]
-  };
 
   return ENV;
 };
