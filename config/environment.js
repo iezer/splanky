@@ -51,8 +51,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.API_URL = 'http://localhost:4000';
-    // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {
       enabled: false
@@ -78,7 +76,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'http://jazz.splanky.net';
   }
 
   return ENV;
