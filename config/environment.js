@@ -42,7 +42,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' www.google-analytics.com",
       'font-src': "'self'",
-      'connect-src': "'self' https://jazz-cats-api.herokuapp.com http://localhost:4000 www.google-analytics.com",
+      'connect-src': "'self' https://jazz-cats-api.herokuapp.com http://localhost:4000 www.google-analytics.com https://xmm46nsazlkwn7lljqokb7tli40lviig.lambda-url.eu-north-1.on.aws",
       'img-src': "'self'",
       'style-src': "'self'",
       'media-src': "'self'"
@@ -51,7 +51,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.API_URL = 'http://localhost:4000';
-    ENV.APP.API_URL = 'http://jazz.splanky.net';
+    ENV.APP.API_URL = 'https://xmm46nsazlkwn7lljqokb7tli40lviig.lambda-url.eu-north-1.on.aws/';
     // ENV.APP.API_URL = '';
 
     ENV['ember-cli-mirage'] = {

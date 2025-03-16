@@ -7,11 +7,10 @@ export default Route.extend({
   model({ year, month }) {
     this.setProperties({ year, month });
     return this.store.query('event', {
-      filter: {
+    
         month,
         year
-      },
-      include: 'artists'
+    
     });
   },
 

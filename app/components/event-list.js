@@ -21,15 +21,8 @@ export default Component.extend({
   sortDef: Object.freeze(['startTime']),
   sortedEvents: sort('events', function(eventA, eventB) {
     // Make events early in the morning like 1:00am appear at the end.
-    let hoursA = eventA.get('startTime').getHours();
-    let hoursB = eventB.get('startTime').getHours();
-    if (hoursA < 7) {
-      hoursA = hoursA + 24;
-    }
-
-    if (hoursB < 7) {
-      hoursB = hoursB + 24;
-    }
+    let hoursA = eventA.get('date');
+    let hoursB = eventB.get('date');
     return hoursA - hoursB;
   }),
 
@@ -37,11 +30,10 @@ export default Component.extend({
     let events = this.get('sortedEvents');
     let dates = {};
     events.forEach(event => {
-      const startTime = event.get('startTime');
-      let date = startTime.getDate();
+      const date = event.get('date');
       if (!dates[date]) {
         dates[date] = {
-          startTime,
+          date,
           events: [event]
         };
       } else {
