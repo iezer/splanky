@@ -1,5 +1,5 @@
 "use strict"
-define("cats-client/adapters/application",["exports","ember-data/adapters/json-api","cats-client/config/environment"],function(e,t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+define("cats-client/adapters/application",["exports","ember-data/adapters/rest","cats-client/config/environment"],function(e,t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var r=t.default.extend({host:n.default.APP.API_URL,namespace:n.default.apiNamespace})
 e.default=r}),define("cats-client/app",["exports","cats-client/resolver","ember-load-initializers","cats-client/config/environment"],function(e,t,n,r){var a
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0,a=Ember.Application.extend({modulePrefix:r.default.modulePrefix,podModulePrefix:r.default.podModulePrefix,Resolver:t.default}),(0,n.default)(a,r.default.modulePrefix)
@@ -16,10 +16,9 @@ var t=Ember.Component.extend({tagName:"",metrics:Ember.inject.service(),actions:
 this.metrics.trackEvent({category:"ui-interaction",action:"select-artist-".concat(t),label:"event-info"}),this.selectArtist(e)}}})
 e.default=t}),define("cats-client/components/event-list",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Component.extend({tagName:"",isVisible:!1,init:function(){var e=this
-this._super.apply(this,arguments),Ember.run.scheduleOnce("afterRender",function(){e.set("isVisible",!0)})},firstEvent:Ember.computed.readOnly("events.firstObject"),sortDef:Object.freeze(["startTime"]),sortedEvents:Ember.computed.sort("events",function(e,t){var n=e.get("startTime").getHours(),r=t.get("startTime").getHours()
-return n<7&&(n+=24),r<7&&(r+=24),n-r}),eventsByDay:Ember.computed("sortedEvents.[]",function(){var e=this.get("sortedEvents"),t={}
-return e.forEach(function(e){var n=e.get("startTime"),r=n.getDate()
-t[r]?t[r].events.push(e):t[r]={startTime:n,events:[e]}}),t})})
+this._super.apply(this,arguments),Ember.run.scheduleOnce("afterRender",function(){e.set("isVisible",!0)})},firstEvent:Ember.computed.readOnly("events.firstObject"),sortDef:Object.freeze(["startTime"]),sortedEvents:Ember.computed.sort("events",function(e,t){return e.get("date")-t.get("date")}),eventsByDay:Ember.computed("sortedEvents.[]",function(){var e=this.get("sortedEvents"),t={}
+return e.forEach(function(e){var n=e.get("date")
+t[n]?t[n].events.push(e):t[n]={date:n,events:[e]}}),t})})
 e.default=t}),define("cats-client/components/force-graph",["exports","d3"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=Ember.Component.extend({tagName:"",graph:null,selectedArtist:null,metrics:Ember.inject.service(),router:Ember.inject.service(),hoverArtist:null,didReceiveAttrs:function(){this._super.apply(this,arguments),Ember.run.schedule("afterRender",this,"doGraph"),this._resizeHandler=this.handleResize.bind(this),window.addEventListener("resize",this._resizeHandler)},willDestroyElement:function(){window.removeEventListener("resize",this._resizeHandler),this._super.apply(this,arguments)},handleResize:function(){Ember.run.debounce(this,"resizeGraph",500)},resizeGraph:function(){var e=this
 Ember.run.schedule("afterRender",function(){e.isDestroyed||(e.graph.nodes.forEach(function(e){e.x=e.y=0}),e.doGraph())})},doGraph:function(){var e=document.querySelector(".index-container__column"),n=e.offsetWidth,r=e.offsetHeight
@@ -111,7 +110,7 @@ e.default=n}),define("cats-client/instance-initializers/init-app-scheduler",["ex
 var a=t.default.extend({name:(0,n.default)("string"),instrument:(0,n.default)("string"),events:(0,r.hasMany)("event",{inverse:"artists",async:!1}),image:(0,n.default)("string"),url:(0,n.default)("string"),bandMates:Ember.computed("events.@each.artists",function(){var e=Ember.A()
 return this.events.forEach(function(t){e.pushObjects(t.get("artists").toArray())}),e.uniq().removeObject(this)}),text:Ember.computed("name","instrument",function(){return"".concat(this.name," (").concat(this.instrument,")")})})
 e.default=a}),define("cats-client/models/event",["exports","ember-data/model","ember-data/attr","ember-data/relationships"],function(e,t,n,r){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var a=t.default.extend({title:(0,n.default)("string"),artists:(0,r.hasMany)("artist",{inverse:"events"}),startTime:(0,n.default)("date"),endTime:(0,n.default)("date")})
+var a=t.default.extend({title:(0,n.default)("string"),artists:(0,r.hasMany)("artist",{inverse:"events"}),date:(0,n.default)("date")})
 e.default=a}),define("cats-client/resolver",["exports","ember-resolver"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=t.default
 e.default=n}),define("cats-client/router",["exports","cats-client/config/environment","ember-router-scroll"],function(e,t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
@@ -128,7 +127,7 @@ return this.store.findRecord("artist",t,{include:n})},actions:{willTransition:fu
 e.default=t})
 define("cats-client/routes/graph",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Route.extend({year:null,month:null,model:function(e){var t=e.year,n=e.month
-return this.setProperties({year:t,month:n}),this.store.query("event",{filter:{month:n,year:t},include:"artists"})},setupController:function(){this._super.apply(this,arguments)
+return this.setProperties({year:t,month:n}),this.store.query("event",{month:n,year:t})},setupController:function(){this._super.apply(this,arguments)
 var e=this.year,t=this.month
 this.controllerFor("application").setProperties({year:e,month:t})},actions:{willTransition:function(){this.controller.set("hideInfoText",!0)}}})
 e.default=t}),define("cats-client/routes/index",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
@@ -137,7 +136,7 @@ return{month:t,year:n}}(),t=e.month,n=e.year
 this.replaceWith("graph",n,t)}})
 e.default=t}),define("cats-client/routes/stats",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Route.extend({model:function(){return this.store.query("artist",{include:"events"})}})
-e.default=t}),define("cats-client/serializers/application",["exports","ember-data/serializers/json-api"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=t}),define("cats-client/serializers/application",["exports","ember-data/serializers/rest"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=t.default.extend({})
 e.default=n}),define("cats-client/serializers/event",["exports","cats-client/serializers/application"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=t.default.extend({})
@@ -190,4 +189,4 @@ void 0===s?n.push({source:r,target:a,value:1,sqrtValue:1}):(s.value++,s.sqrtValu
 console.log("create-graph took ".concat(a," ms."))}}),Ember.Instrumentation.instrument("create-graph",function(){e.forEach(function(e){for(var t=e.get("artists"),n=0;n<t.get("length");n++){var s=t.objectAt(n)
 r(s)
 for(var i=n+1;i<t.get("length");i++)a(s,t.objectAt(i))}})}),{nodes:t,links:n}}}),define("cats-client/utils/object-transforms",["exports","ember-metrics/utils/object-transforms"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})}),define("cats-client/config/environment",[],function(){try{var e="cats-client/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("cats-client/app").default.create({API_URL:"http://jazz.splanky.net",name:"cats-client",version:"0.0.0+4bd0642c"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("cats-client/app").default.create({API_URL:"http://jazz.splanky.net",name:"cats-client",version:"0.0.0+1f663895"})
