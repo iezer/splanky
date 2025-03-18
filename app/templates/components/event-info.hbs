@@ -4,14 +4,14 @@
   </div>
 
   <div class="event-info__date">
-    {{moment-format event.startTime "dddd M/D/YYYY"}}
+    {{moment-format event.date "dddd M/D/YYYY"}}
   </div>
 
-  <div class="event-info__time">
+  {{!-- <div class="event-info__time">
     {{moment-format event.startTime "LT"}}
     -
     {{moment-format event.endTime "LT"}}
-  </div>
+  </div> --}}
 
   <div class="event-info__artists">
     {{#each event.artists as |artist|}}

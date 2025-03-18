@@ -4,6 +4,6 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   title: attr('string'),
-  artists: hasMany('artist', { inverse: 'events' }),
+  artists: hasMany('artist', { inverse: 'events', async: false }),
   date: attr('date'),
 });

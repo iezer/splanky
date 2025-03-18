@@ -1,17 +1,17 @@
 <div class="stats">
-  <StatsColumn
+  {{!-- <StatsColumn
     @artists={{model}}
     @key="bandMates"
     @title="Who's played with the most people?"
     @selectedArtist={{selectedArtist}}
     @selectArtist={{action (mut selectedArtist)}}
-  />
+  /> --}}
   <StatsColumn
     @artists={{model}}
     @key="events"
     @title="Who's had the most gigs?"
     @selectedArtist={{selectedArtist}}
-    @selectArtist={{action (mut selectedArtist)}}
+    @selectArtist={{action "selectArtist"}}
   />
 
   {{#if selectedArtist}}

@@ -1,6 +1,6 @@
 {{#if this.isVisible}}
   <h2>
-    Artists & shows for {{moment-format firstEvent.startTime "MMMM"}}
+    Artists & shows for {{moment-format firstEvent.date "MMMM"}}
   </h2>
 
   <div class="index-container__events">
@@ -8,7 +8,7 @@
 
       <div class="index-container__day">
         <div class="event-list__date">
-          {{moment-format events.startTime "dddd M/D/YYYY"}}
+          {{moment-format events.date "dddd M/D/YYYY"}}
         </div>
 
         {{#each events.events as |event|}}
